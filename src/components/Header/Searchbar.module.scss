@@ -1,0 +1,35 @@
+$height: 40px;
+$total-width: 370px;
+
+.searchbar {
+  position: relative;
+  display: flex;
+  width: $total-width;
+  height: $height;
+}
+
+.input {
+  position: relative;
+  width: $total-width - $height;
+  height: $height;
+  border: 2px solid #e7e6ef;
+  border-right: none;
+  outline: none;
+  padding-left: 0.7rem;
+}
+
+.submit {
+  background: none;
+  border: none;
+  width: $height;
+  height: $height;
+  background-color: #fb2e86;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  img {
+    margin: 0 auto;
+    width: 60%;
+  }
+}

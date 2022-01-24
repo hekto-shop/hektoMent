@@ -1,27 +1,36 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-import Header from './components/Header';
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
       <Header />
       <Switch>
-        <Route path="/" exact>
-          <p>Home Page</p>
+        <Route exact path="/">
+          <h1 className="temporary">Home Page</h1>
         </Route>
         <Route path="/login">
-          <p>Login Page</p>
+          <h1 className="temporary">Login Page</h1>
         </Route>
         <Route path="/cart">
-          <p>Cart Page</p>
+          <h1 className="temporary">Cart Page</h1>
         </Route>
         <Route path="/products">
-          <p>Products Page</p>
+          <h1 className="temporary">Products Page</h1>
         </Route>
-        <Route path="/somepage">
-          <p>lorem ipsum dolor sit amet, consectetur</p>
+        <Route path="/contact">
+          <h1 className="temporary">Contact form</h1>
+        </Route>
+        <Route path="/blog">
+          <h1 className="temporary">Blog</h1>
+        </Route>
+        <Route path="/shop">
+          <h1 className="temporary">Shop</h1>
+        </Route>
+        <Route path="/wishlist">
+          <h1 className="temporary">Wishlist</h1>
         </Route>
       </Switch>
     </>

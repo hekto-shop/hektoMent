@@ -1,14 +1,16 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import classes from './Header.module.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import classes from "./Header.module.scss";
 
-import * as icons from '../../assets/icons';
+import * as icons from "../../assets/icons";
+import Navigation from "./Navigation";
+import Searchbar from "./Searchbar";
 
 const Header = () => {
   return (
     <header className={classes.header}>
-      <div className={classes['top-container']}>
-        <div className={classes['contact-info']}>
+      <div className={classes["top-header"]}>
+        <div className={classes["contact-info"]}>
           <address>
             <img src={icons.email} alt="email" />
             <h4>user@mail.com</h4>
@@ -22,8 +24,6 @@ const Header = () => {
         <div className={classes.controls}>
           <div>ENG</div>
           <div>
-            {/* <h4>USD</h4>
-            <img src={icons.dropdown} alt="dropdown" /> */}
             <select>
               <option value="USD">USD</option>
               <option value="GEL">GEL</option>
@@ -43,49 +43,13 @@ const Header = () => {
         </div>
       </div>
 
-      <div className={classes['nav-container']}>
-        <h1>Hekto</h1>
-        <nav>
-          <ul>
-            <li>
-              <NavLink activeClassName={classes.selected} to="/">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName={classes.selected} to="/pages">
-                Pages
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName={classes.selected} to="/products">
-                Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName={classes.selected} to="/blog">
-                Blog
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName={classes.selected} to="/shop">
-                Shop
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName={classes.selected} to="/contact">
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+      <div className={classes["bottom-header"]}>
+        <Link to="/">
+          <h1>Hekto</h1>
+        </Link>
 
-        <div className={classes.searchbar}>
-          <input type="text" />
-          <span>
-            <img src={icons.magnifier} alt="search" />
-          </span>
-        </div>
+        <Navigation />
+        <Searchbar />
       </div>
     </header>
   );
