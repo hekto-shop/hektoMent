@@ -44,7 +44,7 @@ const Header = () => {
       </div>
 
       <div className={classes["bottom-header"]}>
-        <Link to="/">
+        <Link to="/homepage">
           <h1>Hekto</h1>
         </Link>
 

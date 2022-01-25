@@ -8,7 +8,7 @@ const Navigation = () => {
     <nav className={classes.navigation}>
       <ul>
         <li>
-          <NavLink activeClassName={classes.active} to="/">
+          <NavLink activeClassName={classes.active} to="/homepage">
             Home
           </NavLink>
         </li>
