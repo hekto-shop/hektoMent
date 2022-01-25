@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { auth } from '../../config/config';
-import { signupValidation } from '../../validation/Validation';
+import { signupValidation } from '../../validation/signupValidation';
 import classes from './SignupForm.module.scss';
 
 import TextField from '@mui/material/TextField';
@@ -150,7 +150,7 @@ const SignupForm = () => {
         <TextField
           id="about"
           name="about"
-          label="Tell usabout yourself..."
+          label="Tell us about your interests..."
           multiline
           variant="standard"
           rows="3"
