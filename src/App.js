@@ -1,14 +1,18 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-import Header from "./components/Header";
+import SplashPage from "./pages/SplashPage/SplashPage";
 
 function App() {
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
   return (
     <>
-      <Header />
       <Switch>
         <Route exact path="/">
+          {!isAuthorized ? <SplashPage /> : <Redirect to="/shop" />}
+        </Route>
+        <Route path="/homepage">
           <h1 className="temporary">Home Page</h1>
         </Route>
         <Route path="/login">
