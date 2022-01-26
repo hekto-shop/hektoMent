@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useFormik } from 'formik';
-import { auth } from '../../config/config';
-import { signupValidation } from '../../validation/signupValidation';
-import classes from './SignupForm.module.scss';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useFormik } from "formik";
+import { auth } from "../../config/config";
+import { signupValidation } from "../../validation/signupValidation";
+import classes from "./SignupForm.module.scss";
 
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import CustomizedDialogs from '../../components/CustomizedDialogs';
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import CustomizedDialogs from "../../components/CustomizedDialogs";
 
 const SignupForm = () => {
   const [error, setError] = useState(null);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
-      username: '',
-      phone: '',
-      email: '',
-      password: '',
-      password2: '',
-      budget: '',
-      about: '',
+      username: "",
+      phone: "",
+      email: "",
+      password: "",
+      password2: "",
+      budget: "",
+      about: "",
     },
     validate: signupValidation,
     onSubmit: (values) => {
@@ -30,36 +31,34 @@ const SignupForm = () => {
     },
   });
 
-  async function signup({
-    username,
-    phoneNumber,
-    password,
-    email,
-    budget,
-    about,
-  }) {
+  async function signup({ username, phone, password, email, budget, about }) {
     try {
+      setLoading(true);
       const resp = await auth.createUserWithEmailAndPassword(email, password);
+      await resp.user.updateProfile({ displayName: username });
       formik.resetForm({
-        username: '',
-        phone: '',
-        email: '',
-        password: '',
-        password2: '',
-        budget: '',
-        about: '',
+        username: "",
+        phone: "",
+        email: "",
+        password: "",
+        password2: "",
+        budget: "",
+        about: "",
       });
       setSubmitted(true);
     } catch (err) {
       setError(err.message);
     }
+
+    setLoading(false);
   }
 
   const redirect = () => {
-    history.push('/login');
+    history.push("/");
   };
+
   return (
-    <section className={classes['signup-container']}>
+    <section className={classes["signup-container"]}>
       <CustomizedDialogs
         title="Error"
         message={error}
@@ -70,9 +69,9 @@ const SignupForm = () => {
 
       <CustomizedDialogs
         title="Congratulations!"
-        message="You've been signed up successfully. Please go to Login Page"
+        message="You've been signed up successfully."
         open={submitted}
-        buttonText="Login"
+        buttonText="Okay"
         handleClose={redirect}
       />
 
@@ -159,7 +158,7 @@ const SignupForm = () => {
           value={formik.values.about}
         />
 
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" disabled={loading}>
           Sign Up
         </Button>
       </form>
