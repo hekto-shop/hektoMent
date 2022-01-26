@@ -6,6 +6,7 @@ import { signupValidation } from "../../validation/signupValidation";
 import classes from "./SignupForm.module.scss";
 
 import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import CustomizedDialogs from "../../components/CustomizedDialogs";
 
@@ -76,91 +77,123 @@ const SignupForm = () => {
       />
 
       <form onSubmit={formik.handleSubmit}>
-        <TextField
-          id="username"
-          name="username"
-          label="Username"
-          variant="standard"
-          onChange={formik.handleChange}
-          value={formik.values.username}
-          error={formik.touched.username && Boolean(formik.errors.username)}
-          helperText={formik.touched.username && formik.errors.username}
-        />
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs={12} lg={6}>
+            <TextField
+              id="username"
+              name="username"
+              label="Username"
+              variant="standard"
+              fullWidth
+              onChange={formik.handleChange}
+              value={formik.values.username}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
+            />
+          </Grid>
 
-        <TextField
-          id="phone"
-          name="phone"
-          label="Phone Number"
-          variant="standard"
-          onChange={formik.handleChange}
-          value={formik.values.phone}
-          error={formik.touched.phone && Boolean(formik.errors.phone)}
-          helperText={formik.touched.phone && formik.errors.phone}
-        />
+          <Grid item xs={12} lg={6}>
+            <TextField
+              id="phone"
+              name="phone"
+              label="Phone Number"
+              variant="standard"
+              fullWidth
+              onChange={formik.handleChange}
+              value={formik.values.phone}
+              error={formik.touched.phone && Boolean(formik.errors.phone)}
+              helperText={formik.touched.phone && formik.errors.phone}
+            />
+          </Grid>
 
-        <TextField
-          id="password"
-          name="password"
-          type="password"
-          label="Password"
-          variant="standard"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-        />
+          <Grid item xs={12} lg={6}>
+            <TextField
+              id="password"
+              name="password"
+              type="password"
+              label="Password"
+              variant="standard"
+              fullWidth
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+            />
+          </Grid>
 
-        <TextField
-          id="password2"
-          name="password2"
-          type="password"
-          label="Confirm Password"
-          variant="standard"
-          onChange={formik.handleChange}
-          value={formik.values.password2}
-          error={formik.touched.password2 && Boolean(formik.errors.password2)}
-          helperText={formik.touched.password2 && formik.errors.password2}
-        />
+          <Grid item xs={12} lg={6}>
+            <TextField
+              id="password2"
+              name="password2"
+              type="password"
+              label="Confirm Password"
+              variant="standard"
+              fullWidth
+              onChange={formik.handleChange}
+              value={formik.values.password2}
+              error={
+                formik.touched.password2 && Boolean(formik.errors.password2)
+              }
+              helperText={formik.touched.password2 && formik.errors.password2}
+            />
+          </Grid>
 
-        <TextField
-          id="email"
-          name="email"
-          type="email"
-          label="Email"
-          variant="standard"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
+          <Grid item xs={12} lg={6}>
+            <TextField
+              id="email"
+              name="email"
+              type="email"
+              label="Email"
+              variant="standard"
+              fullWidth
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+          </Grid>
 
-        <TextField
-          id="budget"
-          name="budget"
-          type="number"
-          label="Your budget"
-          variant="standard"
-          onChange={formik.handleChange}
-          value={formik.values.budget}
-          error={formik.touched.budget && Boolean(formik.errors.budget)}
-          helperText={formik.touched.budget && formik.errors.budget}
-        />
+          <Grid item xs={12} lg={6}>
+            <TextField
+              id="budget"
+              name="budget"
+              type="number"
+              label="Your budget"
+              variant="standard"
+              fullWidth
+              onChange={formik.handleChange}
+              value={formik.values.budget}
+              error={formik.touched.budget && Boolean(formik.errors.budget)}
+              helperText={formik.touched.budget && formik.errors.budget}
+            />
+          </Grid>
 
-        <TextField
-          id="about"
-          name="about"
-          label="Tell us about your interests..."
-          multiline
-          variant="standard"
-          rows="3"
-          fullWidth
-          onChange={formik.handleChange}
-          value={formik.values.about}
-        />
+          <Grid item xs={12} lg={12}>
+            <TextField
+              id="about"
+              name="about"
+              label="Tell us about your interests..."
+              multiline
+              variant="standard"
+              fullWidth
+              rows="3"
+              fullWidth
+              onChange={formik.handleChange}
+              value={formik.values.about}
+            />
+          </Grid>
 
-        <Button type="submit" variant="contained" disabled={loading}>
-          Sign Up
-        </Button>
+          <Grid item xs={12} lg={12}>
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              disabled={loading}
+            >
+              Sign Up
+            </Button>
+          </Grid>
+        </Grid>
       </form>
     </section>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header";
+import { Link } from "react-router-dom";
 import PageLayout from "../../containers/PageLayout";
 import SignupForm from "../../components/SignupForm";
 import { useSession } from "../../contexts/auth-context";
@@ -11,12 +11,10 @@ const Signup = () => {
   return (
     <PageLayout title="Sign up">
       <SignupForm />
-      <div>
-        <p>{user.username}</p>
-        <p>{user.about}</p>
-        <p>{user.budget}</p>
-        <p>{user.email}</p>
-        <p>{user.uid}</p>
+      <div className={classes["login-text"]}>
+        <p>Already have an account?</p>
+        <br />
+        <Link to="/login"> Login here</Link>
       </div>
     </PageLayout>
   );
