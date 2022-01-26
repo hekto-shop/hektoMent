@@ -1,0 +1,93 @@
+$header-padding: 6rem;
+$text-color: #f1f1f1;
+
+h4 {
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7e33e0;
+  color: $text-color;
+  font-family: "Josefin Sans", sans-serif;
+  height: 3rem;
+  width: 100%;
+  padding: 0 $header-padding;
+  img {
+    width: 25px;
+    padding: 0.2rem;
+  }
+}
+
+.contact-info {
+  height: 100%;
+  display: flex;
+  address {
+    display: flex;
+    font-family: Josefin Sans;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 19px;
+    align-items: center;
+    padding-right: 1rem;
+  }
+}
+
+.controls {
+  display: flex;
+  div {
+    display: flex;
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    display: flex;
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+
+    color: $text-color;
+  }
+}
+
+select {
+  background: transparent;
+  color: $text-color;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 19px;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  outline: none;
+}
+
+.bottom-header {
+  width: 100%;
+  height: 4.5rem;
+  padding: 0 $header-padding;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0d0e43;
+
+  h1 {
+    font-family: Josefin Sans;
+    font-size: 34px;
+    line-height: 40px;
+    cursor: pointer;
+  }
+}
