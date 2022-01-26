@@ -1,0 +1,21 @@
+.footer {
+  width: 100%;
+  height: fit-content;
+}
+
+.bottom-navigation {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  width: 100%;
+  height: 480px;
+  background-color: #eeeffb;
+  padding: 2rem 6rem;
+}
+
+.copyright {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background-color: #e7e4f8;
+  padding: 0 6rem;
+}
