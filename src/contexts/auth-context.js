@@ -15,7 +15,7 @@ export const AuthProvider = (props) => {
   }, []);
   return (
     <authContext.Provider value={session}>
-      {props.children}
+      {!session.loading && props.children}
     </authContext.Provider>
   );
 };
