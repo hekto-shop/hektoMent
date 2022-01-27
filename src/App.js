@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React, { useState } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-import SplashPage from "./pages/SplashPage/SplashPage";
+import SplashPage from './pages/SplashPage/SplashPage';
+import Signup from './pages/Signup';
 
 function App() {
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -11,6 +12,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           {!isAuthorized ? <SplashPage /> : <Redirect to="/shop" />}
+        </Route>
+        <Route path="/signup">
+          <Signup />
         </Route>
         <Route path="/homepage">
           <h1 className="temporary">Home Page</h1>

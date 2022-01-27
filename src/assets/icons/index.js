@@ -7,4 +7,20 @@ import phone from "./phone.svg";
 import user from "./user.svg";
 import arrow from "./arrow.svg";
 
-export { email, cart, dropdown, heart, magnifier, phone, user, arrow };
+import facebook from "./facebook.svg";
+import instagram from "./instagram.svg";
+import twitter from "./twitter.svg";
+
+export {
+  email,
+  cart,
+  dropdown,
+  heart,
+  magnifier,
+  phone,
+  user,
+  arrow,
+  facebook,
+  instagram,
+  twitter,
+};

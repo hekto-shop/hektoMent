@@ -1,0 +1,14 @@
+.login-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4rem;
+  color: #9096b2;
+  font-family: "Lato", sans-serif;
+  a {
+    text-decoration: none;
+    color: #838baa;
+    font-family: "Lato", sans-serif;
+  }
+}
