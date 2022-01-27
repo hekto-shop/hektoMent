@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import { auth } from "../../config/config";
 import { signupValidation } from "../../validation/signupValidation";
+import { createUserDocument } from "../../helpers/user-registration";
 import classes from "./SignupForm.module.scss";
 
 import TextField from "@mui/material/TextField";
@@ -36,7 +37,16 @@ const SignupForm = () => {
     try {
       setLoading(true);
       const resp = await auth.createUserWithEmailAndPassword(email, password);
-      await resp.user.updateProfile({ displayName: username });
+      const user = resp.user;
+      await user.updateProfile({ displayName: username });
+      await createUserDocument({
+        uid: user.uid,
+        username,
+        email,
+        budget,
+        about,
+        phone,
+      });
       formik.resetForm({
         username: "",
         phone: "",
