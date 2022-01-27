@@ -17,5 +17,20 @@
   width: 100%;
   height: 60px;
   background-color: #e7e4f8;
-  padding: 0 6rem;
+  padding: 0 10rem;
+  justify-content: space-between;
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.author {
+  color: #9da0ae;
+}
+
+.social {
+  a {
+    padding: 0 0.5rem;
+  }
 }
