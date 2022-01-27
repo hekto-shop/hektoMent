@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Header.module.scss";
+import { useSession } from "../../contexts/auth-context";
 
 import * as icons from "../../assets/icons";
 import Navigation from "./Navigation";
 import Searchbar from "./Searchbar";
 
 const Header = () => {
+  const { user } = useSession();
   return (
     <header className={classes.header}>
       <div className={classes["top-header"]}>
@@ -29,8 +31,8 @@ const Header = () => {
               <option value="GEL">GEL</option>
             </select>
           </div>
-          <Link to="/login">
-            <h4>Login</h4>
+          <Link to={user ? "/profile" : "/login"}>
+            <h4>{user ? user.displayName : "Login"}</h4>
             <img src={icons.user} alt="User" />
           </Link>
           <Link to="/wishlist">
