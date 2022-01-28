@@ -2,23 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { getCategories } from "./store/thunk";
 import { useDispatch } from "react-redux";
+import { useSession } from "./contexts/auth-context";
 
 import SplashPage from "./pages/SplashPage/SplashPage";
 import Signup from "./pages/Signup";
 
 function App() {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const { user } = useSession();
+  // const [isAuthorized, setIsAuthorized] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <Switch>
         <Route exact path="/">
-          {!isAuthorized ? <SplashPage /> : <Redirect to="/shop" />}
+          {!user ? <SplashPage /> : <Redirect to="/shop" />}
         </Route>
         <Route path="/signup">
           <Signup />
