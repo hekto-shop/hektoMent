@@ -1,13 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as icons from "../../assets/icons";
+import { useSession } from "../../contexts/auth-context";
 
 import classes from "./Footer.module.scss";
 
 const Footer = () => {
+  const { user } = useSession();
   const handleSubscribe = (e) => {
     e.preventDefault();
   };
+
+  const customerCare = user ? (
+    <>
+      <li>
+        <Link to="">My Account</Link>
+      </li>
+      <li>
+        <Link to="">Discount</Link>
+      </li>
+      <li>
+        <Link to="">Returns</Link>
+      </li>
+      <li>
+        <Link to="">Orders History</Link>
+      </li>
+      <li>
+        <Link to="">Order Tracking</Link>
+      </li>
+    </>
+  ) : (
+    <li>
+      <Link to="/support">Support</Link>
+    </li>
+  );
   return (
     <footer className={classes.footer}>
       <section className={classes["bottom-navigation"]}>
@@ -46,23 +72,7 @@ const Footer = () => {
         </div>
         <div>
           <h3>Customer Care</h3>
-          <ul>
-            <li>
-              <Link to="">My Account</Link>
-            </li>
-            <li>
-              <Link to="">Discount</Link>
-            </li>
-            <li>
-              <Link to="">Returns</Link>
-            </li>
-            <li>
-              <Link to="">Orders History</Link>
-            </li>
-            <li>
-              <Link to="">Order Tracking</Link>
-            </li>
-          </ul>
+          <ul>{customerCare}</ul>
         </div>
         <div>
           <h3>Pages</h3>
