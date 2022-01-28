@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { getCategories } from "./store/thunk";
+import { useDispatch } from "react-redux";
 
-import SplashPage from './pages/SplashPage/SplashPage';
-import Signup from './pages/Signup';
+import SplashPage from "./pages/SplashPage/SplashPage";
+import Signup from "./pages/Signup";
 
 function App() {
   const [isAuthorized, setIsAuthorized] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
 
   return (
     <>
