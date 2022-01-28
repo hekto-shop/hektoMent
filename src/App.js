@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { getCategories } from "./store/thunk";
+import { getCategories, getSales } from "./store/thunk";
 import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
 
@@ -9,11 +9,11 @@ import Signup from "./pages/Signup";
 
 function App() {
   const { user } = useSession();
-  // const [isAuthorized, setIsAuthorized] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
+    dispatch(getSales());
   }, [dispatch]);
 
   return (
