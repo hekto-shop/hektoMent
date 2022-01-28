@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getSales());
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
