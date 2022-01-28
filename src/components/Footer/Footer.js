@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import * as icons from "../../assets/icons";
 import { useSession } from "../../contexts/auth-context";
@@ -14,9 +14,9 @@ const Footer = () => {
 
   const categories = useSelector((state) => state.ctgReducer.categories);
 
-  const categMarkup = categories.map((category) => {
+  const categMarkup = categories.map((category, idx) => {
     return (
-      <li>
+      <li key={Math.random().toFixed(7) + idx}>
         <Link to={`/${category}`}>{category}</Link>
       </li>
     );

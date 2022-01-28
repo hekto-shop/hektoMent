@@ -1,0 +1,15 @@
+.slider {
+  width: 100%;
+  height: 764px;
+  background-color: #f2f0ff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.lamp-image {
+  position: absolute;
+  top: 0;
+  left: 30px;
+}

@@ -16,11 +16,15 @@ const getCategories = () => async (dispatch) => {
 const getSales = () => async (dispatch) => {
   try {
     const response = db.collection("sales");
+    console.log(response);
     const data = await response.get();
+    console.log(data);
+    const dataArr = data.docs.map((item) => {
+      console.log(item);
+      return item.data();
+    });
 
-    const dataArr = data.docs.map((item) => item.data());
-
-    dispatch(salesActions.getCategories(dataArr));
+    dispatch(salesActions.getSaleItems(dataArr));
   } catch (err) {}
 };
 
