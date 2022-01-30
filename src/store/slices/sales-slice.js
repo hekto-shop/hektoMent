@@ -8,6 +8,7 @@ const salesSlice = createSlice({
   reducers: {
     getSaleItems(state, action) {
       state.sales = action.payload;
+      console.log(action.payload);
     },
   },
 });

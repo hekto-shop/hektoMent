@@ -14,15 +14,32 @@ const getCategories = () => async (dispatch) => {
 };
 
 const getSales = () => async (dispatch) => {
+  const getProdData = (docRef) => {
+    return docRef.get().then((doc) => {
+      if (doc.exists) {
+        return doc.data();
+      } else {
+        return null;
+      }
+    });
+  };
   try {
     const response = db.collection("sales");
-    console.log(response);
+
     const data = await response.get();
-    console.log(data);
-    const dataArr = data.docs.map((item) => {
-      console.log(item);
-      return item.data();
-    });
+
+    const dataArr = await Promise.all(
+      data.docs.map(async (item) => {
+        try {
+          const sale = item.data();
+          const prodDocRef = sale.product;
+          const productData = await getProdData(prodDocRef);
+          return { ...sale, product: productData };
+        } catch (err) {
+          console.log(err);
+        }
+      })
+    );
 
     dispatch(salesActions.getSaleItems(dataArr));
   } catch (err) {}
