@@ -17,9 +17,9 @@ const MainSlider = () => {
     return (
       <div key={idx} className={classes.slider}>
         <div className={classes["product-description"]}>
-          <h6>Best furniture for your castle...</h6>
-          <h2>New Furniture Collection Trents in 2022 </h2>
-          <p>Lorem ipsum dolor sit amet, dondurma fati gulduzur.</p>
+          <h6>{item.product.name}</h6>
+          <h2>{item.product.brand}</h2>
+          <p>{item.product.description}</p>
 
           <Button link="/product">Shop Now</Button>
         </div>
