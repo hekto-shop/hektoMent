@@ -36,7 +36,7 @@ const getSales = () => async (dispatch) => {
           const productData = await getProdData(prodDocRef);
           return { ...sale, product: productData };
         } catch (err) {
-          console.log(err);
+          console.error(err);
         }
       })
     );
