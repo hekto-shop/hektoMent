@@ -1,64 +1,90 @@
+@import "../../styles/css-variables.scss";
+
 $discount-bg: url("../../assets/img/sale-badge-bg.svg");
 $product-img-bg: url("../../assets/img/slider-product-image-bg.svg");
-
+$container-height: 764px;
 .container {
   width: 100%;
-  height: 764px;
+  height: $container-height;
   background-color: #f2f0ff;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+
   position: relative;
 }
 
 .lamp-image {
   position: absolute;
   top: 0;
-  left: 30px;
+  left: -20px;
 }
 
 .carousel {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.slider {
-  width: 100%;
-  height: 100%;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: -100;
-  position: absolute;
+  justify-content: center;
+}
+
+.slider {
+  height: calc($container-height - 40px);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.product-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 65%;
+
+  padding-left: 240px;
+  height: 100%;
+  h6 {
+    font-size: 1rem;
+    color: $secondary-color;
+  }
+  h2 {
+    font-size: 3.3rem;
+    inline-size: 100%;
+    overflow-wrap: break-word;
+  }
+  p {
+    color: $sub-text-color;
+  }
+  button {
+    background-color: $secondary-color;
+  }
 }
 
 .product-image {
-  max-height: 700px;
-  max-width: 700px;
+  height: 80%;
   background-image: $product-img-bg;
-  position: absolute;
-  right: 0;
-  top: 0;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   img {
-    max-height: 100%;
+    max-width: 100%;
   }
 }
 
 .discount {
   background-image: $discount-bg;
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 150px;
-  height: 150px;
+  top: 120px;
+  right: 120px;
+  width: 120px;
+  height: 120px;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,6 +92,6 @@ $product-img-bg: url("../../assets/img/slider-product-image-bg.svg");
   color: white;
   span {
     font-size: 2rem;
-    font-family: "Josefin Sans", sans-serif;
+    font-family: $primary-font;
   }
 }

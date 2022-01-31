@@ -6,10 +6,13 @@ import { useSelector } from "react-redux";
 
 import classes from "./Footer.module.scss";
 
+import Button from "../UI/Button";
+
 const Footer = () => {
   const { user } = useSession();
   const handleSubscribe = (e) => {
     e.preventDefault();
+    console.log("Subscribed");
   };
 
   const categories = useSelector((state) => state.ctgReducer.categories);
@@ -52,7 +55,9 @@ const Footer = () => {
           <h2>Hekto</h2>
           <form onSubmit={handleSubscribe}>
             <input type="email" placeholder="Enter Email Address" />
-            <button type="submit">Subscribe</button>
+            <Button fullHeight fullWidth type="submit">
+              Subscribe
+            </Button>
           </form>
           <div>
             <p>Contact Info</p>
