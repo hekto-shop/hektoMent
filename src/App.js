@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
 
 import SplashPage from "./pages/SplashPage/SplashPage";
+import Homepage from "./pages/Homepage";
 import ProductDetails from "./pages/ProductDetails";
 import Signup from "./pages/Signup";
 import Contact from "./pages/Contact";
@@ -24,7 +25,10 @@ function App() {
     <>
       <Switch>
         <Route exact path="/">
-          {!user ? <SplashPage /> : <Redirect to="/shop" />}
+          {!user ? <SplashPage /> : <Redirect to="/homepage" />}
+        </Route>
+        <Route path="/homepage">
+          <Homepage />
         </Route>
         <Route path="/signup">
           <Signup />

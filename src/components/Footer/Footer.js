@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import * as icons from "../../assets/icons";
 import { useSession } from "../../contexts/auth-context";
@@ -6,17 +6,20 @@ import { useSelector } from "react-redux";
 
 import classes from "./Footer.module.scss";
 
+import Button from "../UI/Button";
+
 const Footer = () => {
   const { user } = useSession();
   const handleSubscribe = (e) => {
     e.preventDefault();
+    console.log("Subscribed");
   };
 
   const categories = useSelector((state) => state.ctgReducer.categories);
 
-  const categMarkup = categories.map((category) => {
+  const categMarkup = categories.map((category, idx) => {
     return (
-      <li>
+      <li key={Math.random().toFixed(7) + idx}>
         <Link to={`/${category}`}>{category}</Link>
       </li>
     );
@@ -52,7 +55,9 @@ const Footer = () => {
           <h2>Hekto</h2>
           <form onSubmit={handleSubscribe}>
             <input type="email" placeholder="Enter Email Address" />
-            <button type="submit">Subscribe</button>
+            <Button fullHeight fullWidth type="submit">
+              Subscribe
+            </Button>
           </form>
           <div>
             <p>Contact Info</p>
