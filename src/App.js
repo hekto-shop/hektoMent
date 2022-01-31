@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart/Cart";
+import Login from "./pages/Login/Login";
 
 function App() {
   const { user } = useSession();
