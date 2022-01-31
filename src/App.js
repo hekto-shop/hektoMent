@@ -36,7 +36,7 @@ function App() {
           <ProductDetails />
         </Route>
         <Route path="/login">
-          <h1>Login Page</h1>
+          <Login />
         </Route>
         <Route path="/cart">
           <Cart />
