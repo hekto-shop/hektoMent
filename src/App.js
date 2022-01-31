@@ -1,33 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { getCategories, getSales } from "./store/thunk";
+import { useDispatch } from "react-redux";
+import { useSession } from "./contexts/auth-context";
 
 import SplashPage from "./pages/SplashPage/SplashPage";
+import ProductDetails from "./pages/ProductDetails";
 import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Contact from "./pages/Contact";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const { user } = useSession();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategories());
+    dispatch(getSales());
+  }, []);
 
   return (
     <>
       <Switch>
         <Route exact path="/">
-          {!isAuthorized ? <SplashPage /> : <Redirect to="/shop" />}
+          {!user ? <SplashPage /> : <Redirect to="/shop" />}
         </Route>
         <Route path="/signup">
           <Signup />
         </Route>
-        <Route path="/homepage">
-          <h1 className="temporary">Home Page</h1>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        <Route path="/product/:id">
+          <ProductDetails />
         </Route>
         <Route path="/login">
           <Login />
         </Route>
         <Route path="/cart">
-          <h1 className="temporary">Cart Page</h1>
+          <Cart />
         </Route>
         <Route path="/products">
-          <h1 className="temporary">Products Page</h1>
+          <Products />
         </Route>
         <Route path="/contact">
           <h1 className="temporary">Contact form</h1>
