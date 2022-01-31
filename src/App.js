@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { useState } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-import SplashPage from './pages/SplashPage/SplashPage';
-import Signup from './pages/Signup';
+import SplashPage from "./pages/SplashPage/SplashPage";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -20,7 +21,7 @@ function App() {
           <h1 className="temporary">Home Page</h1>
         </Route>
         <Route path="/login">
-          <h1 className="temporary">Login Page</h1>
+          <Login />
         </Route>
         <Route path="/cart">
           <h1 className="temporary">Cart Page</h1>
