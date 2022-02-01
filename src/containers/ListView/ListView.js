@@ -1,10 +1,10 @@
 import React from "react";
-import classes from "./ListView.module.scss";
-
 import ListItem from "./ListItem";
+import classes from "./ListView.module.scss";
 
 const ListView = (props) => {
   const { productList } = props;
+
   const listItems = productList.map((product) => {
     return <ListItem product={product} />;
   });

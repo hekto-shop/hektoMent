@@ -15,6 +15,10 @@ import cartBlue from "./cart-blue.svg";
 import heartBlue from "./heart-blue.svg";
 import zoomBlue from "./zoom-blue.svg";
 
+import gridView from "./grid-view.svg";
+import listView from "./list-view.svg";
+import filter from "./filter.svg";
+
 export {
   email,
   cart,
@@ -30,4 +34,7 @@ export {
   cartBlue,
   zoomBlue,
   heartBlue,
+  gridView,
+  listView,
+  filter,
 };

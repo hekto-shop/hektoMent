@@ -27,7 +27,7 @@ const ListItem = (props) => {
         <img src={productImage} alt={name} />
       </div>
       <div>
-        <Controls layout="horizontal-bottom" />
+        <Controls layout="horizontal-bottom" product={product} />
       </div>
     </div>
   );

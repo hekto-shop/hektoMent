@@ -1,7 +1,12 @@
+@import "../../styles/css-variables.scss";
 $image-size: 280px;
 
 .item {
   width: image-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-container {
@@ -17,4 +22,40 @@ $image-size: 280px;
     max-width: 70%;
     max-height: 70%;
   }
+}
+
+.details {
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+  h4 {
+    text-align: center;
+    font-weight: bold;
+    color: $text-color;
+    font-family: $primary-font;
+    margin-top: 0.8rem;
+  }
+}
+.colors {
+  display: flex;
+  justify-content: center;
+  margin: 0.4rem 0;
+}
+
+.color {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0.2rem;
+}
+
+.price {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  color: $text-color;
+  font-family: $primary-font;
+  font-size: 14px;
 }

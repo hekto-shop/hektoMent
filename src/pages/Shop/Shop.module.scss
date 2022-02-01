@@ -1,0 +1,44 @@
+@import "../../styles/css-variables.scss";
+
+.top-bar {
+  display: grid;
+  grid-template-columns: 1fr 150px 250px 100px 150px 50px;
+  height: 200px;
+  align-items: center;
+
+  h2 {
+    font-family: $primary-font;
+    color: $text-color;
+  }
+
+  label {
+    font-family: $secondary-font;
+    color: #3f509e;
+  }
+
+  input {
+    height: 25px;
+    border: 1px solid #e7e6ef;
+    outline: none;
+    padding-left: 0.7rem;
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 3px;
+    height: fit-content;
+    width: fit-content;
+    img {
+      max-height: 12px;
+    }
+  }
+}
+
+.perpage {
+  width: 50px;
+}
