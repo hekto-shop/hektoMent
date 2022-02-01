@@ -9,7 +9,6 @@ const productsSlice = createSlice({
   reducers: {
     getProducts(state, action) {
       state.products = action.payload;
-      console.log(action.payload);
     },
     changeCurrency(state, action) {
       state.products = state.products.map((product) => {
@@ -22,8 +21,6 @@ const productsSlice = createSlice({
         return { ...product, price: updatedPrice };
       });
       state.currency = action.payload;
-
-      console.log(state.products);
     },
   },
 });

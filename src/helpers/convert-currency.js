@@ -5,5 +5,3 @@ export const convertCurrency = (amount, from, to) => {
   const USD = +amount / exRates[from];
   return USD * exRates[to];
 };
-
-console.log(convertCurrency(67, "USD", "GEL"));
