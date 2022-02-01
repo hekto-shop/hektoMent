@@ -8,8 +8,8 @@
 
   span {
     border-radius: 50%;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,4 +59,12 @@
   span:hover {
     background-color: #eeeffb;
   }
+}
+
+.active {
+  background-color: #3f509e;
+}
+
+.active:hover {
+  background-color: #5565ad !important;
 }

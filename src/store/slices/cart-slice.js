@@ -9,8 +9,18 @@ const cartSlice = createSlice({
     addToCart(state, action) {
       state.cartItems = [...state.cartItems, action.payload];
     },
+    removeFromCart(state, action) {
+      state.cartItems = state.cartItems.filter(
+        (item) => item.productCode !== action.payload.productCode
+      );
+    },
     addToFavorites(state, action) {
       state.favorites = [...state.favorites, action.payload];
+    },
+    removeFromFavorites(state, action) {
+      state.favorites = state.favorites.filter(
+        (item) => item.productCode !== action.payload.productCode
+      );
     },
   },
 });

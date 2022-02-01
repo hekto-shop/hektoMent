@@ -62,8 +62,16 @@ const addToCart = (product) => (dispatch) => {
   dispatch(cartActions.addToCart(product));
 };
 
+const removeFromCart = (product) => (dispatch) => {
+  dispatch(cartActions.removeFromCart(product));
+};
+
 const addToFavorites = (product) => (dispatch) => {
   dispatch(cartActions.addToFavorites(product));
+};
+
+const removeFromFavorites = (product) => (dispatch) => {
+  dispatch(cartActions.removeFromFavorites(product));
 };
 
 export {
@@ -72,5 +80,7 @@ export {
   getProducts,
   changeCurrency,
   addToCart,
+  removeFromCart,
   addToFavorites,
+  removeFromFavorites,
 };
