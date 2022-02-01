@@ -11,6 +11,10 @@ import facebook from "./facebook.svg";
 import instagram from "./instagram.svg";
 import twitter from "./twitter.svg";
 
+import cartBlue from "./cart-blue.svg";
+import heartBlue from "./heart-blue.svg";
+import zoomBlue from "./zoom-blue.svg";
+
 export {
   email,
   cart,
@@ -23,4 +27,7 @@ export {
   facebook,
   instagram,
   twitter,
+  cartBlue,
+  zoomBlue,
+  heartBlue,
 };

@@ -1,0 +1,62 @@
+// Common styles
+.flex {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  span {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.flex:hover {
+  span {
+    opacity: 1;
+  }
+}
+
+// Applied to GridView items in the shop page
+.vertical {
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  span:hover {
+    background-color: white;
+  }
+}
+
+// Applied to the ListView items in the shop page
+.horizontal-bottom {
+  height: fit-content;
+  width: 50%;
+  justify-content: space-evenly;
+  span {
+    opacity: 1;
+  }
+}
+
+// Applied to Featured Products items
+.horizontal-top {
+  height: 50%;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  top: 0;
+  left: 0;
+
+  span:hover {
+    background-color: #eeeffb;
+  }
+}

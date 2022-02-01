@@ -8,6 +8,7 @@ import SplashPage from "./pages/SplashPage/SplashPage";
 import Homepage from "./pages/Homepage";
 import ProductDetails from "./pages/ProductDetails";
 import Signup from "./pages/Signup";
+import Shop from "./pages/Shop";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart/Cart";
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <Signup />
+        </Route>
+        <Route path="/shop">
+          <Shop />
         </Route>
         <Route path="/contact">
           <Contact />
