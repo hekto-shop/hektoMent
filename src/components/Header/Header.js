@@ -14,7 +14,6 @@ const Header = () => {
   const { currency } = useSelector((store) => store.productsReducer);
   const dispatch = useDispatch();
   const handleCurrency = (e) => {
-    console.log(e.target.value);
     dispatch(changeCurrency(e.target.value));
   };
   return (

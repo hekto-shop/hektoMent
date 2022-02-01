@@ -1,6 +1,7 @@
 import { categoryActions } from "./slices/category-slice";
 import { salesActions } from "./slices/sales-slice";
 import { productsActions } from "./slices/products-slice";
+import { cartActions } from "./slices/cart-slice";
 import { db } from "../config/config";
 
 const getCategories = () => async (dispatch) => {
@@ -54,8 +55,22 @@ const getProducts = () => async (dispatch) => {
 };
 
 const changeCurrency = (val) => (dispatch) => {
-  console.log("thunk:" + val);
   dispatch(productsActions.changeCurrency(val));
 };
 
-export { getCategories, getSales, getProducts, changeCurrency };
+const addToCart = (product) => (dispatch) => {
+  dispatch(cartActions.addToCart(product));
+};
+
+const addToFavorites = (product) => (dispatch) => {
+  dispatch(cartActions.addToFavorites(product));
+};
+
+export {
+  getCategories,
+  getSales,
+  getProducts,
+  changeCurrency,
+  addToCart,
+  addToFavorites,
+};

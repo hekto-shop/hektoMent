@@ -1,11 +1,17 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, addToFavorites } from "../../store/thunk";
 import * as icons from "../../assets/icons";
 
 import classes from "./Controls.module.scss";
 
 const Controls = (props) => {
+  const dispatch = useDispatch();
   const { product } = props;
   let style;
+
+  const cart = useSelector((store) => store.cartReducer.cartItems);
+  console.log(cart);
 
   switch (props.layout) {
     case "vertical":
@@ -21,8 +27,13 @@ const Controls = (props) => {
       break;
   }
 
-  const handleAddToCart = () => {};
-  const handleAddToFavs = () => {};
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
+  const handleAddToFavs = () => {
+    dispatch(addToFavorites(product));
+  };
   const handleZoom = () => {};
 
   return (
