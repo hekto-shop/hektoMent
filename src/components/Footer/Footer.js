@@ -12,7 +12,6 @@ const Footer = () => {
   const { user } = useSession();
   const handleSubscribe = (e) => {
     e.preventDefault();
-    console.log("Subscribed");
   };
 
   const categories = useSelector((state) => state.ctgReducer.categories);

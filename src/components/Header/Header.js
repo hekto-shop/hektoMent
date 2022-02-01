@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Header.module.scss";
 import { useSession } from "../../contexts/auth-context";
+import { useSelector, useDispatch } from "react-redux";
+import { changeCurrency } from "../../store/thunk";
 
 import * as icons from "../../assets/icons";
 import Navigation from "./Navigation";
@@ -9,6 +11,12 @@ import Searchbar from "./Searchbar";
 
 const Header = () => {
   const { user } = useSession();
+  const { currency } = useSelector((store) => store.productsReducer);
+  const dispatch = useDispatch();
+  const handleCurrency = (e) => {
+    console.log(e.target.value);
+    dispatch(changeCurrency(e.target.value));
+  };
   return (
     <header className={classes.header}>
       <div className={classes["top-header"]}>
@@ -24,11 +32,12 @@ const Header = () => {
         </div>
 
         <div className={classes.controls}>
-          <div>ENG</div>
+          <div>{currency}</div>
           <div>
-            <select>
+            <select onChange={handleCurrency} value={currency}>
               <option value="USD">USD</option>
               <option value="GEL">GEL</option>
+              <option value="EUR">EUR</option>
             </select>
           </div>
           <Link to={user ? "/profile" : "/login"}>

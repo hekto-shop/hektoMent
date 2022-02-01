@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { getCategories, getSales } from "./store/thunk";
+import { getCategories, getSales, getProducts } from "./store/thunk";
 import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
 
@@ -20,6 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getSales());
+    dispatch(getProducts());
   }, []);
 
   return (

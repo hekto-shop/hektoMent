@@ -1,5 +1,6 @@
 import { categoryActions } from "./slices/category-slice";
 import { salesActions } from "./slices/sales-slice";
+import { productsActions } from "./slices/products-slice";
 import { db } from "../config/config";
 
 const getCategories = () => async (dispatch) => {
@@ -35,14 +36,26 @@ const getSales = () => async (dispatch) => {
           const prodDocRef = sale.product;
           const productData = await getProdData(prodDocRef);
           return { ...sale, product: productData };
-        } catch (err) {
-          console.error(err);
-        }
+        } catch (err) {}
       })
     );
 
-    dispatch(salesActions.getSaleItems(dataArr));
+    const payload = dataArr.filter((el) => !!el);
+
+    dispatch(salesActions.getSaleItems(payload));
   } catch (err) {}
 };
 
-export { getCategories, getSales };
+const getProducts = () => async (dispatch) => {
+  const response = db.collection("products");
+  const data = await response.get();
+  const payload = data.docs.map((item) => item.data());
+  dispatch(productsActions.getProducts(payload));
+};
+
+const changeCurrency = (val) => (dispatch) => {
+  console.log("thunk:" + val);
+  dispatch(productsActions.changeCurrency(val));
+};
+
+export { getCategories, getSales, getProducts, changeCurrency };
