@@ -18,6 +18,8 @@ import zoomBlue from "./zoom-blue.svg";
 import gridView from "./grid-view.svg";
 import listView from "./list-view.svg";
 import filter from "./filter.svg";
+import starYellow from "./star-yellow.svg";
+import starGrey from "./star-grey.svg";
 
 export {
   email,
@@ -37,4 +39,6 @@ export {
   gridView,
   listView,
   filter,
+  starYellow,
+  starGrey,
 };

@@ -30,11 +30,13 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    padding: 3px;
+    margin: 0 5px;
     height: fit-content;
     width: fit-content;
+    position: relative;
+
     img {
-      max-height: 12px;
+      height: 12px;
     }
   }
 }
