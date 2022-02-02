@@ -17,9 +17,8 @@ const Shop = () => {
   const [searchValue, setSearchValue] = useState("");
   const [perPage, setPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
-  const products = useSelector((state) => state.productsReducer.products);
-  const totalPages = Math.trunc(products.length / perPage) + 1;
 
+  const products = useSelector((state) => state.productsReducer.products);
   const productList = productListReducer(
     [...products],
     sortType,
@@ -27,6 +26,8 @@ const Shop = () => {
     perPage,
     currentPage
   );
+
+  const totalPages = Math.trunc(productList.length / perPage) + 1;
 
   // Event Handlers for <ShopSettings/>
   const handleSort = (e) => setSortType(+e.target.value);
