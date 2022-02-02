@@ -10,12 +10,16 @@ const Rating = (props) => {
 
   for (let i = 0; i < 5; i++) {
     if (i < stars) {
-      markup.push(<img src={icons.starYellow} alt="*" />);
+      markup.push(
+        <img key={Math.random().toFixed(8)} src={icons.starYellow} alt="*" />
+      );
     } else {
-      markup.push(<img src={icons.starGrey} alt="*" />);
+      markup.push(
+        <img key={Math.random().toFixed(8)} src={icons.starGrey} alt="*" />
+      );
     }
   }
-  console.log(markup);
+
   return <span className={classes.rating}>{markup}</span>;
 };
 

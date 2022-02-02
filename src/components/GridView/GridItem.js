@@ -28,7 +28,11 @@ const GridItem = (props) => {
 
   const colors = color.map((clr) => {
     return (
-      <span className={classes.color} style={{ backgroundColor: clr }}></span>
+      <span
+        key={clr}
+        className={classes.color}
+        style={{ backgroundColor: clr }}
+      ></span>
     );
   });
 

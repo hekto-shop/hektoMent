@@ -6,7 +6,7 @@ const GridView = (props) => {
   const { productList } = props;
 
   const gridItems = productList.map((product) => {
-    return <GridItem product={product} />;
+    return <GridItem key={Math.random().toFixed(8)} product={product} />;
   });
   return <section className={classes["grid-container"]}>{gridItems}</section>;
 };

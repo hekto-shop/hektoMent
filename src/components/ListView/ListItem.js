@@ -26,12 +26,15 @@ const ListItem = (props) => {
   } = product;
 
   const stars = Math.round((5 * rating) / 100);
-  console.log(stars);
   const currency = useSelector((store) => store.productsReducer.currency);
 
   const colors = color.map((clr) => {
     return (
-      <span className={classes.color} style={{ backgroundColor: clr }}></span>
+      <span
+        key={clr}
+        className={classes.color}
+        style={{ backgroundColor: clr }}
+      ></span>
     );
   });
 
