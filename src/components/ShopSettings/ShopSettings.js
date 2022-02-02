@@ -9,10 +9,16 @@ const ShopSettings = (props) => {
     handlePerPage,
     handleGridView,
     handleListView,
+    numberOfProducts,
   } = props;
   return (
     <div className={classes["top-bar"]}>
-      <h2>Ecommerce Accessories & Fashion Items</h2>
+      <div>
+        <h2>Ecommerce Accessories & Fashion Items</h2>
+        <p>{`About ${numberOfProducts} results in ${Math.random().toFixed(
+          2
+        )} seconds`}</p>
+      </div>
       <label>
         Per Page:
         <input

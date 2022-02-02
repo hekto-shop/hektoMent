@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { productListReducer } from "../../helpers/product-list-reducer";
-
+import { partners } from "../../assets/images";
 import classes from "./Shop.module.scss";
 
 import PageLayout from "../../containers/PageLayout";
@@ -50,6 +50,7 @@ const Shop = () => {
           handlePerPage={handlePerPage}
           handleGridView={handleGridView}
           handleListView={handleListView}
+          numberOfProducts={products.length}
         />
         {gridView ? (
           <GridView productList={productList} />
@@ -61,6 +62,7 @@ const Shop = () => {
           totalPages={totalPages}
           handlePagination={handlePagination}
         />
+        <img className={classes.partners} src={partners} alt="our partners" />
       </section>
     </PageLayout>
   );
