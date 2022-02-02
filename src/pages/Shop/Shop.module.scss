@@ -1,5 +1,9 @@
 @import "../../styles/css-variables.scss";
 
+.temporary-container {
+  padding: $page-padding;
+}
+
 .top-bar {
   display: grid;
   grid-template-columns: 1fr 150px 250px 100px 150px 50px;
@@ -37,6 +41,23 @@
 
     img {
       height: 12px;
+    }
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url(../../assets/icons/arrow.svg);
+    background-size: contain;
+    color: black;
+    text-align: end;
+    font-size: 0.9rem;
+    border: 1px solid #e7e6ef;
+    height: 25px;
+    padding: 0 10px;
+    option {
+      padding: 1rem;
     }
   }
 }
