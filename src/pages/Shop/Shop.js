@@ -11,9 +11,11 @@ import ListView from "../../components/ListView";
 const Shop = () => {
   const [gridView, setGridView] = useState(true);
   const [sort, setSort] = useState(0); // 0-Arrival date; 1-Price:Lowest->Highest; 2-Price:Highest->Lowest;
+  const [searchValue, setSearchValue] = useState("");
+
   const products = useSelector((state) => state.productsReducer.products);
 
-  const productList = [...products].sort((prod1, prod2) => {
+  let productList = [...products].sort((prod1, prod2) => {
     if (sort === 0) {
       return prod1.arrivalDate.seconds - prod2.arrivalDate.seconds;
     } else if (sort === 1) {
@@ -23,7 +25,16 @@ const Shop = () => {
     }
   });
 
+  productList = productList.filter((product) => {
+    if (!searchValue) return true;
+    return (
+      product.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+      product.productCode.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  });
+
   const handleSort = (e) => setSort(+e.target.value);
+  const handleSearch = (e) => setSearchValue(e.target.value);
 
   return (
     <PageLayout title="Shop">
@@ -59,7 +70,7 @@ const Shop = () => {
               <img src={icons.listView} />
             </button>
           </label>
-          <input type="text" />
+          <input onChange={handleSearch} type="text" />
           <button>
             <img src={icons.filter} />
           </button>
