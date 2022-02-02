@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -10,9 +10,13 @@ import * as icons from "../../assets/icons";
 
 import classes from "./Controls.module.scss";
 
+import CustomizedDialogs from "../CustomizedDialogs";
+
 const Controls = (props) => {
+  const [zoomPicture, setZoomPicture] = useState(false);
   const dispatch = useDispatch();
   const { product } = props;
+
   let style;
 
   const cart = useSelector((store) => store.cartReducer.cartItems);
@@ -53,7 +57,9 @@ const Controls = (props) => {
       dispatch(removeFromFavorites(product));
     }
   };
-  const handleZoom = () => {};
+  const handleZoom = () => {
+    setZoomPicture((state) => !state);
+  };
 
   return (
     <div className={`${style} ${classes.flex}`}>
@@ -69,6 +75,17 @@ const Controls = (props) => {
       <span onClick={handleZoom}>
         <img src={icons.zoomBlue} alt="Zoom" />
       </span>
+      <CustomizedDialogs
+        open={zoomPicture}
+        handleClose={handleZoom}
+        buttonText="Close"
+      >
+        <img
+          className={classes["large-image"]}
+          src={product.productImage}
+          alt={product.name}
+        />
+      </CustomizedDialogs>
     </div>
   );
 };

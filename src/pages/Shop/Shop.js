@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { productListReducer } from "../../helpers/product-list-reducer";
 
 import classes from "./Shop.module.scss";
-// import * as icons from "../../assets/icons";
 
 import PageLayout from "../../containers/PageLayout";
 import ShopSettings from "../../components/ShopSettings";
@@ -18,7 +17,7 @@ const Shop = () => {
   const [perPage, setPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const products = useSelector((state) => state.productsReducer.products);
+  const products = useSelector((state) => state.productsReducer.products); // Can't be modified.
   const productList = productListReducer(
     [...products],
     sortType,
