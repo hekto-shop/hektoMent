@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { productListReducer } from "../../helpers/product-list-reducer";
+import {
+  makeSlice,
+  productListReducer,
+} from "../../helpers/product-list-reducer";
 import { partners } from "../../assets/images";
 import classes from "./Shop.module.scss";
 
@@ -18,15 +21,11 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const products = useSelector((state) => state.productsReducer.products); // Can't be modified.
-  const productList = productListReducer(
-    [...products],
-    sortType,
-    searchValue,
-    perPage,
-    currentPage
-  );
+  const filteredList = productListReducer([...products], sortType, searchValue);
 
-  const totalPages = Math.trunc(productList.length / perPage) + 1;
+  const totalPages = Math.trunc(filteredList.length / perPage) + 1;
+
+  const productList = makeSlice(filteredList, currentPage, perPage);
 
   // Event Handlers for <ShopSettings/>
   const handleSort = (e) => setSortType(+e.target.value);
