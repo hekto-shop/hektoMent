@@ -1,10 +1,4 @@
-export const productListReducer = (
-  products,
-  sortType,
-  searchValue,
-  perPage,
-  currentPage
-) => {
+export const productListReducer = (products, sortType, searchValue) => {
   const productList = products
     .sort((prod1, prod2) => {
       if (sortType === 0) {
@@ -21,8 +15,10 @@ export const productListReducer = (
         product.name.toLowerCase().includes(searchValue.toLowerCase()) ||
         product.productCode.toLowerCase().includes(searchValue.toLowerCase())
       );
-    })
-    .slice((currentPage - 1) * perPage, perPage * currentPage);
+    });
 
   return productList;
 };
+
+export const makeSlice = (products, currentPage, perPage) =>
+  products.slice((currentPage - 1) * perPage, perPage * currentPage);
