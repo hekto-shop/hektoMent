@@ -3,6 +3,7 @@ import { salesActions } from "./slices/sales-slice";
 import { productsActions } from "./slices/products-slice";
 import { cartActions } from "./slices/cart-slice";
 import { db } from "../config/config";
+import { noImage } from "../assets/img";
 
 const getCategories = () => async (dispatch) => {
   try {
@@ -50,7 +51,11 @@ const getSales = () => async (dispatch) => {
 const getProducts = () => async (dispatch) => {
   const response = db.collection("products");
   const data = await response.get();
-  const payload = data.docs.map((item) => item.data());
+  const payload = data.docs.map((item) => {
+    const productObj = item.data();
+    if (!productObj.productImage) productObj.productImage = noImage;
+    return productObj;
+  });
   dispatch(productsActions.getProducts(payload));
 };
 
