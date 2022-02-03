@@ -28,20 +28,6 @@ const Controls = (props) => {
     .map((item) => item.productCode)
     .includes(product.productCode);
 
-  switch (props.layout) {
-    case "vertical":
-      style = classes.vertical;
-      break;
-
-    case "horizontal-bottom":
-      style = classes["horizontal-bottom"];
-      break;
-
-    case "horizontal-top":
-      style = classes["horizontal-top"];
-      break;
-  }
-
   const cartHandler = () => {
     if (!isInCart) {
       dispatch(addToCart(product));
@@ -62,7 +48,7 @@ const Controls = (props) => {
   };
 
   return (
-    <div className={`${style} ${classes.flex}`}>
+    <div className={`${classes[props.layout]} ${classes.flex}`}>
       <span className={isInCart ? classes.active : ""} onClick={cartHandler}>
         <img src={icons.cartBlue} alt="Cart" />
       </span>
