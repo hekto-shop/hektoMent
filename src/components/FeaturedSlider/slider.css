@@ -1,0 +1,21 @@
+.rec.rec-arrow {
+  visibility: hidden;
+}
+
+.rec.rec-dot {
+  border-radius: 10px;
+  width: 16px;
+  height: 4px;
+  background: #febad7;
+  box-shadow: none;
+}
+
+.rec.rec-dot_active {
+  width: 24px;
+  background: #fb2e86;
+  box-shadow: none;
+}
+
+.rec.rec-dot:hover {
+  box-shadow: none;
+}
