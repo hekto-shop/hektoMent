@@ -51,13 +51,13 @@
   flex-direction: column;
   gap: 10px;
   line-height: 16px;
-  padding: 1rem;
+  padding: 0.7rem;
 
   .card-description__title {
     color: $secondary-color;
     font-family: $secondary-font;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .card-description__colors {

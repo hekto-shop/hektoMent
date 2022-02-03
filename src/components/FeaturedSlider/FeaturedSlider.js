@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Carousel from "react-elastic-carousel";
+import breakPoints from "../../constants/sliderBreakPoints";
 import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
 
 import styles from "./FeaturedSlider.module.scss";
 import "./slider.css";
-
-const breakPoints = [
-  { width: 1, itemsToShow: 1, pagination: false },
-  { width: 400, itemsToShow: 2 },
-  { width: 750, itemsToShow: 3 },
-  { width: 900, itemsToShow: 4 },
-];
 
 const FeaturedSlider = () => {
   const [hovering, setHovering] = useState(false);
