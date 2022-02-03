@@ -1,0 +1,61 @@
+@import "../../styles/css-variables.scss";
+
+.shopex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.shopex-card {
+  width: 250px;
+  height: 320px;
+  box-shadow: 0px 8px 40px 0px rgba(49, 32, 138, 0.051);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s ease;
+
+  &:hover {
+    box-shadow: 0px 8px 40px 0px rgba(49, 32, 138, 0.1);
+  }
+
+  .shopex-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    gap: 10px;
+
+    h2 {
+      font-family: $primary-font;
+      color: #151875;
+    }
+
+    p {
+      font-family: $secondary-font;
+      color: rgba(26, 11, 91, 0.302);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .shopex-card__image {
+      width: 60px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .shopex-card__about {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
