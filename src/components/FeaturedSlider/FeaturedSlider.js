@@ -91,8 +91,6 @@ const FeaturedSlider = () => {
     );
   });
 
-  console.log(featuredProducts);
-
   return <Carousel breakPoints={breakPoints}>{featPd}</Carousel>;
 };
 
