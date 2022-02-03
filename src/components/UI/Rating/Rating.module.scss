@@ -1,6 +1,25 @@
 .rating {
   margin: 0 1rem;
+  display: flex;
+  align-items: center;
   img {
     margin: 3px;
+    cursor: pointer;
+  }
+  img:hover {
+    transform: scale(1.4);
+  }
+  p {
+    display: inline-block;
+    font-size: 0.7rem;
+  }
+}
+
+.disabled {
+  img {
+    cursor: default;
+  }
+  img:hover {
+    transform: none;
   }
 }

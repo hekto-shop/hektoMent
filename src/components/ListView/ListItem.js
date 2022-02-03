@@ -25,7 +25,6 @@ const ListItem = (props) => {
     tags,
   } = product;
 
-  const stars = Math.round((5 * rating) / 100);
   const currency = useSelector((store) => store.productsReducer.currency);
 
   const colors = color.map((clr) => {
@@ -52,7 +51,7 @@ const ListItem = (props) => {
         </div>
         <div>
           <span>{`${currency} ${price.toFixed(2)}`}</span>
-          <Rating stars={stars} />
+          <Rating ratings={rating} />
         </div>
         <p>{description}</p>
         <Controls layout="horizontal-bottom" product={product} />
