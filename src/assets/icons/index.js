@@ -11,6 +11,16 @@ import facebook from "./facebook.svg";
 import instagram from "./instagram.svg";
 import twitter from "./twitter.svg";
 
+import cartBlue from "./cart-blue.svg";
+import heartBlue from "./heart-blue.svg";
+import zoomBlue from "./zoom-blue.svg";
+
+import gridView from "./grid-view.svg";
+import listView from "./list-view.svg";
+import filter from "./filter.svg";
+import starYellow from "./star-yellow.svg";
+import starGrey from "./star-grey.svg";
+
 export {
   email,
   cart,
@@ -23,4 +33,12 @@ export {
   facebook,
   instagram,
   twitter,
+  cartBlue,
+  zoomBlue,
+  heartBlue,
+  gridView,
+  listView,
+  filter,
+  starYellow,
+  starGrey,
 };

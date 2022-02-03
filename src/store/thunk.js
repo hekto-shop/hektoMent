@@ -1,7 +1,9 @@
 import { categoryActions } from "./slices/category-slice";
 import { salesActions } from "./slices/sales-slice";
 import { productsActions } from "./slices/products-slice";
+import { cartActions } from "./slices/cart-slice";
 import { db } from "../config/config";
+import { noImage } from "../assets/img";
 
 const getCategories = () => async (dispatch) => {
   try {
@@ -49,13 +51,41 @@ const getSales = () => async (dispatch) => {
 const getProducts = () => async (dispatch) => {
   const response = db.collection("products");
   const data = await response.get();
-  const payload = data.docs.map((item) => item.data());
+  const payload = data.docs.map((item) => {
+    const productObj = item.data();
+    if (!productObj.productImage) productObj.productImage = noImage;
+    return productObj;
+  });
   dispatch(productsActions.getProducts(payload));
 };
 
 const changeCurrency = (val) => (dispatch) => {
-  console.log("thunk:" + val);
   dispatch(productsActions.changeCurrency(val));
 };
 
-export { getCategories, getSales, getProducts, changeCurrency };
+const addToCart = (product) => (dispatch) => {
+  dispatch(cartActions.addToCart(product));
+};
+
+const removeFromCart = (product) => (dispatch) => {
+  dispatch(cartActions.removeFromCart(product));
+};
+
+const addToFavorites = (product) => (dispatch) => {
+  dispatch(cartActions.addToFavorites(product));
+};
+
+const removeFromFavorites = (product) => (dispatch) => {
+  dispatch(cartActions.removeFromFavorites(product));
+};
+
+export {
+  getCategories,
+  getSales,
+  getProducts,
+  changeCurrency,
+  addToCart,
+  removeFromCart,
+  addToFavorites,
+  removeFromFavorites,
+};
