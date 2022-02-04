@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useSession } from "../../contexts/auth-context";
 import classes from "./ListItem.module.scss";
 
-import Rating from "../../components/UI/Rating";
+import { Rating } from "@mui/material";
+import { rateProduct } from "../../helpers/rate-product";
 import Controls from "../../components/Controls";
+import { SettingsSystemDaydreamSharp } from "@mui/icons-material";
 
 const ListItem = (props) => {
+  const [readOnly, setReadOnly] = useState(false);
+  const [stars, setStars] = useState(0);
   const { product } = props;
+  const { user } = useSession();
   const {
     active,
     arrivalDate,
@@ -37,6 +43,28 @@ const ListItem = (props) => {
     );
   });
 
+  const numberOfReviews = rating.ratings.length;
+  const averageRating =
+    rating.ratings.reduce((acc, cur) => acc + cur, 0) / numberOfReviews || 0;
+
+  useEffect(() => {
+    if (!user) setReadOnly(true);
+    if (rating.raters.includes(user.uid)) setReadOnly(true);
+    setStars(Math.round(averageRating / 10) / 2);
+  }, [user, rating, averageRating]);
+
+  const handleRating = (e) => {
+    const givenRating = +e.target.value * 20;
+    const userId = user.uid;
+    rateProduct(product, givenRating, userId);
+    setReadOnly(true);
+    setStars((prevStars) => {
+      const newAverage =
+        (averageRating * numberOfReviews + givenRating) / (numberOfReviews + 1);
+      return Math.round(newAverage / 10) / 2;
+    });
+  };
+
   return (
     <div className={classes.item}>
       <div className={classes["image-container"]}>
@@ -51,7 +79,15 @@ const ListItem = (props) => {
         </div>
         <div>
           <span>{`${currency} ${price.toFixed(2)}`}</span>
-          <Rating ratings={rating} />
+          <Rating
+            name="half-rating-red"
+            value={stars}
+            max={5}
+            precision={0.5}
+            size="medium"
+            readOnly={readOnly}
+            onChange={handleRating}
+          />
         </div>
         <p>{description}</p>
         <Controls layout="horizontal-bottom" product={product} />
