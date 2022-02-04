@@ -78,16 +78,20 @@ const ListItem = (props) => {
           {colors}
         </div>
         <div>
-          <span>{`${currency} ${price.toFixed(2)}`}</span>
-          <Rating
-            name="half-rating-red"
-            value={stars}
-            max={5}
-            precision={0.5}
-            size="medium"
-            readOnly={readOnly}
-            onChange={handleRating}
-          />
+          <span className={classes.price}>{`${currency} ${price.toFixed(
+            2
+          )}`}</span>
+          <span className={classes.rating}>
+            <Rating
+              name="half-rating-red"
+              value={stars}
+              max={5}
+              precision={0.5}
+              size="small"
+              readOnly={readOnly}
+              onChange={handleRating}
+            />
+          </span>
         </div>
         <p>{description}</p>
         <Controls layout="horizontal-bottom" product={product} />
