@@ -1,15 +1,8 @@
 @import "../../styles/css-variables.scss";
 
-.temporary-container {
-  position: relative;
-  padding: $page-padding;
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-}
-
 .partners {
-  margin: 6rem 0;
-  width: 60%;
-  align-self: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

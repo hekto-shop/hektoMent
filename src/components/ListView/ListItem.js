@@ -7,7 +7,6 @@ import classes from "./ListItem.module.scss";
 import { Rating } from "@mui/material";
 import { rateProduct } from "../../helpers/rate-product";
 import Controls from "../../components/Controls";
-import { SettingsSystemDaydreamSharp } from "@mui/icons-material";
 
 const ListItem = (props) => {
   const [readOnly, setReadOnly] = useState(false);
@@ -49,7 +48,7 @@ const ListItem = (props) => {
 
   useEffect(() => {
     if (!user) setReadOnly(true);
-    if (rating.raters.includes(user.uid)) setReadOnly(true);
+    if (user && rating.raters.includes(user.uid)) setReadOnly(true);
     setStars(Math.round(averageRating / 10) / 2);
   }, [user, rating, averageRating]);
 

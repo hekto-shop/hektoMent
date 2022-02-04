@@ -12,6 +12,7 @@ import ShopSettings from "../../components/ShopSettings";
 import GridView from "../../components/GridView";
 import ListView from "../../components/ListView";
 import Pagination from "../../components/Pagination/Pagination";
+import PageContainer from "../../containers/PageContainer";
 
 const Shop = () => {
   const [gridView, setGridView] = useState(true);
@@ -42,7 +43,7 @@ const Shop = () => {
 
   return (
     <PageLayout title="Shop">
-      <section className={classes["temporary-container"]}>
+      <PageContainer>
         <ShopSettings
           handleSort={handleSort}
           handleSearch={handleSearch}
@@ -61,8 +62,10 @@ const Shop = () => {
           totalPages={totalPages}
           handlePagination={handlePagination}
         />
-        <img className={classes.partners} src={partners} alt="our partners" />
-      </section>
+        <div className={classes.partners}>
+          <img src={partners} alt="our partners" />
+        </div>
+      </PageContainer>
     </PageLayout>
   );
 };

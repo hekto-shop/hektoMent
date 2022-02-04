@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+import PageContainer from "../../containers/PageContainer";
 import Carousel from "react-material-ui-carousel";
 import classes from "./MainSlider.module.scss";
 import * as images from "../../assets/img";
@@ -15,11 +15,11 @@ const MainSlider = () => {
     return (
       <div key={idx} className={classes.slider}>
         <div className={classes["product-description"]}>
-          <h6>{item.product.name}</h6>
-          <h2>{item.product.brand}</h2>
+          <h6>{item.product.brand}</h6>
+          <h2>{item.product.name}</h2>
           <p>{item.product.description}</p>
 
-          <Button link={`/product/${item.product.productCodeg}`}>
+          <Button link={`/product/${item.product.productCode}`}>
             Shop Now
           </Button>
         </div>
@@ -36,8 +36,10 @@ const MainSlider = () => {
 
   return (
     <main className={classes.container}>
-      <img className={classes["lamp-image"]} src={images.lamp} alt="lamp" />
-      <Carousel className={classes.carousel}>{markup}</Carousel>
+      <PageContainer>
+        <img className={classes["lamp-image"]} src={images.lamp} alt="lamp" />
+        <Carousel className={classes.carousel}>{markup}</Carousel>
+      </PageContainer>
     </main>
   );
 };

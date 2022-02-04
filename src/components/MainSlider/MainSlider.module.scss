@@ -29,7 +29,7 @@ $container-height: 764px;
 
 .slider {
   height: calc($container-height - 40px);
-  padding: 2rem;
+  // padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -40,27 +40,29 @@ $container-height: 764px;
   flex-direction: column;
   justify-content: center;
   width: 65%;
-
-  padding-left: 240px;
   height: 100%;
   h6 {
     font-size: 1rem;
     color: $secondary-color;
+    font-family: $secondary-font;
   }
   h2 {
     font-size: 3.3rem;
     inline-size: 100%;
     overflow-wrap: break-word;
     margin: 0.5rem 0 1rem 0;
+    font-family: $primary-font;
   }
   p {
     color: $sub-text-color;
     margin-bottom: 1rem;
     display: box;
     padding-right: 1rem;
+    font-family: $secondary-font;
   }
   button {
-    background-color: $secondary-color;
+    // background-color: $secondary-color;
+    font-family: $primary-font;
   }
 }
 
@@ -83,7 +85,7 @@ $container-height: 764px;
   background-image: $discount-bg;
   position: absolute;
   top: 120px;
-  right: 120px;
+  right: 0;
   width: 120px;
   height: 120px;
   background-position: center;
