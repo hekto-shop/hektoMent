@@ -4,13 +4,14 @@ $total-width: 370px;
 .searchbar {
   position: relative;
   display: flex;
-  width: $total-width;
+  justify-content: flex-end;
+  width: 100%;
   height: $height;
 }
 
 .input {
   position: relative;
-  width: $total-width - $height;
+  width: 100%;
   height: $height;
   border: 2px solid #e7e6ef;
   border-right: none;

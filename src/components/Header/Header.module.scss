@@ -77,19 +77,16 @@ select {
   outline: none;
 }
 
-.bottom-header {
-  div {
-    height: 4.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #0d0e43;
-
-    h1 {
-      font-family: Josefin Sans;
-      font-size: 34px;
-      line-height: 40px;
-      cursor: pointer;
-    }
+.grid-header {
+  display: grid;
+  grid-template-columns: 100px 1fr minmax(150px, 275px);
+  height: 4.5rem;
+  align-items: center;
+  color: #0d0e43;
+  h1 {
+    font-family: Josefin Sans;
+    font-size: 34px;
+    line-height: 40px;
+    cursor: pointer;
   }
 }

@@ -57,7 +57,7 @@ const Header = () => {
       </div>
 
       <div className={classes["bottom-header"]}>
-        <PageContainer>
+        <PageContainer className={classes["grid-header"]}>
           <Link to="/homepage">
             <h1>Hekto</h1>
           </Link>
