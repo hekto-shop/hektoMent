@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import {
@@ -16,34 +16,16 @@ import Pagination from "../../components/Pagination/Pagination";
 import PageContainer from "../../containers/PageContainer";
 
 const Shop = () => {
-  const [view, setView] = useState("grid");
-  const [sortType, setSortType] = useState(0); // 0-Arrival date; 1-Price:Lowest->Highest; 2-Price:Highest->Lowest;
-  const [searchValue, setSearchValue] = useState("");
-  const [perPage, setPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
-
   const history = useHistory();
   const location = useLocation();
 
-  // Update component states based on URL search parameters
-  useEffect(() => {
-    if (location.search) {
-      const params = new URLSearchParams(location.search);
-      if (params.get("view")) setView(params.get("view"));
-      if (params.get("sort")) setSortType(+params.get("sort"));
-      if (params.get("keyword")) setSearchValue(params.get("keyword"));
-      if (params.get("perpage") && Number.isInteger(+params.get("perpage")))
-        setPerPage(+params.get("perpage"));
-      if (params.get("page") && Number.isInteger(+params.get("page")))
-        setCurrentPage(+params.get("page"));
-    } else {
-      setView("grid");
-      setSortType(0);
-      setSearchValue("");
-      setPerPage(16);
-      setCurrentPage(1);
-    }
-  }, [location]);
+  const params = new URLSearchParams(location.search);
+
+  const view = params.get("view") || "grid";
+  const sortType = +params.get("sort") || 0;
+  const searchValue = params.get("keyword") || "";
+  const currentPage = +params.get("page") || 1;
+  const perPage = +params.get("perpage") || 16;
 
   // Reduce product list to show, based on parameters indicated by the user
   const products = useSelector((state) => state.productsReducer.products); // Can't be modified.
@@ -61,7 +43,7 @@ const Shop = () => {
 
   // Event Handlers for <ShopSettings/>
   const handleSort = (e) => updateURL("sort", e.target.value);
-  const handleSearch = (e) => updateURL("keyword", e.target.value); // add setTimeout
+  const handleSearch = (e) => updateURL("keyword", e.target.value);
   const handlePerPage = (e) => updateURL("perpage", e.target.value);
   const handleGridView = () => updateURL("view", "grid");
   const handleListView = () => updateURL("view", "list");
