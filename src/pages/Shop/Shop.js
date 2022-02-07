@@ -25,6 +25,7 @@ const Shop = () => {
   const history = useHistory();
   const location = useLocation();
 
+  // Update component states based on URL search parameters
   useEffect(() => {
     if (location.search) {
       const params = new URLSearchParams(location.search);
@@ -44,11 +45,13 @@ const Shop = () => {
     }
   }, [location]);
 
+  // Reduce product list to show, based on parameters indicated by the user
   const products = useSelector((state) => state.productsReducer.products); // Can't be modified.
   const filteredList = productListReducer([...products], sortType, searchValue);
   const totalPages = Math.trunc(filteredList.length / perPage) + 1;
   const productList = makeSlice(filteredList, currentPage, perPage);
 
+  // Helper function
   const updateURL = (name, value) => {
     const params = new URLSearchParams(location.search);
     params.set(name, value);
@@ -58,7 +61,7 @@ const Shop = () => {
 
   // Event Handlers for <ShopSettings/>
   const handleSort = (e) => updateURL("sort", e.target.value);
-  const handleSearch = (e) => updateURL("keyword", e.target.value);
+  const handleSearch = (e) => updateURL("keyword", e.target.value); // add setTimeout
   const handlePerPage = (e) => updateURL("perpage", e.target.value);
   const handleGridView = () => updateURL("view", "grid");
   const handleListView = () => updateURL("view", "list");
