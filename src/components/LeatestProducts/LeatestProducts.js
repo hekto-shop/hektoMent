@@ -33,7 +33,7 @@ const LeatestProducts = () => {
       )
       .slice(0, 6);
   } else {
-    productList = [...sales].map((elem) => elem.product);
+    productList = [...sales].map((elem) => elem.product).slice(0, 6);
   }
 
   console.log(productList);
