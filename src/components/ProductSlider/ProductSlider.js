@@ -29,6 +29,9 @@ const ProductSlider = (props) => {
       sx={{ width: 600 }}
       onMouseEnter={() => hoverHandler(index)}
       onMouseLeave={hoverCancelHandler}
+      onClick={() => {
+        history.push(`/product/${item.productCode}`);
+      }}
     >
       <CardActionArea>
         <div className={styles["card-media"]}>
