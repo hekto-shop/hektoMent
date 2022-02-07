@@ -1,0 +1,105 @@
+@import "../../styles/css-variables.scss";
+$spotlight-bg: url("../../assets/img/spotlight-product-bg.svg");
+
+.spotlight-section {
+  min-height: 540px;
+  background: #f1f0ff;
+}
+
+.spotlight-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3.5rem;
+  gap: 1rem;
+}
+
+.spotlight-container__product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 450px;
+  background: $spotlight-bg;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+
+  img {
+    width: 100%;
+  }
+}
+
+.spotlight-container__details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+
+  .spotlight-container__title {
+    font-size: 35px;
+    font-family: $primary-font;
+    color: #151875;
+  }
+
+  .spotlight-details__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 1.2rem;
+
+    .spotlight-features__item {
+      font-family: $secondary-font;
+      color: #acabc3;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      line-height: 28px;
+      letter-spacing: 1.5%;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 11px;
+        height: 11px;
+        left: -1.2rem;
+        top: 0.6rem;
+        border-radius: 50%;
+      }
+
+      &:nth-child(1)::before {
+        background: #f52b70;
+      }
+      &:nth-child(2)::before {
+        background: #2b2bf5;
+      }
+      &:nth-child(3)::before {
+        background: #2bf5cc;
+      }
+    }
+  }
+}
+
+.spotlight-container__price {
+  display: flex;
+
+  .spotlight-price__details {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .spotlight-details__name {
+      font-family: $primary-font;
+      color: #151875;
+      line-height: 16px;
+    }
+
+    .price {
+      font-family: $secondary-font;
+      font-weight: 400;
+      color: #151875;
+      margin-top: 0.7rem;
+    }
+  }
+}
