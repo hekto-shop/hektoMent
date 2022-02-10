@@ -1,34 +1,36 @@
-$padding: 8rem;
+@import "../../styles/css-variables.scss";
 
 .title {
-  width: 100%;
-  height: 285px;
   background: #f6f5ff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: $padding;
-  h2 {
-    color: #101750;
-    font-size: 36px;
-    font-family: "Josefin Sans";
-    margin-bottom: 0.7rem;
-  }
-
-  ul {
+  div {
+    height: 285px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    span {
-      text-align: center;
+    h2 {
+      color: #101750;
+      font-size: 36px;
+      font-family: $primary-font;
+      margin-bottom: 0.7rem;
     }
 
-    li {
-      list-style: none;
-      padding: 0 0.2rem;
-      font-size: 1rem;
-      a {
-        text-decoration: none;
-        color: black;
+    ul {
+      display: flex;
+
+      span {
+        text-align: center;
+      }
+
+      li {
+        list-style: none;
+        padding: 0 0.2rem;
+        font-size: 1rem;
+        font-family: $secondary-font;
+        a {
+          text-decoration: none;
+          color: black;
+        }
       }
     }
   }

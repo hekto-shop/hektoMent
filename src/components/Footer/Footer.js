@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 import classes from "./Footer.module.scss";
 
+import PageContainer from "../../containers/PageContainer";
 import Button from "../UI/Button";
 
 const Footer = () => {
@@ -50,57 +51,61 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <section className={classes["bottom-navigation"]}>
-        <div>
-          <h2>Hekto</h2>
-          <form onSubmit={handleSubscribe}>
-            <input type="email" placeholder="Enter Email Address" />
-            <Button fullHeight fullWidth type="submit">
-              Subscribe
-            </Button>
-          </form>
+        <PageContainer className={classes.grid}>
           <div>
-            <p>Contact Info</p>
-            <address>
-              17 Princess Road, London, Greater London NW1 8JR, UK
-            </address>
+            <h2>Hekto</h2>
+            <form onSubmit={handleSubscribe}>
+              <input type="email" placeholder="Enter Email Address" />
+              <Button fullHeight fullWidth type="submit">
+                Subscribe
+              </Button>
+            </form>
+            <div>
+              <p>Contact Info</p>
+              <address>
+                17 Princess Road, London, Greater London NW1 8JR, UK
+              </address>
+            </div>
           </div>
-        </div>
-        <div>
-          <h3>Categories</h3>
-          <ul>{categMarkup}</ul>
-        </div>
-        <div>
-          <h3>Customer Care</h3>
-          <ul>{customerCare}</ul>
-        </div>
-        <div>
-          <h3>Pages</h3>
-          <ul>
-            <li>
-              <Link to="">Blog</Link>
-            </li>
-            <li>
-              <Link to="">Browse the Shop</Link>
-            </li>
-            <li>
-              <Link to="">Category</Link>
-            </li>
-          </ul>
-        </div>
+          <div>
+            <h3>Categories</h3>
+            <ul>{categMarkup}</ul>
+          </div>
+          <div>
+            <h3>Customer Care</h3>
+            <ul>{customerCare}</ul>
+          </div>
+          <div>
+            <h3>Pages</h3>
+            <ul>
+              <li>
+                <Link to="">Blog</Link>
+              </li>
+              <li>
+                <Link to="">Browse the Shop</Link>
+              </li>
+              <li>
+                <Link to="">Category</Link>
+              </li>
+            </ul>
+          </div>
+        </PageContainer>
       </section>
       <section className={classes.copyright}>
-        <div className={classes.author}>©Webecy - All Rights Reserved</div>
-        <div className={classes.social}>
-          <a href="http://facebook.com" target="_blank">
-            <img src={icons.facebook} alt="Facebook" />
-          </a>
-          <a href="http://instagram.com" target="_blank">
-            <img src={icons.instagram} alt="Instagram" />
-          </a>
-          <a href="http://twitter.com" target="_blank">
-            <img src={icons.twitter} alt="Twitter" />
-          </a>
-        </div>
+        <PageContainer>
+          <div className={classes.author}>©Webecy - All Rights Reserved</div>
+          <div className={classes.social}>
+            <a href="http://facebook.com" target="_blank">
+              <img src={icons.facebook} alt="Facebook" />
+            </a>
+            <a href="http://instagram.com" target="_blank">
+              <img src={icons.instagram} alt="Instagram" />
+            </a>
+            <a href="http://twitter.com" target="_blank">
+              <img src={icons.twitter} alt="Twitter" />
+            </a>
+          </div>
+        </PageContainer>
       </section>
     </footer>
   );

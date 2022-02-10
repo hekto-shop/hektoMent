@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import {
   makeSlice,
   productListReducer,
@@ -12,37 +13,50 @@ import ShopSettings from "../../components/ShopSettings";
 import GridView from "../../components/GridView";
 import ListView from "../../components/ListView";
 import Pagination from "../../components/Pagination/Pagination";
+import PageContainer from "../../containers/PageContainer";
 
 const Shop = () => {
-  const [gridView, setGridView] = useState(true);
-  const [sortType, setSortType] = useState(0); // 0-Arrival date; 1-Price:Lowest->Highest; 2-Price:Highest->Lowest;
-  const [searchValue, setSearchValue] = useState("");
-  const [perPage, setPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
+  const history = useHistory();
+  const location = useLocation();
 
+  const params = new URLSearchParams(location.search);
+
+  const view = params.get("view") || "grid";
+  const sortType = +params.get("sort") || 0;
+  const searchValue = params.get("keyword") || "";
+  const currentPage = +params.get("page") || 1;
+  const perPage = +params.get("perpage") || 16;
+
+  // Reduce product list to show, based on parameters indicated by the user
   const products = useSelector((state) => state.productsReducer.products); // Can't be modified.
   const filteredList = productListReducer([...products], sortType, searchValue);
-
   const totalPages = Math.trunc(filteredList.length / perPage) + 1;
-
   const productList = makeSlice(filteredList, currentPage, perPage);
 
+  // Helper function
+  const updateURL = (name, value) => {
+    const params = new URLSearchParams(location.search);
+    params.set(name, value);
+    const newURL = `?${params.toString()}`;
+    history.push({ pathname: location.pathname, search: newURL });
+  };
+
   // Event Handlers for <ShopSettings/>
-  const handleSort = (e) => setSortType(+e.target.value);
-  const handleSearch = (e) => setSearchValue(e.target.value);
-  const handlePerPage = (e) => setPerPage(+e.target.value);
-  const handleGridView = () => setGridView(true);
-  const handleListView = () => setGridView(false);
+  const handleSort = (e) => updateURL("sort", e.target.value);
+  const handleSearch = (e) => updateURL("keyword", e.target.value);
+  const handlePerPage = (e) => updateURL("perpage", e.target.value);
+  const handleGridView = () => updateURL("view", "grid");
+  const handleListView = () => updateURL("view", "list");
 
   // Event Handlers for <Pagination/>
   const handlePagination = (e) => {
     window.scrollTo({ top: 400, behavior: "smooth" });
-    setCurrentPage((prevState) => prevState + +e.target.value);
+    updateURL("page", currentPage + +e.target.value);
   };
 
   return (
     <PageLayout title="Shop">
-      <section className={classes["temporary-container"]}>
+      <PageContainer>
         <ShopSettings
           handleSort={handleSort}
           handleSearch={handleSearch}
@@ -51,7 +65,7 @@ const Shop = () => {
           handleListView={handleListView}
           numberOfProducts={products.length}
         />
-        {gridView ? (
+        {view === "grid" ? (
           <GridView productList={productList} />
         ) : (
           <ListView productList={productList} />
@@ -61,8 +75,10 @@ const Shop = () => {
           totalPages={totalPages}
           handlePagination={handlePagination}
         />
-        <img className={classes.partners} src={partners} alt="our partners" />
-      </section>
+        <div className={classes.partners}>
+          <img src={partners} alt="our partners" />
+        </div>
+      </PageContainer>
     </PageLayout>
   );
 };

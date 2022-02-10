@@ -39,11 +39,6 @@
       color: $text-color-2;
       font-size: 1.25rem;
     }
-    span {
-      font-family: $primary-font;
-      color: $text-color-2;
-      font-size: 1rem;
-    }
   }
   p {
     font-family: $secondary-font;
@@ -58,4 +53,13 @@
   height: 13px;
   border-radius: 50%;
   margin: 0.2rem;
+}
+.price {
+  font-family: $primary-font;
+  color: $text-color-2;
+  font-size: 1rem;
+}
+.rating {
+  margin: 0 1rem;
+  color: #ffc416 !important;
 }

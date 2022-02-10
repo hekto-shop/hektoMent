@@ -3,29 +3,15 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import classes from "./ListItem.module.scss";
 
-import Rating from "../../components/UI/Rating";
+import Ratings from "../Ratings";
+
 import Controls from "../../components/Controls";
 
 const ListItem = (props) => {
   const { product } = props;
-  const {
-    active,
-    arrivalDate,
-    brand,
-    category,
-    color,
-    description,
-    name,
-    price,
-    productCode,
-    productImage,
-    quantity,
-    rating,
-    reviews,
-    tags,
-  } = product;
+  const { color, description, name, price, productCode, productImage } =
+    product;
 
-  const stars = Math.round((5 * rating) / 100);
   const currency = useSelector((store) => store.productsReducer.currency);
 
   const colors = color.map((clr) => {
@@ -51,8 +37,12 @@ const ListItem = (props) => {
           {colors}
         </div>
         <div>
-          <span>{`${currency} ${price.toFixed(2)}`}</span>
-          <Rating stars={stars} />
+          <span className={classes.price}>{`${currency} ${price.toFixed(
+            2
+          )}`}</span>
+          <span className={classes.rating}>
+            <Ratings product={product} />
+          </span>
         </div>
         <p>{description}</p>
         <Controls layout="horizontal-bottom" product={product} />

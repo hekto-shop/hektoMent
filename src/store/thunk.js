@@ -54,6 +54,7 @@ const getProducts = () => async (dispatch) => {
   const payload = data.docs.map((item) => {
     const productObj = item.data();
     if (!productObj.productImage) productObj.productImage = noImage;
+    productObj.itemId = item.id;
     return productObj;
   });
   dispatch(productsActions.getProducts(payload));
