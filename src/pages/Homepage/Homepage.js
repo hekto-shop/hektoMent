@@ -3,6 +3,7 @@ import PageLayout from "../../containers/PageLayout";
 import MainSlider from "../../components/MainSlider";
 import FeaturedSlider from "../../components/FeaturedSlider";
 import Shopex from "../../components/Shopex";
+import DailySpotlight from "../../components/DailySpotlight";
 
 import PageContainer from "../../containers/PageContainer";
 import styles from "./Homepage.module.scss";
@@ -27,6 +28,7 @@ const Homepage = () => {
           <Shopex />
         </section>
       </PageContainer>
+      <DailySpotlight className={styles["spotlight-section"]} />
       <h1>Homepage</h1>
     </PageLayout>
   );
