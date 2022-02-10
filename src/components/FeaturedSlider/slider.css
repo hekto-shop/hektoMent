@@ -1,5 +1,5 @@
 .rec.rec-arrow {
-  visibility: hidden;
+  display: none;
 }
 
 .rec.rec-dot {
