@@ -6,6 +6,7 @@ import Shopex from "../../components/Shopex";
 
 import PageContainer from "../../containers/PageContainer";
 import styles from "./Homepage.module.scss";
+import LeatestProducts from "../../components/LeatestProducts/LeatestProducts";
 
 const Homepage = () => {
   return (
@@ -18,6 +19,7 @@ const Homepage = () => {
           </div>
           <FeaturedSlider />
         </section>
+        <LeatestProducts />
         <section className={styles["shopex-section"]}>
           <div className={styles["shopex-section__title"]}>
             <h2>What Shopex Offer!</h2>
