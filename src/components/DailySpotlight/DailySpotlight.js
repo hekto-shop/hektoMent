@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import PageContainer from "../../containers/PageContainer";
 import Button from "../UI/Button";
 
@@ -8,6 +9,7 @@ import styles from "./DailySpotlight.module.scss";
 const DailySpotlight = (props) => {
   const products = useSelector((state) => state.productsReducer.products);
   const currency = useSelector((state) => state.productsReducer.currency);
+  const history = useHistory();
 
   let startDay = 0;
   let day = new Date().getDay();
@@ -32,6 +34,7 @@ const DailySpotlight = (props) => {
     });
 
   if (stockProducts.length === 0) return <div>Loading...</div>;
+  console.log(stockProducts);
 
   return (
     <section className={`${styles["spotlight-section"]} ${props.className}`}>
@@ -57,7 +60,16 @@ const DailySpotlight = (props) => {
               </li>
             </ul>
             <div className={styles["spotlight-container__price"]}>
-              <Button type="button">Add To Cart</Button>
+              <Button
+                type="button"
+                onClick={() =>
+                  history.push(
+                    `/product/${stockProducts[day - startDay].productCode}`
+                  )
+                }
+              >
+                Add To Cart
+              </Button>
               <div className={styles["spotlight-price__details"]}>
                 <p className={styles["spotlight-details__name"]}>
                   {stockProducts[day - startDay].name}
