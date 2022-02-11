@@ -75,7 +75,7 @@ const DailySpotlight = (props) => {
                   {stockProducts[day - startDay].name}
                 </p>
                 <p className={styles["price"]}>
-                  {currency}: {stockProducts[day - startDay].price}
+                  {currency}: {stockProducts[day - startDay].price.toFixed(2)}
                 </p>
               </div>
             </div>

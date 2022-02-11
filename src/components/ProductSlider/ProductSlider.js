@@ -68,7 +68,7 @@ const ProductSlider = (props) => {
             </div>
             <p className={styles["card-description__code"]}>Code - Y523201</p>
             <p className={styles["card-description__price"]}>
-              {currency}: {item.price}
+              {currency}: {item.price.toFixed(2)}
             </p>
           </div>
         </CardContent>
