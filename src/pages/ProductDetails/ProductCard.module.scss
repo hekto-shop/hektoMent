@@ -1,4 +1,5 @@
 @import "../../styles/css-variables.scss";
+@import "../../styles/mixins.scss";
 
 .card {
   width: 100%;
@@ -12,28 +13,22 @@
 }
 
 .images {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include centered-flex;
   height: 100%;
   width: 100%;
 }
 
 .thumbnails {
+  @include centered-flex;
   width: 200px;
   height: 100%;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .thumbnail {
+  @include centered-flex;
   width: 100%;
   height: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 3px;
   cursor: pointer;
   margin: 1rem;
@@ -48,11 +43,9 @@
 }
 
 .preview {
+  @include centered-flex;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 1rem;
 
   img {
@@ -79,6 +72,14 @@
   }
 }
 
+.ratings {
+  @include centered-flex;
+  .number {
+    color: $text-color;
+    font-size: 14px;
+  }
+}
+
 .price {
   color: $text-color;
   line-height: 2rem;
@@ -93,9 +94,32 @@
 }
 
 .actions {
-  width: 30%;
-  max-width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include centered-flex;
+  width: 40%;
+  max-width: 400px;
+  height: 2rem;
+}
+
+.add-to-cart {
+  @include centered-flex;
+  margin: 0 1rem;
+  cursor: pointer;
+  height: 30px;
+  padding: 0 15px;
+  border-radius: 5px;
+}
+
+.add-to-favorites {
+  @include centered-flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  img {
+    width: 60%;
+  }
+}
+
+.active {
+  background-color: #a9acc6;
 }
