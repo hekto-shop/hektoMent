@@ -28,7 +28,8 @@ const Controls = (props) => {
     .map((item) => item.productCode)
     .includes(product.productCode);
 
-  const cartHandler = () => {
+  const cartHandler = (e) => {
+    e.stopPropagation();
     if (!isInCart) {
       dispatch(addToCart(product));
     } else {
@@ -36,19 +37,24 @@ const Controls = (props) => {
     }
   };
 
-  const favoritesHandler = () => {
+  const favoritesHandler = (e) => {
+    e.stopPropagation();
     if (!isInFavorites) {
       dispatch(addToFavorites(product));
     } else {
       dispatch(removeFromFavorites(product));
     }
   };
-  const handleZoom = () => {
+  const handleZoom = (e) => {
+    e.stopPropagation();
     setZoomPicture((state) => !state);
   };
 
   return (
-    <div className={`${classes[props.layout]} ${classes.flex}`}>
+    <div
+      className={`${classes[props.layout]} ${classes.flex}`}
+      onClick={props.redirectHandler}
+    >
       <span className={isInCart ? classes.active : ""} onClick={cartHandler}>
         <img src={icons.cartBlue} alt="Cart" />
       </span>
