@@ -1,14 +1,18 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import classes from "./RelatedProducts.module.scss";
 import { shuffle } from "../../helpers/shuffle-array";
 import PageContainer from "../../containers/PageContainer";
 import Ratings from "../../components/Ratings";
+import { partners } from "../../assets/images";
 
 const RelatedProducts = (props) => {
   const { product } = props;
   const history = useHistory();
+  const currency = useSelector((store) => store.productsReducer.currency);
+
+  console.log(product);
 
   const navigateTo = (product) => {
     history.push(`/product/${product.productCode}`);
@@ -20,7 +24,10 @@ const RelatedProducts = (props) => {
 
   const productList = useSelector((store) => store.productsReducer.products);
   const filteredList = [...productList].filter(
-    (el) => el.brand === product.brand && el.productCode !== product.productCode
+    (el) =>
+      (el.brand === product.brand ||
+        Math.abs(product.price - el.price) < product.price * 0.3) &&
+      el.productCode !== product.productCode
   );
 
   const shuffledList = shuffle(filteredList);
@@ -38,7 +45,9 @@ const RelatedProducts = (props) => {
             <Ratings product={item} />
           </span>
         </div>
-        <span className={classes.price}>{item.price.toFixed(2)}</span>
+        <span className={classes.price}>{`${currency} ${item.price.toFixed(
+          2
+        )}`}</span>
       </div>
     );
   });
@@ -48,6 +57,9 @@ const RelatedProducts = (props) => {
       <PageContainer>
         <h2>Related Products</h2>
         <div className={classes.grid}>{relatedProducts}</div>
+        <div className={classes.partners}>
+          <img src={partners} alt="our partners" />
+        </div>
       </PageContainer>
     </section>
   );
