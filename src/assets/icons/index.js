@@ -21,6 +21,8 @@ import filter from "./filter.svg";
 import starYellow from "./star-yellow.svg";
 import starGrey from "./star-grey.svg";
 
+import deleteIcon from "./delete.svg";
+
 export {
   email,
   cart,
@@ -41,4 +43,5 @@ export {
   filter,
   starYellow,
   starGrey,
+  deleteIcon,
 };
