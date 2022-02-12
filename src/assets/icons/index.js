@@ -22,6 +22,7 @@ import starYellow from "./star-yellow.svg";
 import starGrey from "./star-grey.svg";
 
 import deleteIcon from "./delete.svg";
+import greenTick from "./green-tick.svg";
 
 export {
   email,
@@ -44,4 +45,5 @@ export {
   starYellow,
   starGrey,
   deleteIcon,
+  greenTick,
 };

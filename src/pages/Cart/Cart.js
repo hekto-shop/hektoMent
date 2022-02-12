@@ -3,18 +3,38 @@ import { useSelector } from "react-redux";
 import PageLayout from "../../containers/PageLayout";
 import PageContainer from "../../containers/PageContainer";
 
+import { useDispatch } from "react-redux";
+import {
+  addToCart,
+  decreaseCartQuantity,
+  removeFromCart,
+} from "../../store/thunk";
 import * as icons from "../../assets/icons";
 import classes from "./Cart.module.scss";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  console.log(cartItems);
+  const currency = useSelector((state) => state.productsReducer.currency);
+  const dispatch = useDispatch();
+
+  const handleIncrease = (product) => {
+    dispatch(addToCart(product));
+  };
+  const handleDecrease = (product) => {
+    dispatch(decreaseCartQuantity(product));
+  };
+  const handleRemove = (product) => {
+    dispatch(removeFromCart(product));
+  };
+
+  const totalPrice = cartItems.reduce((acc, cur) => acc + cur.totalPrice, 0);
+  const VAT = (totalPrice / 1.18) * 0.18;
   const productList = cartItems.map((product) => {
     return (
-      <tr className={classes.row} key={product.productCode}>
-        <td className={classes["product-col"]}>
+      <>
+        <div className={classes["product-col"]}>
           <div className={classes.thumbnail}>
-            <span>
+            <span onClick={() => handleRemove(product)}>
               <img src={icons.deleteIcon} alt="remove" />
             </span>
             <img
@@ -26,29 +46,75 @@ const Cart = () => {
           <div className={classes["product-name"]}>
             <h3>{product.name}</h3>
           </div>
-        </td>
-        <td>{product.price}</td>
-        <td>5</td>
-        <td>{product.price * 5}</td>
-      </tr>
+        </div>
+        <div
+          className={classes["price-col"]}
+        >{`${currency} ${product.price.toFixed(2)}`}</div>
+        <div className={classes["quantity-col"]}>
+          <span
+            className={classes["quantity-button"]}
+            onClick={() => handleDecrease(product)}
+          >
+            -
+          </span>
+          <span className={classes["quantity-value"]}>{product.quantity} </span>
+          <span
+            className={classes["quantity-button"]}
+            onClick={() => handleIncrease(product)}
+          >
+            +
+          </span>
+        </div>
+        <div className={classes["total-col"]}>
+          {`${currency} ${product.totalPrice.toFixed(2)}`}
+        </div>
+      </>
     );
   });
+
+  if (cartItems.length === 0) {
+    return (
+      <PageLayout title="Cart">
+        <PageContainer>
+          <div className={classes.emptycart}>
+            Cart is empty. Please go to Shop page and select items you wish to
+            buy
+          </div>
+        </PageContainer>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout title="Cart">
       <PageContainer>
         <section className={classes.section}>
-          <table className={classes.table}>
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>{productList}</tbody>
-          </table>
+          <div className={classes.table}>
+            <h3>Product</h3>
+            <h3>Price</h3>
+            <h3>Quantity</h3>
+            <h3 className={classes["heading-total"]}>Total</h3>
+
+            {productList}
+          </div>
+          <div className={classes.tools}>
+            <h3>Cart Tools</h3>
+            <div className={classes.totals}>
+              <div className={classes["totals-row"]}>
+                <h4>Totals:</h4>
+                <span>$ {totalPrice.toFixed(2)}</span>
+              </div>
+              <div className={classes["totals-row"]}>
+                <h4>VAT (Included):</h4>
+                <span>${VAT.toFixed(2)}</span>
+              </div>
+              <div className={classes.taxinfo}>
+                <img src={icons.greenTick} alt="tick" />
+                <p>Taxes are calculated at checkout</p>
+              </div>
+              <button className={classes.checkout}>Go to Checkout</button>
+            </div>
+          </div>
         </section>
       </PageContainer>
     </PageLayout>
