@@ -15,6 +15,7 @@
   border-collapse: collapse;
   display: grid;
   grid-template-columns: 3fr repeat(3, 1fr);
+  grid-template-rows: 80px repeat(3, 1fr);
   align-items: center;
   justify-items: center;
   h3 {
@@ -160,6 +161,7 @@
 .checkout {
   background: none;
   border: none;
+  border-radius: 3px;
   margin-bottom: 1.4rem;
   color: white;
   height: 40px;
