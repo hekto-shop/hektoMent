@@ -45,6 +45,7 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(
         (item) => item.productCode !== action.payload.productCode
       );
+      localStorage.set("cart", state.cartItems);
     },
     addToFavorites(state, action) {
       state.favorites = [...state.favorites, action.payload];
@@ -60,9 +61,13 @@ const cartSlice = createSlice({
 
     getInitialState(state, action) {
       const newState = action.payload;
-      console.log(action.payload);
       if (newState.cartItems?.length > 0) state.cartItems = newState.cartItems;
       if (newState.favorites?.length > 0) state.favorites = newState.favorites;
+    },
+
+    clearCart(state, action) {
+      state.cartItems = [];
+      localStorage.set("cart", state.cartItems);
     },
   },
 });

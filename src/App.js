@@ -33,8 +33,6 @@ function App() {
     dispatch(getCategories());
     dispatch(getSales());
     dispatch(getProducts());
-
-    console.log(initialCartState);
     dispatch(getInitialCartState(initialCartState));
   }, [initialCartState, dispatch]);
 

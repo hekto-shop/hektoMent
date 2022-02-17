@@ -88,6 +88,9 @@ const getInitialCartState = (cart) => (dispatch) => {
   dispatch(cartActions.getInitialState(cart));
 };
 
+const clearCart = () => (dispatch) => {
+  dispatch(cartActions.clearCart());
+};
 export {
   getCategories,
   getSales,
@@ -99,4 +102,5 @@ export {
   removeFromFavorites,
   getInitialCartState,
   decreaseCartQuantity,
+  clearCart,
 };

@@ -2,12 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import PageLayout from "../../containers/PageLayout";
 import PageContainer from "../../containers/PageContainer";
+import Button from "../../components/UI/Button";
 
 import { useDispatch } from "react-redux";
 import {
   addToCart,
   decreaseCartQuantity,
   removeFromCart,
+  clearCart,
 } from "../../store/thunk";
 import * as icons from "../../assets/icons";
 import classes from "./Cart.module.scss";
@@ -25,6 +27,10 @@ const Cart = () => {
   };
   const handleRemove = (product) => {
     dispatch(removeFromCart(product));
+  };
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
   };
 
   const totalPrice = cartItems.reduce((acc, cur) => acc + cur.totalPrice, 0);
@@ -96,6 +102,9 @@ const Cart = () => {
             <h3 className={classes["heading-total"]}>Total</h3>
 
             {productList}
+            <div className={classes.clear}>
+              <Button onClick={handleClearCart}>Clear Cart</Button>
+            </div>
           </div>
           <div className={classes.tools}>
             <h3>Cart Tools</h3>
@@ -110,7 +119,7 @@ const Cart = () => {
               </div>
               <div className={classes.taxinfo}>
                 <img src={icons.greenTick} alt="tick" />
-                <p>Taxes are calculated at checkout</p>
+                <p>Shipping charges are calculated at checkout</p>
               </div>
               <button className={classes.checkout}>Go to Checkout</button>
             </div>

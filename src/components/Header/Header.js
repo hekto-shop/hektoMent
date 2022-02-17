@@ -33,7 +33,6 @@ const Header = () => {
           </div>
 
           <div className={classes.controls}>
-            <div>{currency}</div>
             <div>
               <select onChange={handleCurrency} value={currency}>
                 <option value="USD">USD</option>
