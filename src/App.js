@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { getCategories, getSales, getProducts } from "./store/thunk";
+import {
+  getCategories,
+  getSales,
+  getProducts,
+  getInitialCartState,
+} from "./store/thunk";
 import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
+
+import * as localStorage from "./helpers/local-storage";
 
 import SplashPage from "./pages/SplashPage/SplashPage";
 import Homepage from "./pages/Homepage";
@@ -14,6 +21,10 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 
+const cartItemsLS = localStorage.get("cart");
+const favoritesLS = localStorage.get("favorites");
+const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
+
 function App() {
   const { user } = useSession();
   const dispatch = useDispatch();
@@ -22,7 +33,8 @@ function App() {
     dispatch(getCategories());
     dispatch(getSales());
     dispatch(getProducts());
-  }, []);
+    dispatch(getInitialCartState(initialCartState));
+  }, [initialCartState, dispatch]);
 
   return (
     <>

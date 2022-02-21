@@ -72,6 +72,10 @@ const removeFromCart = (product) => (dispatch) => {
   dispatch(cartActions.removeFromCart(product));
 };
 
+const decreaseCartQuantity = (product) => (dispatch) => {
+  dispatch(cartActions.decreaseCartQuantity(product));
+};
+
 const addToFavorites = (product) => (dispatch) => {
   dispatch(cartActions.addToFavorites(product));
 };
@@ -80,6 +84,13 @@ const removeFromFavorites = (product) => (dispatch) => {
   dispatch(cartActions.removeFromFavorites(product));
 };
 
+const getInitialCartState = (cart) => (dispatch) => {
+  dispatch(cartActions.getInitialState(cart));
+};
+
+const clearCart = () => (dispatch) => {
+  dispatch(cartActions.clearCart());
+};
 export {
   getCategories,
   getSales,
@@ -89,4 +100,7 @@ export {
   removeFromCart,
   addToFavorites,
   removeFromFavorites,
+  getInitialCartState,
+  decreaseCartQuantity,
+  clearCart,
 };
