@@ -66,27 +66,22 @@ const ProductFilter = (props) => {
       <span>
         <input type="checkbox" value="5" onChange={(e) => handleRaiting(e)} />
         <Rating defaultValue={5} size="small" readOnly />
-        <label>(2000)</label>
       </span>
       <span>
         <input type="checkbox" value="4" onChange={(e) => handleRaiting(e)} />
         <Rating defaultValue={4} size="small" readOnly />
-        <label>(2000)</label>
       </span>
       <span>
         <input type="checkbox" value="3" onChange={(e) => handleRaiting(e)} />
         <Rating defaultValue={3} size="small" readOnly />
-        <label>(2000)</label>
       </span>
       <span>
         <input type="checkbox" value="2" onChange={(e) => handleRaiting(e)} />
         <Rating defaultValue={2} size="small" readOnly />
-        <label>(2000)</label>
       </span>
       <span>
         <input type="checkbox" value="1" onChange={(e) => handleRaiting(e)} />
         <Rating defaultValue={1} size="small" readOnly />
-        <label>(2000)</label>
       </span>
     </div>
   );
