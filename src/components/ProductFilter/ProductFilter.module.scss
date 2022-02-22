@@ -1,0 +1,218 @@
+@import "../../styles/css-variables.scss";
+
+.aside {
+  width: 11rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  h2 {
+    font-family: $primary-font;
+    color: #151875;
+    border-bottom: 2px solid #000;
+    margin-bottom: 1rem;
+    width: max-content;
+  }
+
+  .brand-filter,
+  .discount-filter,
+  .raiting-filter,
+  .category-filter,
+  .price-filter,
+  .color-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .category-items,
+  .price-items {
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      background: #ffdbf1;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::after {
+        content: " \2713";
+        color: #ff3eb2;
+      }
+
+      &:checked {
+        background: #ff3eb2;
+
+        &::after {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .brand-items {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      background: #e5e0fc;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::after {
+        content: " \2713";
+        color: #603eff;
+      }
+
+      &:checked {
+        background: #603eff;
+
+        &::after {
+          color: #fff;
+        }
+      }
+    }
+
+    label {
+      font-family: $secondary-font;
+      font-weight: 400;
+      color: #7e81a2;
+      user-select: none;
+    }
+  }
+}
+
+.discount-items__slider {
+  p {
+    font-family: $secondary-font;
+    font-size: 0.7rem;
+  }
+}
+
+.raiting-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+
+    label {
+      font-family: $primary-font;
+      font-size: 0.8rem;
+    }
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    background: #fff6da;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: " \2713";
+      color: #ffcc2e;
+    }
+
+    &:checked {
+      background: #ffcc2e;
+
+      &::after {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.category-items {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  label {
+    font-family: $secondary-font;
+    font-weight: 400;
+    color: #7e81a2;
+    user-select: none;
+    font-size: 0.89rem;
+  }
+}
+
+.price-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: $secondary-font;
+
+  .price-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      label {
+        color: #989bb5;
+      }
+    }
+
+    .price-input {
+      outline: none;
+      border-radius: 3px;
+      border: 1px solid #bcbddb;
+      padding: 8px 12px;
+
+      &::placeholder {
+        color: #bcbddb;
+      }
+    }
+  }
+}
+
+.color-filter {
+  .color-side {
+    list-style: none;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+
+    .btn-mixed {
+      background: linear-gradient(to right, #1e9600, #fff200, #ff0000);
+    }
+
+    button {
+      outline: none;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.5s ease;
+
+      &:active,
+      &:focus {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

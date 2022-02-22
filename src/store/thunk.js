@@ -50,13 +50,26 @@ const getSales = () => async (dispatch) => {
 
 const getProducts = () => async (dispatch) => {
   const response = db.collection("products");
+  const getProdData = (docRef) => {
+    return docRef.get().then((doc) => {
+      if (doc.exists) {
+        return doc.data();
+      } else {
+        return null;
+      }
+    });
+  };
   const data = await response.get();
-  const payload = data.docs.map((item) => {
-    const productObj = item.data();
-    if (!productObj.productImage) productObj.productImage = noImage;
-    productObj.itemId = item.id;
-    return productObj;
-  });
+  const payload = await Promise.all(
+    data.docs.map(async (item) => {
+      const productObj = item.data();
+      if (!productObj.productImage) productObj.productImage = noImage;
+      productObj.itemId = item.id;
+      const categoryRef = productObj.category;
+      const prodCategorie = await getProdData(categoryRef);
+      return { ...productObj, category: prodCategorie.name };
+    })
+  );
   dispatch(productsActions.getProducts(payload));
 };
 
