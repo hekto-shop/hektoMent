@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import PageLayout from "../../containers/PageLayout";
 import PageContainer from "../../containers/PageContainer";
+import OrderForm from "../../components/OrderForm/OrderForm";
 import CartItems from "../../components/CartItems/CartItems";
 
 const Order = () => {
@@ -13,7 +14,7 @@ const Order = () => {
     <PageLayout title="Order">
       <PageContainer>
         <main className={classes.container}>
-          <div>aaa</div>
+          <OrderForm />
           <CartItems cartItems={cartItems} currency={currency} />
         </main>
       </PageContainer>

@@ -7,7 +7,6 @@ import classes from "./Signup.module.scss";
 
 const Signup = () => {
   const { user } = useSession();
-  console.log(user);
   return (
     <PageLayout title="Sign up">
       <SignupForm />

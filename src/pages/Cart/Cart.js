@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
@@ -19,6 +20,8 @@ const Cart = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const currency = useSelector((state) => state.productsReducer.currency);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const goToCheckout = () => history.push("/order");
 
   const handleIncrease = (product) => {
     dispatch(addToCart(product));
@@ -78,7 +81,10 @@ const Cart = () => {
                 <img src={icons.greenTick} alt="tick" />
                 <p>Shipping charges are calculated at checkout</p>
               </div>
-              <button className={classes.checkout}>Go to Checkout</button>
+
+              <button onClick={goToCheckout} className={classes.checkout}>
+                Go to Checkout
+              </button>
             </div>
           </div>
         </section>
