@@ -20,6 +20,7 @@ import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
+import Order from "./pages/Order";
 
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
@@ -69,8 +70,8 @@ function App() {
         <Route path="/contact">
           <h1 className="temporary">Contact form</h1>
         </Route>
-        <Route path="/blog">
-          <h1 className="temporary">Blog</h1>
+        <Route path="/order">
+          <Order />
         </Route>
         <Route path="/shop">
           <h1 className="temporary">Shop</h1>

@@ -9,105 +9,105 @@
   grid-gap: 3rem;
 }
 
-.table {
-  grid-row: span 2;
-  width: 100%;
-  border-collapse: collapse;
-  display: grid;
-  grid-template-columns: 3fr repeat(3, 1fr);
-  grid-template-rows: 80px repeat(3, 1fr);
-  align-items: center;
-  justify-items: center;
-  h3 {
-    font-family: $primary-font;
-    font-size: 20px;
-    color: #1d3178;
-    line-height: 5rem;
-    justify-self: flex-start;
-  }
-}
+// .table {
+//   grid-row: span 2;
+//   width: 100%;
+//   border-collapse: collapse;
+//   display: grid;
+//   grid-template-columns: 3fr repeat(3, 1fr);
+//   grid-template-rows: 80px repeat(3, 1fr);
+//   align-items: center;
+//   justify-items: center;
+//   h3 {
+//     font-family: $primary-font;
+//     font-size: 20px;
+//     color: #1d3178;
+//     line-height: 5rem;
+//     justify-self: flex-start;
+//   }
+// }
 
-.product-col,
-.price-col,
-.quantity-col,
-.total-col {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-  width: 100%;
-  border-bottom: 1px solid #e1e1e4;
-  font-family: $primary-font;
-  color: $text-color;
-  padding: 1rem 0;
-}
+// .product-col,
+// .price-col,
+// .quantity-col,
+// .total-col {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   height: 100%;
+//   width: 100%;
+//   border-bottom: 1px solid #e1e1e4;
+//   font-family: $primary-font;
+//   color: $text-color;
+//   padding: 1rem 0;
+// }
 
-.product-col {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100%;
-}
-.heading-total {
-  justify-self: flex-end !important;
-}
-.total-col {
-  justify-content: flex-end;
-}
-.thumbnail {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 100%;
-  width: 150px;
-  overflow: hidden;
+// .product-col {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   height: 100%;
+// }
+// .heading-total {
+//   justify-self: flex-end !important;
+// }
+// .total-col {
+//   justify-content: flex-end;
+// }
+// .thumbnail {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+//   height: 100%;
+//   width: 150px;
+//   overflow: hidden;
 
-  .image {
-    max-height: 100px;
-  }
-  span {
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-  }
-}
+//   .image {
+//     max-height: 100px;
+//   }
+//   span {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     cursor: pointer;
+//   }
+// }
 
-.product-name {
-  height: 100%;
-  align-self: flex-start;
-  padding-left: 10px;
-  h3 {
-    font-family: $primary-font;
-    font-size: 14px;
-  }
-}
+// .product-name {
+//   height: 100%;
+//   align-self: flex-start;
+//   padding-left: 10px;
+//   h3 {
+//     font-family: $primary-font;
+//     font-size: 14px;
+//   }
+// }
 
-.quantity-button,
-.quantity-value {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// .quantity-button,
+// .quantity-value {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  height: 1rem;
-  color: #bebfc2;
-  background-color: #e7e7ef;
-  width: 1rem;
-  text-align: center;
-  font-family: $primary-font;
-  display: inline-block;
-}
-.quantity-button {
-  cursor: pointer;
-  user-select: none;
-}
-.quantity-value {
-  background: #f0eff2;
-  width: 2rem;
-  line-height: 1.5;
-  font-size: 0.75rem;
-}
+//   height: 1rem;
+//   color: #bebfc2;
+//   background-color: #e7e7ef;
+//   width: 1rem;
+//   text-align: center;
+//   font-family: $primary-font;
+//   display: inline-block;
+// }
+// .quantity-button {
+//   cursor: pointer;
+//   user-select: none;
+// }
+// .quantity-value {
+//   background: #f0eff2;
+//   width: 2rem;
+//   line-height: 1.5;
+//   font-size: 0.75rem;
+// }
 
 .tools {
   display: flex;
@@ -186,11 +186,11 @@
   color: $text-color;
 }
 
-.clear {
-  grid-column: 4;
-  width: 100%;
-  height: 50px;
-  padding: 0.5rem;
-  padding-right: 0;
-  justify-self: flex-end;
-}
+// .clear {
+//   grid-column: 4;
+//   width: 100%;
+//   height: 50px;
+//   padding: 0.5rem;
+//   padding-right: 0;
+//   justify-self: flex-end;
+// }
