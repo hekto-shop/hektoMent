@@ -1,0 +1,69 @@
+@import "../../styles/css-variables.scss";
+
+.tools {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // grid-area: cart-summary;
+  h3 {
+    font-family: $primary-font;
+    font-size: 20px;
+    color: #1d3178;
+    line-height: 5rem;
+    height: 80px;
+  }
+  .totals {
+    background-color: #f4f4fc;
+    width: 100%;
+    height: 290px;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    .totals-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border-bottom: 2px solid #e8e6f1;
+      padding: 2rem 0 1rem 0;
+      h4,
+      span {
+        font-family: $secondary-font;
+        color: $text-color;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.taxinfo {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  p {
+    margin: 0 1rem;
+    font-family: $secondary-font;
+    color: #8a91ab;
+    font-size: 0.8rem;
+  }
+}
+
+.checkout {
+  background: none;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 1.4rem;
+  color: white;
+  height: 40px;
+  background-color: #19d16f;
+  font-family: $secondary-font;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkout:hover {
+  background-color: #1ce77b;
+}

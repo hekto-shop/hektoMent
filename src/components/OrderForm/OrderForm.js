@@ -161,10 +161,6 @@ const OrderForm = () => {
             />
           </Grid>
         </Grid>
-
-        <Grid item xs={12} lg={6}>
-          <button type="submit">Submit</button>
-        </Grid>
       </form>
     </div>
   );

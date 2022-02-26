@@ -1,7 +1,11 @@
 .container {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr fit-content;
+  grid-template-areas:
+    "order-form cart-items"
+    "order-form cart-summary";
   grid-gap: 2rem;
   width: 100%;
-  height: 920px;
+  padding: 5rem 0;
 }

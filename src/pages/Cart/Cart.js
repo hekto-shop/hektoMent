@@ -15,6 +15,7 @@ import CartItems from "../../components/CartItems/CartItems";
 
 import * as icons from "../../assets/icons";
 import classes from "./Cart.module.scss";
+import CartSummary from "../../components/CartSummary";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
@@ -66,27 +67,13 @@ const Cart = () => {
             handleClearCart={handleClearCart}
             showControls={true}
           />
-          <div className={classes.tools}>
-            <h3>Cart Tools</h3>
-            <div className={classes.totals}>
-              <div className={classes["totals-row"]}>
-                <h4>Totals:</h4>
-                <span>$ {totalPrice.toFixed(2)}</span>
-              </div>
-              <div className={classes["totals-row"]}>
-                <h4>VAT (Included):</h4>
-                <span>${VAT.toFixed(2)}</span>
-              </div>
-              <div className={classes.taxinfo}>
-                <img src={icons.greenTick} alt="tick" />
-                <p>Shipping charges are calculated at checkout</p>
-              </div>
 
-              <button onClick={goToCheckout} className={classes.checkout}>
-                Go to Checkout
-              </button>
-            </div>
-          </div>
+          <CartSummary
+            onClick={goToCheckout}
+            VAT={VAT}
+            totalPrice={totalPrice}
+            buttonText="Go to Checkout"
+          />
         </section>
       </PageContainer>
     </PageLayout>

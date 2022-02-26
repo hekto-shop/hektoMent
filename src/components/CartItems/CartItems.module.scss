@@ -19,8 +19,9 @@
 
 .narrow {
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: repeat(4, 80px);
+  grid-template-rows: 80px;
   grid-auto-rows: 80px;
+  grid-area: cart-items;
 }
 
 .product-col,
