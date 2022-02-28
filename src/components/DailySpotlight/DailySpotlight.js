@@ -34,7 +34,6 @@ const DailySpotlight = (props) => {
     });
 
   if (stockProducts.length === 0) return <div>Loading...</div>;
-  console.log(stockProducts);
 
   return (
     <section className={`${styles["spotlight-section"]} ${props.className}`}>

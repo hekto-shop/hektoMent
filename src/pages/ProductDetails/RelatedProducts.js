@@ -12,8 +12,6 @@ const RelatedProducts = (props) => {
   const history = useHistory();
   const currency = useSelector((store) => store.productsReducer.currency);
 
-  console.log(product);
-
   const navigateTo = (product) => {
     history.push(`/product/${product.productCode}`);
     window.scrollTo({

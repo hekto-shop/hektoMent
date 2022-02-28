@@ -7,5 +7,33 @@ export const orderValidation = (values) => {
     errors.email = "Invalid email address";
   }
 
+  if (!values.phone) {
+    errors.phone = "Phone number is required";
+  }
+
+  if (!values.firstName) {
+    errors.firstName = "Required";
+  }
+
+  if (!values.lastName) {
+    errors.lastName = "Required";
+  }
+
+  if (!values.address) {
+    errors.address = "Required";
+  }
+
+  if (!values.city) {
+    errors.city = "Required";
+  }
+
+  if (!values.state) {
+    errors.state = "Required";
+  }
+
+  if (!values.postalCode) {
+    errors.postalCode = "Required";
+  }
+
   return errors;
 };

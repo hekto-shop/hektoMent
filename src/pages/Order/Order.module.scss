@@ -9,3 +9,10 @@
   width: 100%;
   padding: 5rem 0;
 }
+
+@media only screen and (max-width: 1100px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "order-form" "cart-items" "cart-summary";
+  }
+}

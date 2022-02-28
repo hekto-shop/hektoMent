@@ -7,7 +7,6 @@ const LeatestProducts = () => {
   const [listType, setListType] = useState(0);
   const products = useSelector((store) => store.productsReducer.products);
   const sales = useSelector((store) => store.salesReducer.sales);
-  console.log(products);
 
   const handleList = (e) => {
     e.target
@@ -36,7 +35,6 @@ const LeatestProducts = () => {
     productList = [...sales].map((elem) => elem.product).slice(0, 6);
   }
 
-  console.log(productList);
   return (
     <section className={classes.section}>
       <h2>Leatest Products</h2>

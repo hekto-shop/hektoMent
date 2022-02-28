@@ -1,53 +1,82 @@
 import React from "react";
-import classes from "./OrderForm.module.scss";
-
+import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { orderValidation } from "../../validation/orderValidation";
 import { useSession } from "../../contexts/auth-context";
+
+import { orderValidation } from "../../validation/orderValidation";
 import { submitOrder } from "../../helpers/order-submission";
 
-import TextField from "@mui/material/TextField";
+import classes from "./OrderForm.module.scss";
+
 import Grid from "@mui/material/Grid";
-import { useSelector } from "react-redux";
+import TextField from "@mui/material/TextField";
+import Button from "../UI/Button";
+
+const initialValues = {
+  email: "",
+  phone: "",
+  firstName: "",
+  lastName: "",
+  address: "",
+  apartment: "",
+  city: "",
+  state: "",
+  postalCode: "",
+};
 
 const OrderForm = () => {
   const { user } = useSession();
+  const history = useHistory();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  console.log(user);
   const formik = useFormik({
-    initialValues: {
-      email: "",
-      firstName: "",
-      lastName: "",
-      address: "",
-      apartment: "",
-      city: "",
-      state: "",
-      postalCode: "",
-      orderedItems: cartItems,
-    },
+    initialValues,
     validate: orderValidation,
     onSubmit: (values) => {
-      values.orderedItems = cartItems;
-      submitOrder(values);
+      submit(values);
     },
   });
 
-  const autoFill = () => {
-    if (user) {
-      formik.values.email = user.email;
+  async function submit(values) {
+    try {
+      await submitOrder({
+        userId: user.uid,
+        contactDetails: values,
+        orderedItems: cartItems,
+      });
+
+      formik.resetForm(initialValues);
+      history.push("/order-completed");
+    } catch (err) {
+      console.error(err);
     }
-  };
+  }
+
+  const userInfo = user ? (
+    <p>
+      Logged in as <Link to="/profile">{user.displayName}</Link>
+    </p>
+  ) : (
+    <p>
+      Already have an account? <Link to="/login">Log in</Link>
+    </p>
+  );
 
   return (
     <div className={classes.container}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
-          <Grid item xs={12} lg={12}>
+          <Grid item xs={12} lg={6}>
+            <h2>Contact Information</h2>
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            {userInfo}
+          </Grid>
+          <Grid item xs={12} lg={6}>
             <TextField
               id="email"
               name="email"
-              label="Email or Phone number"
+              label="Email"
               variant="standard"
               fullWidth
               value={formik.values.email}
@@ -55,6 +84,24 @@ const OrderForm = () => {
               error={formik.touched.email && Boolean(formik.errors.email)}
               helperText={formik.touched.email && formik.errors.email}
             />
+          </Grid>
+
+          <Grid item xs={12} lg={6}>
+            <TextField
+              id="phone"
+              name="phone"
+              label="Phone number"
+              variant="standard"
+              fullWidth
+              value={formik.values.phone}
+              onChange={formik.handleChange}
+              error={formik.touched.phone && Boolean(formik.errors.phone)}
+              helperText={formik.touched.phone && formik.errors.phone}
+            />
+          </Grid>
+
+          <Grid marginTop={8} item xs={12} lg={12}>
+            <h2>Shipping Address</h2>
           </Grid>
 
           <Grid item xs={12} lg={6}>
@@ -159,6 +206,25 @@ const OrderForm = () => {
               }
               helperText={formik.touched.postalCode && formik.errors.postalCode}
             />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            lg={12}
+            justifyContent="center"
+            alignItems="center"
+            height={60}
+            marginTop={5}
+            justifySelf="flex-end"
+          >
+            <Button
+              type="submit"
+              fullWidth
+              fullHeight
+              onClick={formik.handleSubmit}
+            >
+              Place Order
+            </Button>
           </Grid>
         </Grid>
       </form>

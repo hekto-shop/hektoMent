@@ -7,13 +7,15 @@ import ProductCard from "./ProductCard";
 import MoreInfo from "./MoreInfo";
 import RelatedProducts from "./RelatedProducts";
 
+import { scrollTo } from "../../helpers/smooth-scroll";
+
 const ProductDetails = () => {
   const params = useParams();
   const id = params.id;
   const productList = useSelector((store) => store.productsReducer.products);
   const product = [...productList].find((prod) => prod.productCode === id);
 
-  useEffect(() => window.scrollTo({ top: 400, behavior: "smooth" }), []);
+  useEffect(() => scrollTo(), []);
   return (
     <PageLayout title="Product Details">
       <ProductCard product={product} />

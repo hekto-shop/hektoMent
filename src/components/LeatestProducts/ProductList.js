@@ -11,7 +11,6 @@ const ProductList = (props) => {
   const productList = props.productList;
   const currency = useSelector((store) => store.productsReducer.currency);
   const sales = useSelector((store) => store.salesReducer.sales);
-  console.log(sales);
 
   const saleBadge = (
     <span className={classes["sale-badge"]}>
