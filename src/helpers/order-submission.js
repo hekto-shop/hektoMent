@@ -14,8 +14,6 @@ export const submitOrder = async (data) => {
     "USD"
   );
 
-  console.log(updatedBudget);
-
   const ordersRef = db.doc(`/orders/${data.userId}-${now}`);
 
   const orderedProduct = data.orderedItems.map((item) => {
