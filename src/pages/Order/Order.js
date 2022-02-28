@@ -29,7 +29,12 @@ const Order = () => {
     <PageLayout title="Order">
       <PageContainer>
         <main className={classes.container}>
-          <OrderForm buttonIsDisabled={buttonIsDisabled} />
+          <OrderForm
+            buttonIsDisabled={buttonIsDisabled}
+            currency={currency}
+            totalPrice={totalPrice}
+            userBalance={userBalance}
+          />
           <CartItems cartItems={cartItems} currency={currency} />
           <CartSummary
             totalPrice={totalPrice}

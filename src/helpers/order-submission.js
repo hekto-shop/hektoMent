@@ -1,4 +1,5 @@
 import { db } from "../config/config";
+import { convertCurrency } from "./convert-currency";
 
 export const submitOrder = async (data) => {
   const userDocRef = db.doc(`/users/${data.userId}`);
@@ -6,6 +7,14 @@ export const submitOrder = async (data) => {
   const now = Date.now();
   const timeForDelivery = 60 * 60 * 24 * 3 * 1000;
   const deliveryDate = new Date(now + timeForDelivery);
+
+  const updatedBudget = convertCurrency(
+    data.updatedBudget,
+    data.currency,
+    "USD"
+  );
+
+  console.log(updatedBudget);
 
   const ordersRef = db.doc(`/orders/${data.userId}-${now}`);
 
@@ -23,4 +32,5 @@ export const submitOrder = async (data) => {
     ordered_product: orderedProduct,
     contact_details: data.contactDetails,
   });
+  userDocRef.update({ budget: updatedBudget });
 };

@@ -72,6 +72,10 @@ const getUserData = (uid) => async (dispatch) => {
   }
 };
 
+const updateUserBudget = (updatedBudget) => (dispatch) => {
+  dispatch(userActions.updateBudget(updatedBudget));
+};
+
 const changeCurrency = (val) => (dispatch) => {
   dispatch(productsActions.changeCurrency(val));
   dispatch(cartActions.changeCurrency(val));
@@ -110,6 +114,7 @@ export {
   getSales,
   getProducts,
   getUserData,
+  updateUserBudget,
   changeCurrency,
   addToCart,
   removeFromCart,

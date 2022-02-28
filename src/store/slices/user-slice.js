@@ -20,6 +20,9 @@ const userSlice = createSlice({
       );
       state.currency = action.payload;
     },
+    updateBudget(state, action) {
+      state.user.budget = action.payload;
+    },
   },
 });
 

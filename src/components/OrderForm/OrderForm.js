@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { useSession } from "../../contexts/auth-context";
 
 import { orderValidation } from "../../validation/orderValidation";
 import { submitOrder } from "../../helpers/order-submission";
+import { updateUserBudget } from "../../store/thunk";
 
 import classes from "./OrderForm.module.scss";
 
@@ -28,7 +29,10 @@ const initialValues = {
 const OrderForm = (props) => {
   const { user } = useSession();
   const history = useHistory();
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
+  const { userBalance, currency, totalPrice } = props;
+  const updatedBudget = userBalance - totalPrice;
 
   const formik = useFormik({
     initialValues,
@@ -44,10 +48,13 @@ const OrderForm = (props) => {
         userId: user.uid,
         contactDetails: values,
         orderedItems: cartItems,
+        currency,
+        updatedBudget,
       });
 
       formik.resetForm(initialValues);
       history.push("/order-completed");
+      dispatch(updateUserBudget(updatedBudget));
     } catch (err) {
       console.error(err);
     }
