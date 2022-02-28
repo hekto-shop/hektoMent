@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import classes from "./OrderCompleted.module.scss";
 import * as icons from "../../assets/icons";
+import { partners } from "../../assets/images";
+
+import { scrollTo } from "../../helpers/smooth-scroll";
 
 import PageLayout from "../../containers/PageLayout";
 import PageContainer from "../../containers/PageContainer";
@@ -12,6 +15,7 @@ const OrderCompleted = () => {
   const handleClick = () => {
     history.push("/shop");
   };
+  useEffect(() => scrollTo(), []);
   return (
     <PageLayout title="Order Completed">
       <PageContainer>
@@ -34,6 +38,9 @@ const OrderCompleted = () => {
             src={icons.checklist}
             alt="Ckecklist"
           />
+        </div>
+        <div className={classes.partners}>
+          <img src={partners} alt="our partners" />
         </div>
       </PageContainer>
     </PageLayout>

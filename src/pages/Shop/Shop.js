@@ -1,10 +1,11 @@
-import React, { useCallback } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import {
   makeSlice,
   productListReducer,
 } from "../../helpers/product-list-reducer";
+import { scrollTo } from "../../helpers/smooth-scroll";
 import { partners } from "../../assets/images";
 import classes from "./Shop.module.scss";
 
@@ -18,6 +19,8 @@ import PageContainer from "../../containers/PageContainer";
 const Shop = () => {
   const history = useHistory();
   const location = useLocation();
+
+  useEffect(() => scrollTo(), []);
 
   const params = new URLSearchParams(location.search);
 
