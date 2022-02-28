@@ -9,11 +9,11 @@ const CartSummary = (props) => {
       <div className={classes.totals}>
         <div className={classes["totals-row"]}>
           <h4>Totals:</h4>
-          <span>$ {props.totalPrice.toFixed(2)}</span>
+          <span>{`${props.currency} ${props.totalPrice.toFixed(2)}`}</span>
         </div>
         <div className={classes["totals-row"]}>
-          <h4>VAT (Included):</h4>
-          <span>${props.VAT.toFixed(2)}</span>
+          <h4>Your Balance:</h4>
+          <span>{`${props.currency} ${props.userBalance?.toFixed(2)}`}</span>
         </div>
 
         <div className={classes.taxinfo}>
@@ -21,7 +21,11 @@ const CartSummary = (props) => {
           <p>Shipping charges are included in price</p>
         </div>
 
-        <button onClick={props.onClick} className={classes.checkout}>
+        <button
+          disabled={props.buttonIsDisabled}
+          onClick={props.onClick}
+          className={classes.checkout}
+        >
           {props.buttonText}
         </button>
       </div>

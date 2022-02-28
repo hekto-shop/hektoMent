@@ -15,8 +15,9 @@ const Order = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const currency = useSelector((state) => state.productsReducer.currency);
   const history = useHistory();
+  const userBalance = useSelector((state) => state.userReducer.user.budget);
   const totalPrice = cartItems.reduce((acc, cur) => acc + cur.totalPrice, 0);
-  const VAT = (totalPrice / 1.18) * 0.18;
+  const buttonIsDisabled = userBalance < totalPrice;
 
   useEffect(() => scrollTo(), []);
 
@@ -28,11 +29,12 @@ const Order = () => {
     <PageLayout title="Order">
       <PageContainer>
         <main className={classes.container}>
-          <OrderForm />
+          <OrderForm buttonIsDisabled={buttonIsDisabled} />
           <CartItems cartItems={cartItems} currency={currency} />
           <CartSummary
             totalPrice={totalPrice}
-            VAT={VAT}
+            userBalance={userBalance}
+            currency={currency}
             buttonText="Edit Cart"
             onClick={editCartHandler}
           />

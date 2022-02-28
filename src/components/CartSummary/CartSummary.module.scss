@@ -67,3 +67,8 @@
 .checkout:hover {
   background-color: #1ce77b;
 }
+
+.checkout:disabled {
+  background-color: #1ce77b;
+  cursor: not-allowed;
+}

@@ -74,6 +74,8 @@ const getUserData = (uid) => async (dispatch) => {
 
 const changeCurrency = (val) => (dispatch) => {
   dispatch(productsActions.changeCurrency(val));
+  dispatch(cartActions.changeCurrency(val));
+  dispatch(userActions.changeCurrency(val));
 };
 
 const addToCart = (product) => (dispatch) => {

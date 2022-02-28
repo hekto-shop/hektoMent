@@ -9,7 +9,11 @@ const Button = (props) => {
   if (props.fullWidth) inlineStyles.width = "100%";
 
   let button = (
-    <button className={classes.button} type={props.type}>
+    <button
+      disabled={props.disabled}
+      className={classes.button}
+      type={props.type}
+    >
       {props.children}
     </button>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   addToCart,
   decreaseCartQuantity,
@@ -20,6 +19,7 @@ import CartSummary from "../../components/CartSummary";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const currency = useSelector((state) => state.productsReducer.currency);
+  const userBalance = useSelector((state) => state.userReducer.user.budget);
   const dispatch = useDispatch();
   const history = useHistory();
   const goToCheckout = () => history.push("/order");
@@ -39,7 +39,8 @@ const Cart = () => {
   };
 
   const totalPrice = cartItems.reduce((acc, cur) => acc + cur.totalPrice, 0);
-  const VAT = (totalPrice / 1.18) * 0.18;
+
+  const buttonIsDisabled = userBalance < totalPrice;
 
   if (cartItems.length === 0) {
     return (
@@ -70,9 +71,11 @@ const Cart = () => {
 
           <CartSummary
             onClick={goToCheckout}
-            VAT={VAT}
+            userBalance={userBalance}
+            currency={currency}
             totalPrice={totalPrice}
             buttonText="Go to Checkout"
+            buttonIsDisabled={buttonIsDisabled}
           />
         </section>
       </PageContainer>

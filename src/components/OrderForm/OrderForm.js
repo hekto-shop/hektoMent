@@ -25,10 +25,11 @@ const initialValues = {
   postalCode: "",
 };
 
-const OrderForm = () => {
+const OrderForm = (props) => {
   const { user } = useSession();
   const history = useHistory();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
+
   const formik = useFormik({
     initialValues,
     validate: orderValidation,
@@ -218,6 +219,7 @@ const OrderForm = () => {
             justifySelf="flex-end"
           >
             <Button
+              disabled={props.buttonIsDisabled}
               type="submit"
               fullWidth
               fullHeight
