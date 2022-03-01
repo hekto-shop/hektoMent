@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import PageContainer from "../../containers/PageContainer";
 import Button from "../UI/Button";
-
+import { formatCurrency } from "../../helpers/format-number";
 import styles from "./DailySpotlight.module.scss";
 
 const DailySpotlight = (props) => {
@@ -74,7 +74,10 @@ const DailySpotlight = (props) => {
                   {stockProducts[day - startDay].name}
                 </p>
                 <p className={styles["price"]}>
-                  {currency}: {stockProducts[day - startDay].price.toFixed(2)}
+                  {formatCurrency(
+                    stockProducts[day - startDay].price,
+                    currency
+                  )}
                 </p>
               </div>
             </div>

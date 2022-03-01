@@ -19,7 +19,8 @@ import CartSummary from "../../components/CartSummary";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const currency = useSelector((state) => state.productsReducer.currency);
-  const userBalance = useSelector((state) => state.userReducer.user.budget);
+  const userBalance =
+    useSelector((state) => state.userReducer.user?.budget) || 0;
   const dispatch = useDispatch();
   const history = useHistory();
   const goToCheckout = () => history.push("/order");

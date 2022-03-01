@@ -7,6 +7,7 @@ import {
   removeFromFavorites,
 } from "../../store/thunk";
 
+import { formatCurrency } from "../../helpers/format-number";
 import * as images from "../../assets/img/index";
 import * as icons from "../../assets/icons";
 
@@ -19,7 +20,7 @@ const ProductCard = (props) => {
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.cartReducer.cartItems);
   const favorites = useSelector((store) => store.cartReducer.favorites);
-  const product = props.product;
+  const { product, currency } = props;
   const [currentImage, setCurrentImage] = useState(null);
   const isInCart =
     cart.length === 0
@@ -94,7 +95,9 @@ const ProductCard = (props) => {
             >{`(${product.rating.ratings.length})`}</span>
           </div>
           <div className={classes.prices}>
-            <span className={classes.price}>{product.price.toFixed(2)}</span>
+            <span className={classes.price}>
+              {formatCurrency(product.price, currency)}
+            </span>
           </div>
           <div className={classes.colors}>Color</div>
           <p className={classes.description}>{product.description}</p>

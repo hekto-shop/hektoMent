@@ -13,12 +13,13 @@ const ProductDetails = () => {
   const params = useParams();
   const id = params.id;
   const productList = useSelector((store) => store.productsReducer.products);
+  const currency = useSelector((store) => store.productsReducer.currency);
   const product = [...productList].find((prod) => prod.productCode === id);
 
   useEffect(() => scrollTo(), []);
   return (
     <PageLayout title="Product Details">
-      <ProductCard product={product} />
+      <ProductCard product={product} currency={currency} />
       <MoreInfo product={product} />
       <RelatedProducts product={product} />
     </PageLayout>

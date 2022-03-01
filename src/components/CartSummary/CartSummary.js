@@ -2,6 +2,8 @@ import React from "react";
 import classes from "./CartSummary.module.scss";
 import * as icons from "../../assets/icons";
 
+import { formatCurrency } from "../../helpers/format-number";
+
 const CartSummary = (props) => {
   return (
     <div className={classes.tools}>
@@ -9,11 +11,11 @@ const CartSummary = (props) => {
       <div className={classes.totals}>
         <div className={classes["totals-row"]}>
           <h4>Totals:</h4>
-          <span>{`${props.currency} ${props.totalPrice.toFixed(2)}`}</span>
+          <span>{formatCurrency(props.totalPrice, props.currency)}</span>
         </div>
         <div className={classes["totals-row"]}>
           <h4>Your Balance:</h4>
-          <span>{`${props.currency} ${props.userBalance?.toFixed(2)}`}</span>
+          <span>{formatCurrency(props.userBalance, props.currency)}</span>
         </div>
 
         <div className={classes.taxinfo}>
