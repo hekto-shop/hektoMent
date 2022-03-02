@@ -33,7 +33,7 @@ const ProductDetails = () => {
 
   return (
     <PageLayout title="Product Details">
-      <ProductCard product={product} currency={currency} />}
+      <ProductCard product={product} currency={currency} />
       <MoreInfo product={product} />
       <RelatedProducts product={product} />
     </PageLayout>
