@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classes from "./GridItem.module.scss";
 
+import { formatCurrency } from "../../helpers/format-number";
+
 import Controls from "../../components/Controls";
 
 const GridItem = (props) => {
@@ -47,9 +49,7 @@ const GridItem = (props) => {
           <h4>{name}</h4>
         </Link>
         <div className={classes.colors}>{colors}</div>
-        <span className={classes.price}>{`${currency} ${price.toFixed(
-          2
-        )}`}</span>
+        <span className={classes.price}>{formatCurrency(price, currency)}</span>
       </div>
     </div>
   );

@@ -24,6 +24,10 @@ import starGrey from "./star-grey.svg";
 import deleteIcon from "./delete.svg";
 import greenTick from "./green-tick.svg";
 
+import redTick from "./red-tick.svg";
+import clock from "./clock.svg";
+import checklist from "./checklist.svg";
+
 export {
   email,
   cart,
@@ -46,4 +50,7 @@ export {
   starGrey,
   deleteIcon,
   greenTick,
+  redTick,
+  clock,
+  checklist,
 };

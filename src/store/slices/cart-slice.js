@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { convertCurrency } from "../../helpers/convert-currency";
 
 import * as localStorage from "../../helpers/local-storage";
 
-const initialState = { cartItems: [], favorites: [] };
+const initialState = { cartItems: [], favorites: [], currency: "USD" };
 
 const cartSlice = createSlice({
   name: "cart",
@@ -68,6 +69,24 @@ const cartSlice = createSlice({
     clearCart(state, action) {
       state.cartItems = [];
       localStorage.set("cart", state.cartItems);
+    },
+
+    changeCurrency(state, action) {
+      state.cartItems = state.cartItems.map((product) => {
+        const updatedPrice = convertCurrency(
+          product.price,
+          state.currency,
+          action.payload
+        );
+        const updatedTotalPrice = updatedPrice * product.quantity;
+
+        return {
+          ...product,
+          price: updatedPrice,
+          totalPrice: updatedTotalPrice,
+        };
+      });
+      state.currency = action.payload;
     },
   },
 });

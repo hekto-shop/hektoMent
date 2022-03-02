@@ -1,0 +1,23 @@
+@import "../../styles/css-variables.scss";
+
+.container {
+  background-color: #f8f8fd;
+  width: 100%;
+  height: fit-content;
+  padding: 5rem 2rem;
+  grid-area: order-form;
+  font-family: $secondary-font;
+
+  h2 {
+    font-family: $primary-font;
+    color: $text-color;
+  }
+  p {
+    text-align: end;
+    color: #c1c8e1;
+    font-size: 14px;
+    a {
+      color: inherit;
+    }
+  }
+}

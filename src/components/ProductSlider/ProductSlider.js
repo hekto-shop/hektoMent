@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
 import Controls from "../Controls";
 import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
-
+import { formatCurrency } from "../../helpers/format-number";
 import styles from "./ProductSlider.module.scss";
 
 const ProductSlider = (props) => {
@@ -75,7 +75,7 @@ const ProductSlider = (props) => {
             </div>
             <p className={styles["card-description__code"]}>Code - Y523201</p>
             <p className={styles["card-description__price"]}>
-              {currency}: {item.price.toFixed(2)}
+              {formatCurrency(item.price, currency)}
             </p>
           </div>
         </CardContent>

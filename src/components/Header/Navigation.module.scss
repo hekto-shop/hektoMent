@@ -1,7 +1,9 @@
 .navigation {
   width: 100%;
+  grid-area: nav;
   ul {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     width: 100%;
     padding: 0 3rem;
     justify-content: space-evenly;

@@ -4,6 +4,7 @@ import {
   getCategories,
   getSales,
   getProducts,
+  getUserData,
   getInitialCartState,
 } from "./store/thunk";
 import { useDispatch } from "react-redux";
@@ -20,6 +21,8 @@ import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
+import Order from "./pages/Order";
+import OrderCompleted from "./pages/OrderCompleted";
 
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
@@ -33,8 +36,9 @@ function App() {
     dispatch(getCategories());
     dispatch(getSales());
     dispatch(getProducts());
+    dispatch(getUserData(user?.uid));
     dispatch(getInitialCartState(initialCartState));
-  }, [initialCartState, dispatch]);
+  }, [initialCartState, dispatch, user]);
 
   return (
     <>
@@ -69,14 +73,11 @@ function App() {
         <Route path="/contact">
           <h1 className="temporary">Contact form</h1>
         </Route>
-        <Route path="/blog">
-          <h1 className="temporary">Blog</h1>
+        <Route exact path="/order">
+          <Order />
         </Route>
-        <Route path="/shop">
-          <h1 className="temporary">Shop</h1>
-        </Route>
-        <Route path="/wishlist">
-          <h1 className="temporary">Wishlist</h1>
+        <Route path="/order-completed">
+          <OrderCompleted />
         </Route>
       </Switch>
     </>

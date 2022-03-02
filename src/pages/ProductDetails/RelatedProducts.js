@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import classes from "./RelatedProducts.module.scss";
 import { shuffle } from "../../helpers/shuffle-array";
+import { scrollTo } from "../../helpers/smooth-scroll";
 import PageContainer from "../../containers/PageContainer";
 import Ratings from "../../components/Ratings";
 import { partners } from "../../assets/images";
@@ -12,14 +13,9 @@ const RelatedProducts = (props) => {
   const history = useHistory();
   const currency = useSelector((store) => store.productsReducer.currency);
 
-  console.log(product);
-
   const navigateTo = (product) => {
     history.push(`/product/${product.productCode}`);
-    window.scrollTo({
-      top: 400,
-      behavior: "smooth",
-    });
+    scrollTo(400);
   };
 
   const productList = useSelector((store) => store.productsReducer.products);

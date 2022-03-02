@@ -4,14 +4,13 @@ import { useSelector } from "react-redux";
 import Controls from "../Controls";
 
 import * as images from "../../assets/images";
-
+import { formatCurrency } from "../../helpers/format-number";
 import classes from "./ProductList.module.scss";
 
 const ProductList = (props) => {
   const productList = props.productList;
   const currency = useSelector((store) => store.productsReducer.currency);
   const sales = useSelector((store) => store.salesReducer.sales);
-  console.log(sales);
 
   const saleBadge = (
     <span className={classes["sale-badge"]}>
@@ -42,10 +41,10 @@ const ProductList = (props) => {
           <div className={classes.description}>
             <span className={classes["item-name"]}>{item.name}</span>
             <span className={classes["item-price"]}>
-              <span> {currency + " " + item.price.toFixed(2)}</span>
+              <span> {formatCurrency(item.price, currency)}</span>
               {isOnSale && (
                 <span className={classes["old-price"]}>
-                  {currency + " " + oldPrice.toFixed(2)}
+                  {formatCurrency(oldPrice, currency)}
                 </span>
               )}
             </span>
