@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Homepage.module.scss";
 import PageLayout from "../../containers/PageLayout";
 import MainSlider from "../../components/MainSlider";
 import FeaturedSlider from "../../components/FeaturedSlider";
@@ -6,8 +7,8 @@ import Shopex from "../../components/Shopex";
 import DailySpotlight from "../../components/DailySpotlight";
 
 import PageContainer from "../../containers/PageContainer";
-import styles from "./Homepage.module.scss";
 import LeatestProducts from "../../components/LeatestProducts/LeatestProducts";
+import TrendingProducts from "../../components/TrendingProducts/TrendingProducts";
 
 const Homepage = () => {
   return (
@@ -29,7 +30,9 @@ const Homepage = () => {
         </section>
       </PageContainer>
       <DailySpotlight className={styles["spotlight-section"]} />
-      <h1>Homepage</h1>
+      <PageContainer>
+        <TrendingProducts />
+      </PageContainer>
     </PageLayout>
   );
 };

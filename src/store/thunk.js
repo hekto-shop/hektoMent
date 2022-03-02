@@ -3,6 +3,7 @@ import { salesActions } from "./slices/sales-slice";
 import { productsActions } from "./slices/products-slice";
 import { cartActions } from "./slices/cart-slice";
 import { userActions } from "./slices/user-slice";
+import { ordersActions } from "./slices/orders-slice";
 import { db } from "../config/config";
 import { noImage } from "../assets/img";
 
@@ -109,6 +110,28 @@ const getInitialCartState = (cart) => (dispatch) => {
 const clearCart = () => (dispatch) => {
   dispatch(cartActions.clearCart());
 };
+
+const getTrendingItems = () => async (dispatch) => {
+  try {
+    const response = db.collection("orders");
+    const data = await response.get();
+
+    const dataArr = data.docs.map((item) => item.data());
+    console.log(dataArr);
+
+    const trendingItems = Promise.all(
+      dataArr.map(async (order) => {
+        const productSnapshot = await order.ordered_product;
+        console.log(productSnapshot);
+        // const productData = productSnapshot.data();
+        // return [productData, order.quantity];
+      })
+    );
+    dispatch(ordersActions.getTrendingItems(trendingItems));
+  } catch (err) {
+    console.log(err);
+  }
+};
 export {
   getCategories,
   getSales,
@@ -123,4 +146,5 @@ export {
   getInitialCartState,
   decreaseCartQuantity,
   clearCart,
+  getTrendingItems,
 };

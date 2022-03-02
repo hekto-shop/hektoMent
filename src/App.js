@@ -6,6 +6,7 @@ import {
   getProducts,
   getUserData,
   getInitialCartState,
+  getTrendingItems,
 } from "./store/thunk";
 import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
@@ -38,6 +39,7 @@ function App() {
     dispatch(getProducts());
     dispatch(getUserData(user?.uid));
     dispatch(getInitialCartState(initialCartState));
+    dispatch(getTrendingItems());
   }, [initialCartState, dispatch, user]);
 
   return (

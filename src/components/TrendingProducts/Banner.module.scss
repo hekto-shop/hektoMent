@@ -1,0 +1,31 @@
+@import "../../styles/css-variables.scss";
+@import "../../styles/mixins.scss";
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  position: relative;
+  height: $tr-pr-banner-height;
+  h2 {
+    font-family: $primary-font;
+    color: $text-color;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+  }
+
+  span {
+    font-family: $secondary-font;
+    color: $secondary-color;
+    // text-decoration: underline;
+    display: inline-block;
+    border-bottom: 1px solid $secondary-color;
+    width: fit-content;
+    cursor: pointer;
+  }
+  img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
