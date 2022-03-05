@@ -10,8 +10,15 @@ import Banner from "./Banner";
 const TrendingProducts = () => {
   const productsList = useSelector((state) => state.productsReducer.products);
   const currency = useSelector((state) => state.productsReducer.currency);
+  const trendingItemIDs = useSelector(
+    (state) => state.ordersReducer.trendingItems
+  );
 
-  const trendingItems = [...productsList].slice(0, 4).map((product) => (
+  const trendingItems = trendingItemIDs.map((id) =>
+    productsList.find((elem) => elem.productCode === id)
+  );
+
+  const markup = trendingItems.slice(0, 4).map((product) => (
     <Grid
       item
       xs={12}
@@ -35,7 +42,7 @@ const TrendingProducts = () => {
       <Grid item xs={12}>
         <h2 className={classes.heading}>Trending Products</h2>
       </Grid>
-      {trendingItems}
+      {markup}
       <Grid item xs={12} md={6} lg={4}>
         <Banner
           text="23% off for selected items"

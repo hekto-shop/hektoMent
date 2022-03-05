@@ -6,6 +6,17 @@ import { userActions } from "./slices/user-slice";
 import { ordersActions } from "./slices/orders-slice";
 import { db } from "../config/config";
 import { noImage } from "../assets/img";
+import { selectTrendingItems } from "../helpers/select-trending-items";
+
+const getProdData = (docRef) => {
+  return docRef.get().then((doc) => {
+    if (doc.exists) {
+      return doc.data();
+    } else {
+      return null;
+    }
+  });
+};
 
 const getCategories = () => async (dispatch) => {
   try {
@@ -115,19 +126,24 @@ const getTrendingItems = () => async (dispatch) => {
   try {
     const response = db.collection("orders");
     const data = await response.get();
-
     const dataArr = data.docs.map((item) => item.data());
-    console.log(dataArr);
 
-    const trendingItems = Promise.all(
-      dataArr.map(async (order) => {
-        const productSnapshot = await order.ordered_product;
-        console.log(productSnapshot);
-        // const productData = productSnapshot.data();
-        // return [productData, order.quantity];
+    const allOrders = dataArr
+      .map((data) => {
+        return data.ordered_product;
+      })
+      .flat();
+
+    const ordersData = await Promise.all(
+      allOrders.map(async (order) => {
+        const productRef = order.product;
+        const productData = await getProdData(productRef);
+        const productCode = productData.productCode;
+        return { quantity: order.quantity, productCode };
       })
     );
-    dispatch(ordersActions.getTrendingItems(trendingItems));
+    const topFourItems = selectTrendingItems(ordersData, 4);
+    dispatch(ordersActions.getTrendingItems(topFourItems));
   } catch (err) {
     console.log(err);
   }
