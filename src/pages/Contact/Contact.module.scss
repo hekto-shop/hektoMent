@@ -1,0 +1,21 @@
+.row-container {
+    display: grid;    
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 2.604vw;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.img-container {
+    margin-top:1.953vw;
+    margin-bottom: 1.953vw;
+}
+
+#contact-img {
+    width: 44.466vw;
+    height: 44.466vw;
+}
+

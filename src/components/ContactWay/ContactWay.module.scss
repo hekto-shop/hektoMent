@@ -1,0 +1,52 @@
+@import "../../styles/css-variables.scss";
+
+
+.contact-way-title {
+  padding-top: 1.302vw;
+  width: 33.984vw;
+  height: 2.865vw;
+  font-family: $primary-font;
+  font-size: 2.344vw;
+  line-height: 3.125vw;
+  color: #151875;
+}
+
+.contact-dot{
+  display: block;
+  float: left;
+  margin-right: 0.651vw;
+  width: 2.930vw;
+  height: 2.930vw;
+  border-radius: 50%;
+}
+
+#purple {
+  background: #5726DF;
+}
+#pink {
+  background: #FB2E86;
+}
+#orange {
+  background: #FFB265;;
+}
+#green {
+  background: #1BE982;;
+}
+
+
+.dot-container {
+  display: grid;    
+  grid-template-columns: 19.531vw 19.531vw ;
+  grid-row-gap: 5.208vw;
+  grid-column-gap: 0px;
+  padding-top: 2.604vw;
+}
+
+.dot-text {
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.042vw;
+  line-height: 1.693vw;
+  color: #8A8FB9;
+}

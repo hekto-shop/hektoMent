@@ -1,0 +1,74 @@
+@import "../../styles/css-variables.scss";
+
+.get-in-touch-title {
+  width: 33.984vw;
+  height: 2.865vw;
+  margin-top: 1.953vw;
+  font-family: $primary-font;
+  font-size: 2.344vw;
+  line-height: 3.125vw;
+  color: #151875;
+}
+  
+.get-in-touch-text {
+  width: 35.807vw;
+  height: 5.794vw;
+  margin-top: 1.953vw;
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.042vw;
+  line-height: 1.693vw;
+  color: #8A8FB9;
+}
+
+.form{
+  border: 0.065vw solid rgba(164, 182, 200, 0.7);
+  box-sizing: border-box;
+  border-radius: 0.195vw;  
+  font-size: 1.042vw;
+  font-family: $secondary-font;
+}
+
+#form-name {
+  height: 2.930vw;
+  width: 16.602vw;
+  margin-right: 1.497vw;
+  margin-bottom: 1.953vw;
+}
+
+#form-email {
+  height: 2.930vw;
+  width: 16.602vw;
+}
+
+#form-subject {
+  height: 2.930vw;
+  width: 34.766vw;
+  margin-bottom: 1.953vw;
+}
+
+#form-message {
+  height: 10.807vw;
+  width: 34.766vw;
+  margin-bottom: 1.953vw;
+}
+
+.form-submit {
+  background: #FB2E86;
+  border-radius: 0.195vw;
+  height: 2.865vw;
+  width: 10.221vw;
+  cursor: pointer;
+  color: white;
+  font-size: 1.042vw;
+  border: none;
+  font-family: $secondary-font;
+}
+
+@media only screen and (max-width: 600px) {
+  .get-in-touch-text {
+    font-size: 6.252px;
+    height: 34.764px;
+  }
+}
