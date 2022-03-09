@@ -3,8 +3,20 @@ import { salesActions } from "./slices/sales-slice";
 import { productsActions } from "./slices/products-slice";
 import { cartActions } from "./slices/cart-slice";
 import { userActions } from "./slices/user-slice";
+import { ordersActions } from "./slices/orders-slice";
 import { db } from "../config/config";
 import { noImage } from "../assets/img";
+import { selectTrendingItems } from "../helpers/select-trending-items";
+
+const getProdData = (docRef) => {
+  return docRef.get().then((doc) => {
+    if (doc.exists) {
+      return doc.data();
+    } else {
+      return null;
+    }
+  });
+};
 
 const getCategories = () => async (dispatch) => {
   try {
@@ -122,6 +134,33 @@ const getInitialCartState = (cart) => (dispatch) => {
 const clearCart = () => (dispatch) => {
   dispatch(cartActions.clearCart());
 };
+
+const getTrendingItems = () => async (dispatch) => {
+  try {
+    const response = db.collection("orders");
+    const data = await response.get();
+    const dataArr = data.docs.map((item) => item.data());
+
+    const allOrders = dataArr
+      .map((data) => {
+        return data.ordered_product;
+      })
+      .flat();
+
+    const ordersData = await Promise.all(
+      allOrders.map(async (order) => {
+        const productRef = order.product;
+        const productData = await getProdData(productRef);
+        const productCode = productData.productCode;
+        return { quantity: order.quantity, productCode };
+      })
+    );
+    const topFourItems = selectTrendingItems(ordersData, 4);
+    dispatch(ordersActions.getTrendingItems(topFourItems));
+  } catch (err) {
+    console.log(err);
+  }
+};
 export {
   getCategories,
   getSales,
@@ -136,4 +175,5 @@ export {
   getInitialCartState,
   decreaseCartQuantity,
   clearCart,
+  getTrendingItems,
 };

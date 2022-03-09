@@ -1,0 +1,88 @@
+@import "../../styles/css-variables.scss";
+@import "../../styles/mixins.scss";
+
+.vertical-card {
+  display: grid;
+  margin: 0 auto;
+  grid-template-rows: 250px 1fr;
+  justify-items: center;
+  padding: 10px;
+  width: 270px;
+  height: 350px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+
+  .img-container {
+    @include centered-flex;
+    background-color: #f5f6f8;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    img {
+      max-width: 100%;
+      height: 100%;
+    }
+  }
+
+  .details {
+    @include centered-flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+  }
+  .product-name {
+    align-self: center;
+  }
+}
+
+.vertical-card:hover {
+  transform: translateY(-10px);
+  box-shadow: rgba(44, 47, 51, 0.2) 0px 8px 24px;
+}
+
+.horizontal-card {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 2fr;
+  cursor: pointer;
+
+  .img-container {
+    @include centered-flex;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: #f5f6f8;
+    img {
+      height: 80px;
+      max-width: 100%;
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.horizontal-card:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.product-name {
+  font-family: $secondary-font;
+  color: $text-color;
+  font-weight: 700;
+}
+
+.product-price {
+  font-size: 14px;
+  font-family: $primary-font;
+  color: $text-color;
+}

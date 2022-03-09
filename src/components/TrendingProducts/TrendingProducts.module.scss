@@ -1,0 +1,17 @@
+@import "../../styles/css-variables.scss";
+
+.heading {
+  font-family: $primary-font;
+  color: $text-color;
+  font-size: $section-heading-size;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.small-list {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 5px;
+  width: 100%;
+  height: $tr-pr-banner-height;
+}
