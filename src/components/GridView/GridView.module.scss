@@ -1,7 +1,22 @@
+@import "../../styles/css-variables.scss";
+
+.empty-products {
+  font-family: $primary-font;
+  font-size: 2rem;
+  text-align: center;
+  color: $text-color;
+}
+
 .grid-container {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5rem;
+}
+
+.grid-container-filter {
+  margin-left: auto;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 @media only screen and (max-width: 1300px) {

@@ -9,6 +9,7 @@ const ShopSettings = (props) => {
     handlePerPage,
     handleGridView,
     handleListView,
+    handleFilterClick,
     numberOfProducts,
   } = props;
   return (
@@ -46,7 +47,7 @@ const ShopSettings = (props) => {
         </button>
       </label>
       <input onChange={handleSearch} type="text" />
-      <button>
+      <button onClick={handleFilterClick}>
         <img src={icons.filter} />
       </button>
     </div>
