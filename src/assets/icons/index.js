@@ -21,6 +21,13 @@ import filter from "./filter.svg";
 import starYellow from "./star-yellow.svg";
 import starGrey from "./star-grey.svg";
 
+import deleteIcon from "./delete.svg";
+import greenTick from "./green-tick.svg";
+
+import redTick from "./red-tick.svg";
+import clock from "./clock.svg";
+import checklist from "./checklist.svg";
+
 export {
   email,
   cart,
@@ -41,4 +48,9 @@ export {
   filter,
   starYellow,
   starGrey,
+  deleteIcon,
+  greenTick,
+  redTick,
+  clock,
+  checklist,
 };

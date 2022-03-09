@@ -2,6 +2,7 @@ import { categoryActions } from "./slices/category-slice";
 import { salesActions } from "./slices/sales-slice";
 import { productsActions } from "./slices/products-slice";
 import { cartActions } from "./slices/cart-slice";
+import { userActions } from "./slices/user-slice";
 import { db } from "../config/config";
 import { noImage } from "../assets/img";
 
@@ -73,8 +74,25 @@ const getProducts = () => async (dispatch) => {
   dispatch(productsActions.getProducts(payload));
 };
 
+const getUserData = (uid) => async (dispatch) => {
+  try {
+    const docRef = db.doc(`users/${uid}`);
+    const userSnapshot = await docRef.get();
+    const userData = userSnapshot.data();
+    dispatch(userActions.getUserData(userData));
+  } catch (err) {
+    console.log("err");
+  }
+};
+
+const updateUserBudget = (updatedBudget) => (dispatch) => {
+  dispatch(userActions.updateBudget(updatedBudget));
+};
+
 const changeCurrency = (val) => (dispatch) => {
   dispatch(productsActions.changeCurrency(val));
+  dispatch(cartActions.changeCurrency(val));
+  dispatch(userActions.changeCurrency(val));
 };
 
 const addToCart = (product) => (dispatch) => {
@@ -85,6 +103,10 @@ const removeFromCart = (product) => (dispatch) => {
   dispatch(cartActions.removeFromCart(product));
 };
 
+const decreaseCartQuantity = (product) => (dispatch) => {
+  dispatch(cartActions.decreaseCartQuantity(product));
+};
+
 const addToFavorites = (product) => (dispatch) => {
   dispatch(cartActions.addToFavorites(product));
 };
@@ -93,13 +115,25 @@ const removeFromFavorites = (product) => (dispatch) => {
   dispatch(cartActions.removeFromFavorites(product));
 };
 
+const getInitialCartState = (cart) => (dispatch) => {
+  dispatch(cartActions.getInitialState(cart));
+};
+
+const clearCart = () => (dispatch) => {
+  dispatch(cartActions.clearCart());
+};
 export {
   getCategories,
   getSales,
   getProducts,
+  getUserData,
+  updateUserBudget,
   changeCurrency,
   addToCart,
   removeFromCart,
   addToFavorites,
   removeFromFavorites,
+  getInitialCartState,
+  decreaseCartQuantity,
+  clearCart,
 };

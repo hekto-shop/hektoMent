@@ -33,9 +33,12 @@ const Header = () => {
           </div>
 
           <div className={classes.controls}>
-            <div>{currency}</div>
             <div>
-              <select onChange={handleCurrency} value={currency}>
+              <select
+                className={classes.select}
+                onChange={handleCurrency}
+                value={currency}
+              >
                 <option value="USD">USD</option>
                 <option value="GEL">GEL</option>
                 <option value="EUR">EUR</option>
@@ -58,7 +61,7 @@ const Header = () => {
 
       <div className={classes["bottom-header"]}>
         <PageContainer className={classes["grid-header"]}>
-          <Link to="/homepage">
+          <Link className={classes.logo} to="/homepage">
             <h1>Hekto</h1>
           </Link>
 

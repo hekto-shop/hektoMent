@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import classes from "./ListItem.module.scss";
+import { formatCurrency } from "../../helpers/format-number";
 
 import Ratings from "../Ratings";
 
@@ -37,9 +38,9 @@ const ListItem = (props) => {
           {colors}
         </div>
         <div>
-          <span className={classes.price}>{`${currency} ${price.toFixed(
-            2
-          )}`}</span>
+          <span className={classes.price}>
+            {formatCurrency(price, currency)}
+          </span>
           <span className={classes.rating}>
             <Ratings product={product} />
           </span>

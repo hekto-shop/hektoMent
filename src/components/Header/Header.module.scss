@@ -1,3 +1,5 @@
+@import "../../styles/css-variables.scss";
+
 $text-color: #f1f1f1;
 
 h4 {
@@ -66,8 +68,8 @@ a {
   }
 }
 
-select {
-  background: transparent;
+.select {
+  background: #7e33e0;
   color: $text-color;
   font-size: 1rem;
   font-style: normal;
@@ -80,13 +82,36 @@ select {
 .grid-header {
   display: grid;
   grid-template-columns: 100px 1fr minmax(150px, 275px);
+  grid-template-areas: "logo nav searchbar";
   height: 4.5rem;
   align-items: center;
   color: #0d0e43;
+}
+
+.logo {
+  grid-area: logo;
   h1 {
     font-family: Josefin Sans;
     font-size: 34px;
     line-height: 40px;
     cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .contact-info {
+    display: none !important;
+  }
+
+  .controls {
+    width: 100%;
+  }
+
+  .grid-header {
+    grid-template-columns: minmax(120px, 200px) 1fr;
+    grid-template-rows: 60px 60px;
+    grid-template-areas:
+      "logo searchbar"
+      "nav nav";
   }
 }

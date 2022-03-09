@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
+import Controls from "../Controls";
 import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
-
+import { formatCurrency } from "../../helpers/format-number";
 import styles from "./ProductSlider.module.scss";
 
 const ProductSlider = (props) => {
@@ -29,9 +30,6 @@ const ProductSlider = (props) => {
       sx={{ width: 600 }}
       onMouseEnter={() => hoverHandler(index)}
       onMouseLeave={hoverCancelHandler}
-      onClick={() => {
-        history.push(`/product/${item.productCode}`);
-      }}
     >
       <CardActionArea>
         <div className={styles["card-media"]}>
@@ -51,6 +49,15 @@ const ProductSlider = (props) => {
               View Details
             </button>
           ) : null}
+          {index === current && hovering ? (
+            <Controls
+              layout="horizontal-top"
+              product={item}
+              redirectHandler={(e) => {
+                history.push(`/product/${item.productCode}`);
+              }}
+            />
+          ) : null}
         </div>
         <CardContent sx={{ p: 0 }}>
           <div className={styles["card-description"]}>
@@ -68,7 +75,7 @@ const ProductSlider = (props) => {
             </div>
             <p className={styles["card-description__code"]}>Code - Y523201</p>
             <p className={styles["card-description__price"]}>
-              {currency}: {item.price}
+              {formatCurrency(item.price, currency)}
             </p>
           </div>
         </CardContent>

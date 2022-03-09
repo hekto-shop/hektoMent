@@ -1,0 +1,20 @@
+@import "../../styles/css-variables.scss";
+
+.section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 380px);
+  grid-template-rows: 370px 1fr;
+  margin: 5rem 0;
+  grid-gap: 3rem;
+}
+
+.emptycart {
+  height: 400px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 400px;
+  font-family: $primary-font;
+  font-size: 2rem;
+  color: $text-color;
+}
