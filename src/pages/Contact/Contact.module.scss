@@ -4,11 +4,6 @@
     grid-gap: 2.604vw;
 }
 
-.contact-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .img-container {
     margin-top:1.953vw;
     margin-bottom: 1.953vw;
@@ -19,3 +14,13 @@
     height: 44.466vw;
 }
 
+@media only screen and (max-width: 800px) {
+    .row-container {
+        display: grid;    
+        grid-template-columns: 1fr ;
+        grid-gap: 2.604vw;
+    }
+    .img-container {
+        display: none;
+    }
+}

@@ -22,38 +22,6 @@
   color: #8A8FB9;
 }
 
-.form{
-  border: 0.065vw solid rgba(164, 182, 200, 0.7);
-  box-sizing: border-box;
-  border-radius: 0.195vw;  
-  font-size: 1.042vw;
-  font-family: $secondary-font;
-}
-
-#form-name {
-  height: 2.930vw;
-  width: 16.602vw;
-  margin-right: 1.497vw;
-  margin-bottom: 1.953vw;
-}
-
-#form-email {
-  height: 2.930vw;
-  width: 16.602vw;
-}
-
-#form-subject {
-  height: 2.930vw;
-  width: 34.766vw;
-  margin-bottom: 1.953vw;
-}
-
-#form-message {
-  height: 10.807vw;
-  width: 34.766vw;
-  margin-bottom: 1.953vw;
-}
-
 .form-submit {
   background: #FB2E86;
   border-radius: 0.195vw;
@@ -61,14 +29,34 @@
   width: 10.221vw;
   cursor: pointer;
   color: white;
-  font-size: 1.042vw;
+  font-size: 1.6vw;
   border: none;
   font-family: $secondary-font;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
+  .form-submit {
+    border-radius: 1.5px;
+    height: 23px;
+    width: 80px;
+    font-size: 14px;
+  }
+
   .get-in-touch-text {
-    font-size: 6.252px;
-    height: 34.764px;
+    width: 100%;
+    height:auto;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .get-in-touch-title {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 20px;
+    padding-top: 40px;
   }
 }

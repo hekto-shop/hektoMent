@@ -5,7 +5,6 @@ import InfoAboutUs from "../../components/InfoAboutUs";
 import PageContainer from "../../containers/PageContainer";
 import ContactWay from "../../components/ContactWay";
 import GetInTouch from "../../components/GetInTouch";
-
 import contact  from "../../assets/img/contact.png"
 
 const Contact = () => {
