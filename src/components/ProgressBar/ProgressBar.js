@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Tracker.module.scss";
+import classes from "./ProgressBar.module.scss";
 import {
   whiteStar,
   whiteCircle,
@@ -32,13 +32,13 @@ const steps = [
     text: "En-Route",
   },
   {
-    status: "arrived",
+    status: "delivered",
     icon: flag,
-    text: "Arrived",
+    text: "Delivered",
   },
 ];
 
-const Tracker = ({ order }) => {
+const ProgressBar = ({ order }) => {
   const getStepPosition = (transferStatus) =>
     steps.findIndex(({ status }) => status === transferStatus);
   const completedSteps = steps.slice(
@@ -86,4 +86,4 @@ const Tracker = ({ order }) => {
   );
 };
 
-export default Tracker;
+export default ProgressBar;

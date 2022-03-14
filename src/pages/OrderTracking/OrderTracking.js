@@ -6,13 +6,16 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import classes from "./OrderTracking.module.scss";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Tracker from "../../components/Tracker";
+import ProgressBar from "../../components/ProgressBar";
 
 const OrderTracking = () => {
   const myOrders = useSelector((store) => store.ordersReducer.myOrders);
-  console.log(myOrders);
 
-  const markup = myOrders.map((order) => {
+  const markup = [...myOrders].reverse().map((order) => {
+    const orderIsCompleted = order.order_status === "delivered";
+    const date = new Date(order.order_estimation.seconds * 1000);
+    const EST = new Intl.DateTimeFormat("en-UK").format(date);
+
     return (
       <Accordion>
         <AccordionSummary
@@ -23,13 +26,17 @@ const OrderTracking = () => {
           <h2 className={classes["order-number"]}>
             ORDER <span>#{order.order_number}</span>
           </h2>
+          <p className={classes["est-arrival"]}>
+            {orderIsCompleted ? "Delivered" : `Est: ${EST}`}
+          </p>
         </AccordionSummary>
         <AccordionDetails>
-          <Tracker order={order} />
+          <ProgressBar order={order} />
         </AccordionDetails>
       </Accordion>
     );
   });
+
   return (
     <PageLayout title="Orders Tracking">
       <PageContainer>
