@@ -40,7 +40,7 @@ const Footer = () => {
         <Link to="">Orders History</Link>
       </li>
       <li>
-        <Link to="">Order Tracking</Link>
+        <Link to="/order-tracking">Order Tracking</Link>
       </li>
     </>
   ) : (

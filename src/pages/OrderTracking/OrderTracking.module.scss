@@ -1,0 +1,13 @@
+@import "../../styles/css-variables.scss";
+
+.section {
+  padding: 5rem 0;
+}
+.order-number {
+  font-family: $primary-font;
+  color: $text-color;
+  font-size: 1.1rem;
+  span {
+    color: $secondary-color;
+  }
+}

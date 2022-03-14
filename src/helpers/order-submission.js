@@ -1,5 +1,6 @@
 import { db } from "../config/config";
 import { convertCurrency } from "./convert-currency";
+import { getCollectionLength } from "./get-collection-length";
 
 export const submitOrder = async (data) => {
   const userDocRef = db.doc(`/users/${data.userId}`);
@@ -14,6 +15,10 @@ export const submitOrder = async (data) => {
     "USD"
   );
 
+  const ordersLength = await getCollectionLength("orders");
+
+  const orderNumber = String(ordersLength + 1).padStart(5, "0");
+
   const ordersRef = db.doc(`/orders/${data.userId}-${now}`);
 
   const orderedProduct = data.orderedItems.map((item) => {
@@ -23,10 +28,11 @@ export const submitOrder = async (data) => {
   });
 
   ordersRef.set({
-    order_Owner: userDocRef,
+    order_Owner: data.userId,
     order_estimation: deliveryDate,
     order_fulfill: "done",
-    order_status: "Not shipped",
+    order_status: "Not Processed",
+    order_number: orderNumber,
     ordered_product: orderedProduct,
     contact_details: data.contactDetails,
   });

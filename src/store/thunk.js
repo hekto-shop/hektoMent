@@ -22,7 +22,6 @@ const getCategories = () => async (dispatch) => {
   try {
     const response = db.collection("categories");
     const data = await response.get();
-
     const dataArr = data.docs.map((item) => item.data().name);
 
     dispatch(categoryActions.getCategories(dataArr));
@@ -161,6 +160,25 @@ const getTrendingItems = () => async (dispatch) => {
     console.log(err);
   }
 };
+
+// ORDERS
+
+const getMyOrders = (userId) => async (dispatch) => {
+  if (!userId) return;
+  try {
+    const res = db.collection("orders");
+    const data = await res.get();
+
+    const dataArr = data.docs
+      .map((item) => item.data())
+      .filter((order) => order.order_Owner === userId);
+
+    dispatch(ordersActions.getMyOrders(dataArr));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export {
   getCategories,
   getSales,
@@ -176,4 +194,5 @@ export {
   decreaseCartQuantity,
   clearCart,
   getTrendingItems,
+  getMyOrders,
 };

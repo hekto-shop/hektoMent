@@ -28,6 +28,14 @@ import redTick from "./red-tick.svg";
 import clock from "./clock.svg";
 import checklist from "./checklist.svg";
 
+import whiteStar from "./white-star.svg";
+import whiteCircle from "./white-circle.svg";
+import checkSquare from "./check-square.svg";
+import clockBlue from "./clock-blue.svg";
+import flag from "./flag.svg";
+import packageIcon from "./package.svg";
+import truck from "./truck.svg";
+
 export {
   email,
   cart,
@@ -53,4 +61,11 @@ export {
   redTick,
   clock,
   checklist,
+  whiteStar,
+  whiteCircle,
+  checkSquare,
+  clockBlue,
+  flag,
+  truck,
+  packageIcon,
 };
