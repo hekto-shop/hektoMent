@@ -19,3 +19,36 @@
   right: 50px;
   color: $text-color;
 }
+
+.section-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  font-family: $primary-font;
+  h2 {
+    color: $text-color;
+  }
+
+  input {
+    padding: 1rem;
+    border: 2px solid #e7e6ef;
+    outline: none;
+  }
+
+  input::placeholder {
+    font-family: $secondary-font;
+  }
+}
+
+.no-orders {
+  display: flex;
+  font-family: $primary-font;
+  color: $text-color;
+  font-size: 2rem;
+  width: 100%;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+}

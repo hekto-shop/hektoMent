@@ -53,13 +53,14 @@ const ProgressBar = ({ order }) => {
   return (
     <div className={classes.progressbar}>
       <span className={classes.track}>
-        {steps.map((step) => {
+        {steps.map((step, idx) => {
           const isCompleted = completedSteps.some(
             (item) => item.status === step.status
           );
           return (
             <div className={classes["icons-container"]}>
               <span
+                style={{ animationDelay: `${idx / 6}s` }}
                 className={
                   isCompleted
                     ? classes["circle-completed"]

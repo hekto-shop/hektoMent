@@ -24,17 +24,21 @@ export const submitOrder = async (data) => {
   const orderedProduct = data.orderedItems.map((item) => {
     const productRef = db.doc(`/products/${item.itemId}`);
 
-    return { quantity: item.quantity, product: productRef };
+    return {
+      quantity: item.quantity,
+      itemId: item.itemId,
+      product: productRef,
+    };
   });
 
   ordersRef.set({
     order_Owner: data.userId,
     order_estimation: deliveryDate,
-    order_fulfill: "done",
-    order_status: "Not Processed",
+    order_status: "pendingApproval",
     order_number: orderNumber,
     ordered_product: orderedProduct,
     contact_details: data.contactDetails,
+    log: [{ date: new Date(now), action: "Order Submitted" }],
   });
   userDocRef.update({ budget: updatedBudget });
 };

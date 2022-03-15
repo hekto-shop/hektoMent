@@ -7,11 +7,21 @@ import classes from "./OrderTracking.module.scss";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ProgressBar from "../../components/ProgressBar";
+import OrderLog from "../../components/OrderLog";
 
 const OrderTracking = () => {
   const myOrders = useSelector((store) => store.ordersReducer.myOrders);
+  const [keyword, setKeyword] = useState("");
 
-  const markup = [...myOrders].reverse().map((order) => {
+  const filteredOrders = [...myOrders].filter((order) => {
+    if (keyword === "") {
+      return true;
+    } else {
+      return order.order_number.includes(keyword);
+    }
+  });
+
+  const markup = filteredOrders.reverse().map((order) => {
     const orderIsCompleted = order.order_status === "delivered";
     const date = new Date(order.order_estimation.seconds * 1000);
     const EST = new Intl.DateTimeFormat("en-UK").format(date);
@@ -32,15 +42,35 @@ const OrderTracking = () => {
         </AccordionSummary>
         <AccordionDetails>
           <ProgressBar order={order} />
+          <OrderLog order={order} />
         </AccordionDetails>
       </Accordion>
     );
   });
 
+  const handleChange = (e) => {
+    setKeyword(e.target.value);
+  };
+
   return (
     <PageLayout title="Orders Tracking">
       <PageContainer>
-        <section className={classes.section}>{markup}</section>
+        <section className={classes.section}>
+          <div className={classes["section-head"]}>
+            <h2>My Orders</h2>
+            <input
+              onChange={(e) => handleChange(e)}
+              type="number"
+              min="0"
+              placeholder="Order Number"
+            />
+          </div>
+          {filteredOrders.length > 0 ? (
+            markup
+          ) : (
+            <div className={classes["no-orders"]}>Nothing found</div>
+          )}
+        </section>
       </PageContainer>
     </PageLayout>
   );
