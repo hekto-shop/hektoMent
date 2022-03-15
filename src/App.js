@@ -25,7 +25,7 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import Order from "./pages/Order";
 import OrderCompleted from "./pages/OrderCompleted";
-import OrderTracking from "./pages/OrdersTracking";
+import OrderTracking from "./pages/OrderTracking";
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
 const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
