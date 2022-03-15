@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -21,6 +22,7 @@ const ProductCard = (props) => {
   const cart = useSelector((store) => store.cartReducer.cartItems);
   const favorites = useSelector((store) => store.cartReducer.favorites);
   const { product, currency } = props;
+  console.log(product);
   const [currentImage, setCurrentImage] = useState(null);
   const isInCart =
     cart.length === 0
@@ -115,9 +117,16 @@ const ProductCard = (props) => {
               <img src={icons.heartBlue} alt="Favs" />
             </span>
           </div>
-          <div>Categories</div>
-          <div>Tags</div>
-          <div>Share</div>
+          <div>Category: {product.category}</div>
+          <div>
+            Tags:{" "}
+            {product.tags.map((tag) => (
+              <Link
+                className={classes.tag}
+                to={`/shop?keyword=${tag}`}
+              >{`#${tag} `}</Link>
+            ))}
+          </div>
         </div>
       </div>
     </PageContainer>

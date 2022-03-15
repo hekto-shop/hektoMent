@@ -24,7 +24,8 @@ export const productListReducer = (
       if (!searchValue) return true;
       return (
         product.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        product.productCode.toLowerCase().includes(searchValue.toLowerCase())
+        product.productCode.toLowerCase().includes(searchValue.toLowerCase()) ||
+        product.tags.join(",").toLowerCase().includes(searchValue.toLowerCase())
       );
     })
     .filter((product) => {

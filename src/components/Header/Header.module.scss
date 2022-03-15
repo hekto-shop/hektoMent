@@ -83,7 +83,7 @@ a {
   display: grid;
   grid-template-columns: 100px 1fr minmax(150px, 275px);
   grid-template-areas: "logo nav searchbar";
-  height: 4.5rem;
+  min-height: 4.5rem;
   align-items: center;
   color: #0d0e43;
 }

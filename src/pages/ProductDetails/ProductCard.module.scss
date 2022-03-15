@@ -95,8 +95,7 @@
 
 .actions {
   @include centered-flex;
-  width: 40%;
-  max-width: 400px;
+  width: 360px;
   height: 2rem;
 }
 
@@ -120,6 +119,18 @@
   }
 }
 
+.tag {
+  color: $secondary-color;
+  font-style: italic;
+}
 .active {
   background-color: #a9acc6;
+}
+
+@media only screen and (max-width: 1150px) {
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 420px;
+    height: fit-content;
+  }
 }
