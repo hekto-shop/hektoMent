@@ -9,7 +9,10 @@ import classes from "./Footer.module.scss";
 import PageContainer from "../../containers/PageContainer";
 import Button from "../UI/Button";
 
+import { useTheme } from '@mui/material/styles';
+
 const Footer = () => {
+  const theme = useTheme();
   const { user } = useSession();
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -50,7 +53,7 @@ const Footer = () => {
   );
   return (
     <footer className={classes.footer}>
-      <section className={classes["bottom-navigation"]}>
+      <section className={classes["bottom-navigation"]} style={{"backgroundColor": theme.palette.background.default}}>
         <PageContainer className={classes.grid}>
           <div>
             <h2>Hekto</h2>

@@ -25,6 +25,8 @@ import Login from "./pages/Login/Login";
 import Order from "./pages/Order";
 import OrderCompleted from "./pages/OrderCompleted";
 
+import ToggleColorMode from "./theme/Toggle";
+
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
 const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
@@ -41,48 +43,49 @@ function App() {
     dispatch(getInitialCartState(initialCartState));
     dispatch(getTrendingItems());
   }, [initialCartState, dispatch, user]);
+  
 
   return (
-    <>
-      <Switch>
-        <Route exact path="/">
-          {!user ? <SplashPage /> : <Redirect to="/homepage" />}
-        </Route>
-        <Route path="/homepage">
-          <Homepage />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/shop">
-          <Shop />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-        <Route path="/product/:id">
-          <ProductDetails />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-        <Route path="/products">
-          <Products />
-        </Route>
-        <Route path="/contact">
-          <h1 className="temporary">Contact form</h1>
-        </Route>
-        <Route exact path="/order">
-          <Order />
-        </Route>
-        <Route path="/order-completed">
-          <OrderCompleted />
-        </Route>
-      </Switch>
-    </>
+      <ToggleColorMode>
+        <Switch>
+          <Route exact path="/">
+            {!user ? <SplashPage /> : <Redirect to="/homepage" />}
+          </Route>
+          <Route path="/homepage">
+            <Homepage />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/shop">
+            <Shop />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/product/:id">
+            <ProductDetails />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+          <Route path="/products">
+            <Products />
+          </Route>
+          <Route path="/contact">
+            <h1 className="temporary">Contact form</h1>
+          </Route>
+          <Route exact path="/order">
+            <Order />
+          </Route>
+          <Route path="/order-completed">
+            <OrderCompleted />
+          </Route>
+        </Switch>
+      </ToggleColorMode>
   );
 }
 

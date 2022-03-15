@@ -7,7 +7,10 @@ import * as images from "../../assets/images";
 import { formatCurrency } from "../../helpers/format-number";
 import classes from "./ProductList.module.scss";
 
+import { useTheme } from '@mui/material/styles';
+
 const ProductList = (props) => {
+  const theme = useTheme();
   const productList = props.productList;
   const currency = useSelector((store) => store.productsReducer.currency);
   const sales = useSelector((store) => store.salesReducer.sales);
@@ -39,9 +42,9 @@ const ProductList = (props) => {
         </div>
         <Link to={`/product/${item.productCode}`}>
           <div className={classes.description}>
-            <span className={classes["item-name"]}>{item.name}</span>
-            <span className={classes["item-price"]}>
-              <span> {formatCurrency(item.price, currency)}</span>
+            <span className={classes["item-name"]}  style={{"color": theme.palette.text.primary}}>{item.name}</span>
+            <span className={classes["item-price"]}  style={{"color": theme.palette.text.primary}}>
+              <span> {formatCurrency(item.price, currency)} </span>
               {isOnSale && (
                 <span className={classes["old-price"]}>
                   {formatCurrency(oldPrice, currency)}

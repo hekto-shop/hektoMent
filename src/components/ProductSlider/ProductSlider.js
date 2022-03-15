@@ -6,6 +6,8 @@ import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { formatCurrency } from "../../helpers/format-number";
 import styles from "./ProductSlider.module.scss";
 
+import { useTheme } from '@mui/material/styles';
+
 const ProductSlider = (props) => {
   const [hovering, setHovering] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -22,6 +24,8 @@ const ProductSlider = (props) => {
   const hoverCancelHandler = () => {
     setHovering(false);
   };
+
+  const theme = useTheme();
 
   return (
     <Card
@@ -73,8 +77,8 @@ const ProductSlider = (props) => {
                 );
               })}
             </div>
-            <p className={styles["card-description__code"]}>Code - Y523201</p>
-            <p className={styles["card-description__price"]}>
+            <p className={styles["card-description__code"]} style={{"color": theme.palette.text.primary}}>Code - Y523201</p>
+            <p className={styles["card-description__price"]} style={{"color": theme.palette.text.primary}}>
               {formatCurrency(item.price, currency)}
             </p>
           </div>
