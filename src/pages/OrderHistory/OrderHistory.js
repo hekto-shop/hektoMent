@@ -15,7 +15,6 @@ const OrderHistory = () => {
   useEffect(() => scrollTo(), []);
 
   const markup = myOrders.map((order) => {
-    console.log(order.log[0].date.seconds);
     const date = new Date(order.log[0].date.seconds * 1000);
     const submissionDate = new Intl.DateTimeFormat("en-UK", {
       dateStyle: "short",
@@ -34,7 +33,6 @@ const OrderHistory = () => {
     );
   });
 
-  console.log(myOrders.length === 0);
   return (
     <PageLayout title="Order History">
       <PageContainer>
