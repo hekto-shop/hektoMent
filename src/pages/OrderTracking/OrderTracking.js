@@ -10,6 +10,8 @@ import ProgressBar from "../../components/ProgressBar";
 import OrderLog from "../../components/OrderLog";
 import CartItems from "../../components/CartItems/CartItems";
 
+import { scrollTo } from "../../helpers/smooth-scroll";
+
 const OrderTracking = () => {
   const myOrders = useSelector((store) => store.ordersReducer.myOrders);
   const allProducts = useSelector((store) => store.productsReducer.products);
@@ -25,6 +27,7 @@ const OrderTracking = () => {
   });
 
   useEffect(() => {
+    scrollTo();
     setOrder((prevState) => {
       return [...myOrders]?.find((order) => order?.order_number === orderNum);
     });

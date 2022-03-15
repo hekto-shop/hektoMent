@@ -26,6 +26,8 @@ import Login from "./pages/Login/Login";
 import Order from "./pages/Order";
 import OrderCompleted from "./pages/OrderCompleted";
 import OrderTracking from "./pages/OrderTracking";
+import OrderHistory from "./pages/OrderHistory";
+
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
 const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
@@ -82,6 +84,9 @@ function App() {
         </Route>
         <Route path="/order-completed">
           <OrderCompleted />
+        </Route>
+        <Route path="/order-history">
+          <OrderHistory />
         </Route>
         <Route path="/order-tracking/:orderId">
           <OrderTracking />

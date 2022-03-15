@@ -10,7 +10,7 @@ import {
   packageIcon,
 } from "../../assets/icons";
 
-const steps = [
+export const steps = [
   {
     status: "pendingApproval",
     icon: clockBlue,

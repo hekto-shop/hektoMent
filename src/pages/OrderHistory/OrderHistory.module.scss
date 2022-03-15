@@ -1,0 +1,22 @@
+@import "../../styles/css-variables.scss";
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: center;
+  grid-gap: 5px;
+  margin: 5rem 0;
+  font-family: $secondary-font;
+
+  h3 {
+    font-family: $primary-font;
+    text-align: center;
+  }
+
+  a,
+  span {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+}
