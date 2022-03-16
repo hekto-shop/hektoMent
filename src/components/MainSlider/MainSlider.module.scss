@@ -59,7 +59,7 @@ $container-height: 764px;
   p {
     color: $sub-text-color;
     margin-bottom: 1rem;
-    display: box;
+    display: flex;
     padding-right: 1rem;
     font-family: $secondary-font;
     line-height: 2rem;
