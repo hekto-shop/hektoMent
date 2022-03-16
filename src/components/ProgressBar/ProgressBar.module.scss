@@ -1,0 +1,103 @@
+@import "../../styles/css-variables.scss";
+
+.progressbar {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+}
+.track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 10px;
+  background-color: black;
+  position: absolute;
+  border-radius: 10px;
+  background-color: #c5cae9;
+}
+
+.track-completed {
+  position: absolute;
+  display: inline-block;
+  height: 100%;
+  background-color: #7e33e0;
+  border-radius: 10px;
+  animation-name: track-line;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+
+.circle-completed,
+.circle-uncompleted {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: white;
+  background: #7e33e0;
+  z-index: 1;
+  border-radius: 50%;
+  animation-name: circle;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  // animation-iteration-count: 1;
+  animation-direction: forward;
+
+  img {
+    width: 60%;
+  }
+}
+
+.circle-uncompleted {
+  background-color: #c5cae9;
+}
+
+.icons-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  position: absolute;
+  width: 70px;
+  top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p {
+    font-family: $secondary-font;
+    text-align: center;
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes track-line {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+  }
+}
