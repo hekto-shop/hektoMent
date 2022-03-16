@@ -23,7 +23,7 @@
     }
     form {
       height: 2rem;
-      width: 60%;
+      width: 280px;
       margin: 2rem 0;
       display: grid;
       grid-template-columns: 70% 30%;
@@ -78,5 +78,30 @@
 .social {
   a {
     padding: 0 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    height: fit-content;
+    justify-content: space-between;
+  }
+
+  .categories,
+  .pages {
+    display: none;
+  }
+
+  .customer-care {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    ul {
+      width: 100%;
+      li {
+        text-align: end;
+      }
+    }
   }
 }
