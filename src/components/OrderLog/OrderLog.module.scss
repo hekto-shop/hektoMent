@@ -1,0 +1,24 @@
+@import "../../styles/css-variables.scss";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2rem;
+
+  h3 {
+    font-family: $primary-font;
+    color: $text-color;
+  }
+
+  .log-item {
+    width: 100%;
+    margin: 0.5rem 0;
+    font-family: $secondary-font;
+
+    .date {
+      font-weight: 600;
+    }
+  }
+}
