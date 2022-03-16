@@ -34,7 +34,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "cross-env NODE_ENV=development react-scripts start",
-    "build": "yarn clean && cross-env NODE_ENV=prod react-scripts build",
+    "build": "yarn clean && cross-env NODE_ENV=prod react-scripts build --profile",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
