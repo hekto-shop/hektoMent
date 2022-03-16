@@ -1,4 +1,4 @@
-import { storage, auth } from "../config/config";
+import { storage, db } from "../config/config";
 
 export const uploadImage = (userId, file) => {
   return new Promise((resolve, reject) => {
@@ -28,11 +28,18 @@ export const getDownloadUrl = async (userId, currentUser) => {
     .updateProfile({
       photoURL,
     })
-    .then(() => {
-      console.log("Update Successful");
-    })
+    .then(() => {})
     .catch((error) => {
       throw new Error(error);
     });
+
+  db.collection("users")
+    .doc(userId)
+    .update({ avatarURL: photoURL })
+    .then(() => {})
+    .catch((error) => {
+      throw new Error(error);
+    });
+
   return photoURL;
 };
