@@ -28,6 +28,13 @@ import redTick from "./red-tick.svg";
 import clock from "./clock.svg";
 import checklist from "./checklist.svg";
 
+import target from "./target-icon.svg";
+import order from "./order-icon.svg";
+import edit from "./edit-icon.svg";
+import envelope from "./envelop-icon.svg";
+import profile from "./user-icon.png";
+import downArrow from "./down-arrow.png";
+
 export {
   email,
   cart,
@@ -53,4 +60,10 @@ export {
   redTick,
   clock,
   checklist,
+  target,
+  order,
+  edit,
+  envelope,
+  profile,
+  downArrow,
 };

@@ -1,0 +1,37 @@
+.navigation-side {
+  width: fit-content;
+
+  .navigation-side__items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    list-style: none;
+
+    li {
+      padding: 15px;
+
+      &:hover,
+      &:active {
+        background: #6e60df;
+        border-radius: 50%;
+        box-shadow: 4px 5px 15px 4px rgb(160, 151, 228);
+      }
+    }
+
+    .navigation-icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navigation-side {
+    width: 100%;
+  }
+
+  .navigation-side__items {
+    flex-direction: row !important;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../../styles/css-variables.scss";
+
+.section {
+  margin-top: 4.4rem;
+  margin-left: 52px;
+  width: 100%;
+
+  form {
+    width: 50%;
+    margin: 2rem auto;
+  }
+
+  h2 {
+    font-family: $primary-font;
+    color: #333333;
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  form {
+    width: 100%;
+    float: left;
+  }
+}

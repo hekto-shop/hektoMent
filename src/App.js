@@ -24,6 +24,7 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import Order from "./pages/Order";
 import OrderCompleted from "./pages/OrderCompleted";
+import Profile from "./pages/Profile";
 
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
@@ -50,6 +51,9 @@ function App() {
         </Route>
         <Route path="/homepage">
           <Homepage />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
         <Route path="/signup">
           <Signup />

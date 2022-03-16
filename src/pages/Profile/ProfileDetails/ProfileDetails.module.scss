@@ -1,0 +1,35 @@
+@import "../../../styles/css-variables.scss";
+
+.section {
+  margin-top: 4.4rem;
+  margin-left: 52px;
+  width: 100%;
+
+  h2 {
+    font-family: $primary-font;
+    color: #333333;
+    font-size: 3rem;
+  }
+
+  .details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+    height: 100vh;
+    margin-top: 2rem;
+
+    .details-top-bar,
+    .details-lower-bar {
+      max-width: 60%;
+      //   background-color: red;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+
+      div {
+        width: 300px;
+        height: 360px;
+      }
+    }
+  }
+}

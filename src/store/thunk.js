@@ -91,6 +91,7 @@ const getUserData = (uid) => async (dispatch) => {
     const docRef = db.doc(`users/${uid}`);
     const userSnapshot = await docRef.get();
     const userData = userSnapshot.data();
+
     dispatch(userActions.getUserData(userData));
   } catch (err) {
     console.log("err");

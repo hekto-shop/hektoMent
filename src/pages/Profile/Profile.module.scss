@@ -1,0 +1,16 @@
+// Navigation styles
+.navigation {
+  margin-top: 5rem;
+}
+
+// Main section styles
+
+main {
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+}
