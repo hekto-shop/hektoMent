@@ -27,7 +27,7 @@ const SplashPage = () => {
         </div>
         <section className={styles["splash-page__section"]}>
           <p onClick={() => redirect("/shop")}>Shop It</p>
-          <h2>Hekto E-Com</h2>
+          <h2>MaleMova E-Com</h2>
         </section>
         <p
           onClick={() => redirect("/homepage")}
