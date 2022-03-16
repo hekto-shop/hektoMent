@@ -32,6 +32,8 @@ const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
 const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
 
+console.log(process.env.REACT_APP_APIKEY,'api')
+
 function App() {
   const { user } = useSession();
   const dispatch = useDispatch();
