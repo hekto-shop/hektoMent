@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import classes from "./OrderCompleted.module.scss";
 import * as icons from "../../assets/icons";
@@ -15,7 +15,7 @@ const OrderCompleted = () => {
   const handleClick = () => {
     history.push("/shop");
   };
-  useEffect(() => scrollTo(), []);
+  useLayoutEffect(() => scrollTo(220), []);
   return (
     <PageLayout title="Order Completed">
       <PageContainer>

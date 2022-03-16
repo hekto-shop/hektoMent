@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -7,6 +7,7 @@ import {
   removeFromCart,
   clearCart,
 } from "../../store/thunk";
+import { scrollTo } from "../../helpers/smooth-scroll";
 
 import PageLayout from "../../containers/PageLayout";
 import PageContainer from "../../containers/PageContainer";
@@ -23,6 +24,11 @@ const Cart = () => {
     useSelector((state) => state.userReducer.user?.budget) || 0;
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useLayoutEffect(() => {
+    scrollTo(220);
+  }, []);
+
   const goToCheckout = () => history.push("/order");
 
   const handleIncrease = (product) => {

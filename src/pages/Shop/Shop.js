@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import {
@@ -22,7 +22,7 @@ const Shop = () => {
   const history = useHistory();
   const location = useLocation();
 
-  useEffect(() => scrollTo(), []);
+  useLayoutEffect(() => scrollTo(220), []);
 
   const params = new URLSearchParams(location.search);
 
