@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run clean && cross-env NODE_ENV=prod npm run compile",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
