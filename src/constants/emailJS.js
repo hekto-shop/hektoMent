@@ -1,6 +1,6 @@
 export const emailConfig = {
-  USER_ID: "RcyCQhgEAOW7BIPTC",
-  ACCESS_TOKEN: "NjWAg-Ap1V13zae6oJQL0",
-  TEMPLATE_ID: "template_q7gms1v",
-  SERVICE_ID: "service_n5vgimj",
+  USER_ID: process.env.REACT_APP_USER_ID,
+  ACCESS_TOKEN: process.env.REACT_APP_ACCESS_TOKEN,
+  TEMPLATE_ID: process.env.REACT_APP_TEMPLATE_ID,
+  SERVICE_ID: process.env.REACT_APP_SERVICE_ID,
 };
