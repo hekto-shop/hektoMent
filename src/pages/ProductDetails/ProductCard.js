@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -115,9 +116,16 @@ const ProductCard = (props) => {
               <img src={icons.heartBlue} alt="Favs" />
             </span>
           </div>
-          <div>Categories</div>
-          <div>Tags</div>
-          <div>Share</div>
+          <div>Category: {product.category}</div>
+          <div>
+            Tags:{" "}
+            {product.tags.map((tag) => (
+              <Link
+                className={classes.tag}
+                to={`/shop?keyword=${tag}`}
+              >{`#${tag} `}</Link>
+            ))}
+          </div>
         </div>
       </div>
     </PageContainer>

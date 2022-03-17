@@ -34,6 +34,13 @@ import edit from "./edit-icon.svg";
 import envelope from "./envelop-icon.svg";
 import profile from "./user-icon.png";
 import downArrow from "./down-arrow.png";
+import whiteStar from "./white-star.svg";
+import whiteCircle from "./white-circle.svg";
+import checkSquare from "./check-square.svg";
+import clockBlue from "./clock-blue.svg";
+import flag from "./flag.svg";
+import packageIcon from "./package.svg";
+import truck from "./truck.svg";
 
 export {
   email,
@@ -66,4 +73,11 @@ export {
   envelope,
   profile,
   downArrow,
+  whiteStar,
+  whiteCircle,
+  checkSquare,
+  clockBlue,
+  flag,
+  truck,
+  packageIcon,
 };

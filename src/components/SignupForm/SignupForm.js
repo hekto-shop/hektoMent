@@ -187,7 +187,6 @@ const SignupForm = () => {
               variant="standard"
               fullWidth
               rows="3"
-              fullWidth
               onChange={formik.handleChange}
               value={formik.values.about}
             />

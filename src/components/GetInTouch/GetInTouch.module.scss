@@ -1,0 +1,67 @@
+@import "../../styles/css-variables.scss";
+
+.get-in-touch-title {
+  width: 33.984vw;
+  height: 2.865vw;
+  margin-top: 1.953vw;
+  font-family: $primary-font;
+  font-size: 2.344vw;
+  line-height: 3.125vw;
+  color: #151875;
+}
+
+.get-in-touch-text {
+  width: 35.807vw;
+  height: 5.794vw;
+  margin-top: 1.953vw;
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.042vw;
+  line-height: 1.693vw;
+  color: #8a8fb9;
+}
+
+.form-submit {
+  background: #fb2e86;
+  border-radius: 0.195vw;
+  height: 2.865vw;
+  width: 10.221vw;
+  cursor: pointer;
+  color: white;
+  font-size: 1.6vw;
+  border: none;
+  font-family: $secondary-font;
+}
+
+.form-submit:disabled {
+  cursor: not-allowed;
+  background: #f87fb4;
+}
+
+@media only screen and (max-width: 800px) {
+  .form-submit {
+    border-radius: 1.5px;
+    height: 23px;
+    width: 80px;
+    font-size: 14px;
+  }
+
+  .get-in-touch-text {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .get-in-touch-title {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 20px;
+    padding-top: 40px;
+  }
+}

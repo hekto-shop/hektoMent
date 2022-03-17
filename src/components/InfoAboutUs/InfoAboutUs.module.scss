@@ -1,0 +1,70 @@
+@import "../../styles/css-variables.scss";
+
+.info-title {
+  width: 33.984vw;
+  height: 2.865vw;
+  padding-top: 1.302vw;
+  font-family: $primary-font;
+  font-size: 2.344vw;
+  line-height: 3.125vw;
+  color: #151875;
+}
+
+.info-text {
+  width: 35.807vw;
+  height: 5.794vw;
+  padding-top: 2.279vw;
+  font-family: $secondary-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.042vw;
+  line-height: 1.693vw;
+  color: #8A8FB9;
+}
+
+.dot {
+  margin-top: 3.581vw;
+  margin-right: 0.651vw;
+  width: 1.628vw;
+  height: 1.628vw;
+  background: #5625DF;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#purple {
+  background: #5726DF;
+}
+
+#pink {
+  background: #FF27B7;;
+}
+
+#blue {
+  background:  #37DAF3;
+}
+
+@media only screen and (max-width: 800px) {
+  .info-title {
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+  
+  .info-text {
+    width: 100%;
+    height:auto;
+    padding-top: 15px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  
+  .dot {
+    margin-top: 20px;
+    margin-right:5px;
+    width: 20px;
+    height: 20px;
+  }
+}

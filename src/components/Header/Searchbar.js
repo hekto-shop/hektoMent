@@ -12,7 +12,6 @@ const Searchbar = () => {
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(keyword);
     setKeyword("");
   };
   return (

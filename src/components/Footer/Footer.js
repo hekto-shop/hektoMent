@@ -37,10 +37,10 @@ const Footer = () => {
         <Link to="">Returns</Link>
       </li>
       <li>
-        <Link to="">Orders History</Link>
+        <Link to="/order-history">Orders History</Link>
       </li>
       <li>
-        <Link to="">Order Tracking</Link>
+        <Link to="/order-tracking">Order Tracking</Link>
       </li>
     </>
   ) : (
@@ -52,7 +52,7 @@ const Footer = () => {
     <footer className={classes.footer}>
       <section className={classes["bottom-navigation"]}>
         <PageContainer className={classes.grid}>
-          <div>
+          <div className={classes.contacts}>
             <h2>Hekto</h2>
             <form onSubmit={handleSubscribe}>
               <input type="email" placeholder="Enter Email Address" />
@@ -67,15 +67,15 @@ const Footer = () => {
               </address>
             </div>
           </div>
-          <div>
+          <div className={classes.categories}>
             <h3>Categories</h3>
             <ul>{categMarkup}</ul>
           </div>
-          <div>
+          <div className={classes["customer-care"]}>
             <h3>Customer Care</h3>
             <ul>{customerCare}</ul>
           </div>
-          <div>
+          <div className={classes.pages}>
             <h3>Pages</h3>
             <ul>
               <li>
