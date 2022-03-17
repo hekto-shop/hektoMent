@@ -28,8 +28,6 @@ const ProductCard = (props) => {
   const cart = useSelector((store) => store.cartReducer.cartItems);
   const favorites = useSelector((store) => store.cartReducer.favorites);
   const { product, currency } = props;
-  console.log(product);
-  
   const [currentImage, setCurrentImage] = useState(null);
   const isInCart =
     cart.length === 0

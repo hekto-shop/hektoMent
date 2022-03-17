@@ -3,15 +3,14 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 
-
 const firebaseConfig = {
-    apiKey: "AIzaSyBM-eOSyPk_m4t2OHhJYxikhPW_TiKcpJ4",
-    authDomain: "ecom-hecto-ment.firebaseapp.com",
-    projectId: "ecom-hecto-ment",
-    storageBucket: "ecom-hecto-ment.appspot.com",
-    messagingSenderId: "571292004603",
-    appId: "1:571292004603:web:cf612208d4d3d9c208405e",
-    measurementId: "G-CWB446E1PB"
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APPID,
+    measurementId: process.env.REACT_APP_MEASURMENTID
   };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

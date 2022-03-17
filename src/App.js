@@ -7,6 +7,7 @@ import {
   getUserData,
   getInitialCartState,
   getTrendingItems,
+  getMyOrders,
 } from "./store/thunk";
 import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
@@ -24,6 +25,8 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import Order from "./pages/Order";
 import OrderCompleted from "./pages/OrderCompleted";
+import OrderTracking from "./pages/OrderTracking";
+import OrderHistory from "./pages/OrderHistory";
 
 import ToggleColorMode from "./theme/Toggle";
 
@@ -42,6 +45,7 @@ function App() {
     dispatch(getUserData(user?.uid));
     dispatch(getInitialCartState(initialCartState));
     dispatch(getTrendingItems());
+    dispatch(getMyOrders(user?.uid));
   }, [initialCartState, dispatch, user]);
   
 
@@ -83,6 +87,12 @@ function App() {
           </Route>
           <Route path="/order-completed">
             <OrderCompleted />
+          </Route>
+          <Route path="/order-history">
+            <OrderHistory />
+          </Route>
+          <Route path="/order-tracking/:orderId">
+            <OrderTracking />
           </Route>
         </Switch>
       </ToggleColorMode>
