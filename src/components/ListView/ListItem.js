@@ -7,8 +7,13 @@ import { formatCurrency } from "../../helpers/format-number";
 import Ratings from "../Ratings";
 
 import Controls from "../../components/Controls";
+import { useTheme } from '@mui/material/styles';
 
 const ListItem = (props) => {
+  const theme = useTheme();
+  const nameColor = {"color": theme.palette.text.textColor2};
+  const itemShadow = (theme.palette.mode === 'dark') ? {'boxShadow': '0 0 8px 4px rgba(248, 246, 253, 0.75)'} :
+                      {'boxShadow': '0px 0px 20px 5px rgba(248, 246, 253, 0.75)'} ;
   const { product } = props;
   const { color, description, name, price, productCode, productImage } =
     product;
@@ -26,14 +31,14 @@ const ListItem = (props) => {
   });
 
   return (
-    <div className={classes.item}>
+    <div className={classes.item} style={itemShadow}>
       <div className={classes["image-container"]}>
         <img src={productImage} alt={name} />
       </div>
       <div className={classes.details}>
         <div>
           <Link to={`/product/${productCode}`}>
-            <h2>{name}</h2>
+            <h2 style={nameColor}>{name}</h2>
           </Link>
           {colors}
         </div>

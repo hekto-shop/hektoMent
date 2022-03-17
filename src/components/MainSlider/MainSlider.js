@@ -7,7 +7,21 @@ import * as images from "../../assets/img";
 
 import Button from "../UI/Button";
 
+import { useTheme } from '@mui/material/styles';
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  container:{
+    backgroundColor: (theme)=> theme.palette.background.main,
+    width: '100%',
+    height: '764px',
+    position: 'relative',
+  }
+});
+
 const MainSlider = () => {
+  const theme = useTheme();
+  const stylesClasses = useStyles(theme);
   const sales = useSelector((state) => state.salesReducer.sales);
 
   const markup = sales.map((item, idx) => {
@@ -35,7 +49,7 @@ const MainSlider = () => {
   });
 
   return (
-    <main className={classes.container}>
+    <main className={stylesClasses.container}>
       <PageContainer>
         <img className={classes["lamp-image"]} src={images.lamp} alt="lamp" />
         <Carousel className={classes.carousel}>{markup}</Carousel>

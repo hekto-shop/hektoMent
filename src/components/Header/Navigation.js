@@ -13,9 +13,9 @@ const useStyles = makeStyles({
 });
 
 const Navigation = () => {
-  
   const theme = useTheme();
   const stylesClasses = useStyles(theme);
+  
   return (
     <nav className={classes.navigation}>
       <ul>

@@ -25,6 +25,8 @@ const Header = () => {
   };
   
   const theme = useTheme();
+  const titleColor = {"color": theme.palette.text.hektoTitle};
+  
   const colorMode = React.useContext(ColorModeContext);
   return (
     <header className={classes.header}>
@@ -63,10 +65,7 @@ const Header = () => {
             <Link to="/cart">
               <img src={icons.cart} alt="cart" />
             </Link>
-            <IconButton onClick={() => { 
-                                        console.log(theme.palette.mode)
-                                        colorMode.toggleColorMode()
-                                        console.log(theme.palette.mode)}}>
+            <IconButton onClick={() => {colorMode.toggleColorMode()}}>
               {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
           </div>
@@ -76,7 +75,7 @@ const Header = () => {
       <div className={classes["bottom-header"]}>
         <PageContainer className={classes["grid-header"]}>
           <Link className={classes.logo} to="/homepage">
-            <h1>Hekto</h1>
+            <h1 style={titleColor}>Hekto</h1>
           </Link>
 
           <Navigation />

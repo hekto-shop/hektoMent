@@ -2,7 +2,11 @@ import React from "react";
 import classes from "./ShopSettings.module.scss";
 import * as icons from "../../assets/icons";
 
+import { useTheme } from '@mui/material/styles';
+
 const ShopSettings = (props) => {
+  const theme = useTheme();
+  const subTextColor = {"color": theme.palette.text.subTextColor};
   const {
     handleSort,
     handleSearch,
@@ -16,7 +20,7 @@ const ShopSettings = (props) => {
     <div className={classes["top-bar"]}>
       <div>
         <h2>Ecommerce Accessories & Fashion Items</h2>
-        <p>{`About ${numberOfProducts} results in ${Math.random().toFixed(
+        <p style={subTextColor}>{`About ${numberOfProducts} results in ${Math.random().toFixed(
           2
         )} seconds`}</p>
       </div>

@@ -8,7 +8,7 @@ import { useTheme } from '@mui/material/styles';
 
 const Shopex = () => {
   const theme = useTheme();
-  {console.log(theme.palette.primary.main)}
+  const textColor = {"color": theme.palette.text.textColor3};
   return (
     <section className={styles["shopex"]}>
       <div>
@@ -19,7 +19,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p style={{"color": theme.palette.primary.main}}>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>
@@ -35,7 +35,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p style={{"color": theme.palette.primary.main}}>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>
@@ -51,7 +51,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p style={{"color": theme.palette.primary.main}}>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>
@@ -67,7 +67,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p style={{"color": theme.palette.primary.main}}>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>
