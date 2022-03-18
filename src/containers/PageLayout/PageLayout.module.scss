@@ -1,7 +1,6 @@
 @import "../../styles/css-variables.scss";
 
 .title {
-  background: #f6f5ff;
   div {
     height: 285px;
     display: flex;
@@ -9,7 +8,6 @@
     justify-content: center;
 
     h2 {
-      color: #101750;
       font-size: 36px;
       font-family: $primary-font;
       margin-bottom: 0.7rem;
@@ -29,7 +27,6 @@
         font-family: $secondary-font;
         a {
           text-decoration: none;
-          color: black;
         }
       }
     }

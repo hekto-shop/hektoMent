@@ -2,8 +2,12 @@ import React from "react";
 import classes from "./CartItems.module.scss";
 import Button from "../UI/Button";
 import ProductItem from "./ProductItem";
+import { useTheme } from '@mui/material/styles';
 
 const CartItems = (props) => {
+  const theme = useTheme();
+  const cartTextColor = {"color": theme.palette.text.cartTextColor};
+  
   const {
     cartItems,
     currency,
@@ -20,10 +24,10 @@ const CartItems = (props) => {
 
   const headings = showControls ? (
     <>
-      <h3>Product</h3>
-      <h3>Price</h3>
-      <h3>Quantity</h3>
-      <h3 className={classes["heading-total"]}>Total</h3>
+      <h3 style={cartTextColor}>Product</h3>
+      <h3 style={cartTextColor}>Price</h3>
+      <h3 style={cartTextColor}>Quantity</h3>
+      <h3 className={classes["heading-total"]} style={cartTextColor}>Total</h3>
     </>
   ) : (
     <></>

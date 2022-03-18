@@ -2,12 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import classes from "./GridItem.module.scss";
-
 import { formatCurrency } from "../../helpers/format-number";
-
 import Controls from "../../components/Controls";
+import { useTheme } from '@mui/material/styles';
 
 const GridItem = (props) => {
+  const theme = useTheme();
+  const textColor = {"color": theme.palette.text.primary};
   const { product } = props;
   const {
     active,
@@ -46,7 +47,7 @@ const GridItem = (props) => {
       </div>
       <div className={classes.details}>
         <Link to={`/product/${productCode}`}>
-          <h4>{name}</h4>
+          <h4 style={textColor}>{name}</h4>
         </Link>
         <div className={classes.colors}>{colors}</div>
         <span className={classes.price}>{formatCurrency(price, currency)}</span>

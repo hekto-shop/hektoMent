@@ -10,6 +10,12 @@ import PageContainer from "../../containers/PageContainer";
 import Navigation from "./Navigation";
 import Searchbar from "./Searchbar";
 
+import { useTheme } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { ColorModeContext } from "../../theme/colorModeContext";
+
 const Header = () => {
   const { user } = useSession();
   const { currency } = useSelector((store) => store.productsReducer);
@@ -17,6 +23,11 @@ const Header = () => {
   const handleCurrency = (e) => {
     dispatch(changeCurrency(e.target.value));
   };
+  
+  const theme = useTheme();
+  const titleColor = {"color": theme.palette.text.hektoTitle};
+  
+  const colorMode = React.useContext(ColorModeContext);
   return (
     <header className={classes.header}>
       <div className={classes["top-header"]}>
@@ -31,7 +42,6 @@ const Header = () => {
               <h4>+1 (234) 5678</h4>
             </address>
           </div>
-
           <div className={classes.controls}>
             <div>
               <select
@@ -55,6 +65,9 @@ const Header = () => {
             <Link to="/cart">
               <img src={icons.cart} alt="cart" />
             </Link>
+            <IconButton onClick={() => {colorMode.toggleColorMode()}}>
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
           </div>
         </PageContainer>
       </div>
@@ -62,7 +75,7 @@ const Header = () => {
       <div className={classes["bottom-header"]}>
         <PageContainer className={classes["grid-header"]}>
           <Link className={classes.logo} to="/homepage">
-            <h1>Hekto</h1>
+            <h1 style={titleColor}>Hekto</h1>
           </Link>
 
           <Navigation />

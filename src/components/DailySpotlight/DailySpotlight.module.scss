@@ -1,11 +1,6 @@
 @import "../../styles/css-variables.scss";
 $spotlight-bg: url("../../assets/img/spotlight-product-bg.svg");
 
-.spotlight-section {
-  min-height: 540px;
-  background: #f1f0ff;
-}
-
 .spotlight-container {
   display: flex;
   justify-content: space-between;
@@ -39,7 +34,6 @@ $spotlight-bg: url("../../assets/img/spotlight-product-bg.svg");
   .spotlight-container__title {
     font-size: 35px;
     font-family: $primary-font;
-    color: #151875;
   }
 
   .spotlight-details__features {
@@ -91,14 +85,12 @@ $spotlight-bg: url("../../assets/img/spotlight-product-bg.svg");
 
     .spotlight-details__name {
       font-family: $primary-font;
-      color: #151875;
       line-height: 16px;
     }
 
     .price {
       font-family: $secondary-font;
       font-weight: 400;
-      color: #151875;
       margin-top: 0.7rem;
     }
   }
