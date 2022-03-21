@@ -10,12 +10,20 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import CustomizedDialogs from "../../components/CustomizedDialogs";
 
+
 const SignupForm = () => {
   const [error, setError] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-
+  const [numOfRows, setNumOfRows] = useState("1");
+  const changeRow = () => {
+    if(numOfRows === "1") {
+      setNumOfRows("3");
+    } else {
+      setNumOfRows("1");
+    }
+  }
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -187,9 +195,11 @@ const SignupForm = () => {
               multiline
               variant="standard"
               fullWidth
-              rows="3"
+              rows={numOfRows}
               onChange={formik.handleChange}
               value={formik.values.about}
+              onFocus={changeRow}
+              onBlur={changeRow}
             />
           </Grid>
 
