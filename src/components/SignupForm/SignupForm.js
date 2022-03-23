@@ -57,7 +57,7 @@ const SignupForm = () => {
       });
       formik.resetForm({
         username: "",
-        phone: "",
+        phone: "995",
         email: "",
         password: "",
         password2: "",

@@ -1,3 +1,5 @@
+import { transformPhoneNumber } from "../helpers/transform-phone-number";
+
 export const signupValidation = (values) => {
   const errors = {};
 
@@ -6,21 +8,13 @@ export const signupValidation = (values) => {
   } else if (values.username.length > 15) {
     errors.username = "Must be 15 characters or less";
   }
-/*
+
+  values.phone = transformPhoneNumber(values.phone);
   if (!values.phone) {
     errors.phone = "Required";
-  } else {
-    let isNumber = true;
-    values.phone.split("").forEach((digit) => {
-      if (+digit != digit) {
-        errors.phone = "Please enter valid phone number";
-        isNumber = false;
-      }
-    });
-    if(values.phone.length < 9 && isNumber) {
-      errors.phone = "Must be 9 characters or more";
-    }
-  } */
+  } else if(values.phone.length < 12){
+    errors.phone = "Must be 12 characters";
+  } 
 
   if (!values.password) {
     errors.password = "Required";
