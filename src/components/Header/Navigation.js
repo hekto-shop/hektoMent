@@ -30,8 +30,8 @@ const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className={stylesClasses.text} activeClassName={classes.active} to="/products">
-            Products
+          <NavLink className={stylesClasses.text} activeClassName={classes.active} to="/categories">
+            Categories
           </NavLink>
         </li>
         <li>
