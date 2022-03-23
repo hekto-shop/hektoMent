@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import CustomizedDialogs from "../../components/CustomizedDialogs";
+import NumberFormat from 'react-number-format';
 
 
 const SignupForm = () => {
@@ -27,7 +28,7 @@ const SignupForm = () => {
   const formik = useFormik({
     initialValues: {
       username: "",
-      phone: "",
+      phone: "995",
       email: "",
       password: "",
       password2: "",
@@ -108,9 +109,10 @@ const SignupForm = () => {
               helperText={formik.touched.username && formik.errors.username}
             />
           </Grid>
-
           <Grid item xs={12} lg={6}>
-            <TextField
+            <NumberFormat
+              customInput={TextField}
+              format="(###) ### - ### - ###"
               id="phone"
               name="phone"
               label="Phone Number"
@@ -122,7 +124,6 @@ const SignupForm = () => {
               helperText={formik.touched.phone && formik.errors.phone}
             />
           </Grid>
-
           <Grid item xs={12} lg={6}>
             <TextField
               id="password"

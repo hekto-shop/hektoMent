@@ -6,16 +6,21 @@ export const signupValidation = (values) => {
   } else if (values.username.length > 15) {
     errors.username = "Must be 15 characters or less";
   }
-
+/*
   if (!values.phone) {
     errors.phone = "Required";
-  } else if (values.phone.length < 9) {
-    errors.phone = "Must be 9 characters or more";
   } else {
+    let isNumber = true;
     values.phone.split("").forEach((digit) => {
-      if (+digit != digit) errors.phone = "Please enter valid phone number";
+      if (+digit != digit) {
+        errors.phone = "Please enter valid phone number";
+        isNumber = false;
+      }
     });
-  }
+    if(values.phone.length < 9 && isNumber) {
+      errors.phone = "Must be 9 characters or more";
+    }
+  } */
 
   if (!values.password) {
     errors.password = "Required";
