@@ -1,6 +1,7 @@
 import { db } from "../config/config";
 import { convertCurrency } from "./convert-currency";
 import { getCollectionLength } from "./get-collection-length";
+import { generateId } from "./id-generator";
 
 export const submitOrder = async (data) => {
   const userDocRef = db.doc(`/users/${data.userId}`);
@@ -32,6 +33,7 @@ export const submitOrder = async (data) => {
   });
 
   ordersRef.set({
+    trackingId: generateId(),
     order_Owner: data.userId,
     order_estimation: deliveryDate,
     order_status: "pendingApproval",

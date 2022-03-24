@@ -47,55 +47,54 @@ function App() {
     dispatch(getTrendingItems());
     dispatch(getMyOrders(user?.uid));
   }, [initialCartState, dispatch, user]);
-  
 
   return (
-      <ToggleColorMode>
-        <Switch>
-          <Route exact path="/">
-            {!user ? <SplashPage /> : <Redirect to="/homepage" />}
-          </Route>
-          <Route path="/homepage">
-            <Homepage />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/shop">
-            <Shop />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/product/:id">
-            <ProductDetails />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-          <Route path="/products">
-            <Products />
-          </Route>
-          <Route path="/contact">
-            <h1 className="temporary">Contact form</h1>
-          </Route>
-          <Route exact path="/order">
-            <Order />
-          </Route>
-          <Route path="/order-completed">
-            <OrderCompleted />
-          </Route>
-          <Route path="/order-history">
-            <OrderHistory />
-          </Route>
-          <Route path="/order-tracking/:orderId">
-            <OrderTracking />
-          </Route>
-        </Switch>
-      </ToggleColorMode>
+    <ToggleColorMode>
+      <Switch>
+        <Route exact path="/">
+          {!user ? <SplashPage /> : <Redirect to="/homepage" />}
+        </Route>
+        <Route path="/homepage">
+          <Homepage />
+        </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/shop">
+          <Shop />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        <Route path="/product/:id">
+          <ProductDetails />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+        <Route path="/products">
+          <Products />
+        </Route>
+        <Route path="/contact">
+          <h1 className="temporary">Contact form</h1>
+        </Route>
+        <Route exact path="/order">
+          <Order />
+        </Route>
+        <Route path="/order-completed">
+          <OrderCompleted />
+        </Route>
+        <Route path="/order-history">
+          <OrderHistory />
+        </Route>
+        <Route path="/order-tracking">
+          <OrderTracking />
+        </Route>
+      </Switch>
+    </ToggleColorMode>
   );
 }
 
