@@ -4,6 +4,8 @@ import { changeCurrency } from "../../store/thunk";
 import classes from "./CurrencySelector.module.scss";
 import * as icons from "../../assets/icons";
 
+import Backdrop from "../UI/Backdrop";
+
 const CurrencySelector = () => {
   const currency = useSelector((store) => store.productsReducer.currency);
   const [showOptions, setShowOptions] = useState(false);
@@ -28,11 +30,14 @@ const CurrencySelector = () => {
         <img className={arrowClass} src={icons.arrow} alt="toggle" />
       </div>
       {showOptions && (
-        <div onClick={handleCurrency} className={classes.options}>
-          {notSelected.map((el) => (
-            <span data-value={el}>{el}</span>
-          ))}
-        </div>
+        <>
+          <div onClick={handleCurrency} className={classes.options}>
+            {notSelected.map((el) => (
+              <span data-value={el}>{el}</span>
+            ))}
+          </div>
+          <Backdrop onClick={toggleOptions} />
+        </>
       )}
     </div>
   );
