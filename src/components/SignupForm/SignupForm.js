@@ -135,6 +135,7 @@ const SignupForm = () => {
               value={formik.values.password}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
+              onBlur={formik.handleBlur}
             />
           </Grid>
 
@@ -152,6 +153,7 @@ const SignupForm = () => {
                 formik.touched.password2 && Boolean(formik.errors.password2)
               }
               helperText={formik.touched.password2 && formik.errors.password2}
+              onBlur={formik.handleBlur}
             />
           </Grid>
 
