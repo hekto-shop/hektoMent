@@ -12,11 +12,11 @@
   color: #bdbdbd;
 }
 
-.order-slider .rec.rec-arrow:hover, .order-slider .rec.rec-arrow:focus {
-    background: #DCDBFA;
-    box-shadow: none;
+.order-slider .rec.rec-arrow:hover,
+.order-slider .rec.rec-arrow:focus {
+  background: #dcdbfa;
+  box-shadow: none;
 }
-
 
 .order-slider .rec.rec-dot {
   display: none;
