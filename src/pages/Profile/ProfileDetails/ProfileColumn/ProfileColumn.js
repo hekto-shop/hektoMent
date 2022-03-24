@@ -12,10 +12,6 @@ const ProfileColumn = () => {
     (state) => state.ordersReducer.myProductOrders
   );
 
-  console.log("columnProducts", myProducts);
-
-  console.log("columnUser", user);
-
   const todaysDate = new Date();
   const dateFormat = `${
     days[todaysDate.getDay()]

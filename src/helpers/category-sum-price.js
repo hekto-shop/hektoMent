@@ -30,9 +30,6 @@ export const getCategorySum = (myOrders, products) => {
       return categorySpends.find((a) => a.id === id);
     }
   );
-
-  console.log("price", categorySpends);
-  console.log("myProducts", myProducts);
-
+  
   return categorySpends
 };

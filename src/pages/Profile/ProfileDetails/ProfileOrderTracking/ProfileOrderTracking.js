@@ -11,9 +11,6 @@ const ProfileOrderTracking = (props) => {
     (state) => state.ordersReducer.myProductOrders
   );
 
-  console.log("orderTracking", myOrders);
-  console.log("orderTrackingProducts", myProducts);
-
   const myOrderedProducts = [...myProducts].map((product, ind) => {
     return (
       <OrderSlider

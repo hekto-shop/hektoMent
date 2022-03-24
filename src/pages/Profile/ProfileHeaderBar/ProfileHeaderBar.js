@@ -11,7 +11,7 @@ import styles from "./ProfileHeaderBar.module.scss";
 const ProfileHeaderBar = () => {
   const [select, setSelect] = useState(false);
   const { user } = useSession();
-  const username = useSelector((state) => state.userReducer.user.username);
+  // const username = useSelector((state) => state.userReducer.user.username);
   const history = useHistory();
 
   const signoutHandler = () => {
@@ -45,7 +45,7 @@ const ProfileHeaderBar = () => {
           className={styles["profile-avatar"]}
         />
         <div className={styles['user-text']}>
-          <h4>{username}</h4>
+          <h4>{user?.displayName}</h4>
           <p>user</p>
         </div>
         <img src={downArrow} onClick={selectChangeHandler} alt="" />
