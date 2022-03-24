@@ -6,7 +6,7 @@ import { profilePlaceholder } from "../../../../assets/img";
 import { getDownloadUrl, uploadImage } from "../../../../helpers/upload-image";
 import styles from "./ProfileImage.module.scss";
 
-const ProfileImage = () => {
+const ProfileImage = (props) => {
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef();
   const { user } = useSession();
@@ -23,7 +23,7 @@ const ProfileImage = () => {
   };
 
   return (
-    <div className={styles["avatar-cont"]}>
+    <div className={`${styles["avatar-cont"]} ${props.className}`}>
       <div className={styles["avatar-cont__inner"]}>
         <img
           src={imageUrl || profilePlaceholder}

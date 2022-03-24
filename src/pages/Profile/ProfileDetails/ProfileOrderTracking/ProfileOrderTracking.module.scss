@@ -1,0 +1,15 @@
+@import "../../../../styles/css-variables.scss";
+
+.order-cont {
+  border-radius: 27px;
+  background: #fff;
+  padding: 32px;
+
+  .cont-text {
+    .cont-header {
+      font-size: 1.6rem;
+      font-family: $primary-font;
+      text-align: center;
+    }
+  }
+}

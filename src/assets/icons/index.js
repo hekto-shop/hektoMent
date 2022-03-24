@@ -41,6 +41,7 @@ import clockBlue from "./clock-blue.svg";
 import flag from "./flag.svg";
 import packageIcon from "./package.svg";
 import truck from "./truck.svg";
+import rightArrow from './right-arrow.svg'
 
 export {
   email,
@@ -80,4 +81,5 @@ export {
   flag,
   truck,
   packageIcon,
+  rightArrow
 };

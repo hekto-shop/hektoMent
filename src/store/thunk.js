@@ -174,6 +174,26 @@ const getMyOrders = (userId) => async (dispatch) => {
       .map((item) => item.data())
       .filter((order) => order.order_Owner === userId);
 
+    // User's ordered products
+
+    const allUserOrders = dataArr
+      .map((data) => {
+        return data.ordered_product;
+      })
+      .flat();
+
+    let prodCategoryData = [];
+
+    const ordersData = await Promise.all(
+      allUserOrders.map(async (order) => {
+        const productRef = order.product;
+        const productData = await getProdData(productRef);
+        prodCategoryData.push(await getProdData(productData.category));
+        return productData;
+      })
+    );
+    dispatch(ordersActions.getMyProductCategories(prodCategoryData));
+    dispatch(ordersActions.getMyProductOrders(ordersData));
     dispatch(ordersActions.getMyOrders(dataArr));
   } catch (err) {
     console.log(err);

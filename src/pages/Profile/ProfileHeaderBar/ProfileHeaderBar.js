@@ -44,7 +44,10 @@ const ProfileHeaderBar = () => {
           alt="avatar"
           className={styles["profile-avatar"]}
         />
-        <p>{username}</p>
+        <div className={styles['user-text']}>
+          <h4>{username}</h4>
+          <p>user</p>
+        </div>
         <img src={downArrow} onClick={selectChangeHandler} alt="" />
         {select ? selectBar : null}
       </span>

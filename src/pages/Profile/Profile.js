@@ -9,20 +9,22 @@ import ProfileDetails from "./ProfileDetails/ProfileDetails";
 
 const Profile = () => {
   return (
-    <PageContainer>
-      <ProfileHeaderBar />
-      <main>
-        <ProfileNavigation style={styles.navigation} />
-        <Switch>
-          <Route path="/profile" exact>
-            <ProfileDetails />
-          </Route>
-          <Route path="/profile/edit">
-            <ProfileEdit />
-          </Route>
-        </Switch>
-      </main>
-    </PageContainer>
+    <section className={styles["profile-section"]}>
+      <PageContainer>
+        <ProfileHeaderBar />
+        <main>
+          <ProfileNavigation style={styles.navigation} />
+          <Switch>
+            <Route path="/profile" exact>
+              <ProfileDetails />
+            </Route>
+            <Route path="/profile/edit">
+              <ProfileEdit />
+            </Route>
+          </Switch>
+        </main>
+      </PageContainer>
+    </section>
   );
 };
 

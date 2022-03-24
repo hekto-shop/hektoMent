@@ -1,0 +1,48 @@
+@import "../../../../styles/css-variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Mulish:wght@300;400;500;600;700&display=swap");
+
+.category-cont {
+    display: flex;
+    flex-direction: column;
+  .cont-text {
+    .cont-header {
+      font-size: 1.6rem;
+      font-family: $primary-font;
+    }
+
+    .cont-para {
+      font-family: "Mulish", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #b2b2b2;
+      margin-top: 7px;
+      max-width: 80%;
+    }
+  }
+
+  .category-showcase {
+    max-height: 250px;
+    overflow-y: scroll;
+
+    // Scrolbar styles
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+     
+    &::-webkit-scrollbar-thumb {
+      background: #551A8B;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #451572; 
+    }
+  }
+}
+
+
