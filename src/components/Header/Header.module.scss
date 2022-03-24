@@ -11,6 +11,20 @@ a {
   text-decoration: none;
 }
 
+.header {
+  background-color: white;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  opacity: 0.95;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  animation: 0.5s slidein ease-in;
+}
+
 .top-header {
   background-color: #7e33e0;
   div {
@@ -89,6 +103,7 @@ a {
   min-height: 4.5rem;
   align-items: center;
   color: #0d0e43;
+  background: white;
 }
 
 .logo {
@@ -116,5 +131,15 @@ a {
     grid-template-areas:
       "logo searchbar"
       "nav nav";
+  }
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }

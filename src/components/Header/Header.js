@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSession } from "../../contexts/auth-context";
 import { useSelector } from "react-redux";
@@ -18,18 +18,25 @@ import { ColorModeContext } from "../../theme/colorModeContext";
 
 const Header = () => {
   const { user } = useSession();
+  let [headerClasses, setHeaderClasses] = useState(classes.header);
   const cart = useSelector((store) => store.cartReducer);
   const cartLength = cart.cartItems.length;
   const favsLength = cart.favorites.length;
 
-  console.log(cartLength);
+  window.addEventListener("scroll", (e) => {
+    if (window.scrollY > 200) {
+      setHeaderClasses(`${classes.header} ${classes.fixed}`);
+    } else {
+      setHeaderClasses(classes.header);
+    }
+  });
 
   const theme = useTheme();
   const titleColor = { color: theme.palette.text.hektoTitle };
 
   const colorMode = React.useContext(ColorModeContext);
   return (
-    <header className={classes.header}>
+    <header className={headerClasses}>
       <div className={classes["top-header"]}>
         <PageContainer>
           <div className={classes["contact-info"]}>
