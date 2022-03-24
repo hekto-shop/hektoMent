@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import classes from "./LeatestProducts.module.scss";
 import ProductList from "./ProductList";
 
+
 const LeatestProducts = () => {
   const [listType, setListType] = useState(0);
   const products = useSelector((store) => store.productsReducer.products);

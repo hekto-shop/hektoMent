@@ -3,13 +3,6 @@
 $discount-bg: url("../../assets/img/sale-badge-bg.svg");
 $product-img-bg: url("../../assets/img/slider-product-image-bg.svg");
 $container-height: 764px;
-.container {
-  width: 100%;
-  height: $container-height;
-  background-color: #f2f0ff;
-
-  position: relative;
-}
 
 .lamp-image {
   position: absolute;
@@ -66,7 +59,6 @@ $container-height: 764px;
     text-shadow: #f2f0ff 0px 0px 8px;
   }
   button {
-    // background-color: $secondary-color;
     font-family: $primary-font;
   }
 }

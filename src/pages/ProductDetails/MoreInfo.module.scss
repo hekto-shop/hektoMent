@@ -2,7 +2,6 @@
 
 .section {
   width: 100%;
-  background: #f9f8fe;
   height: fit-content;
   padding: 5rem 0;
 }
@@ -17,7 +16,6 @@
       margin-right: 2rem;
       font-family: $primary-font;
       font-size: 1.5rem;
-      color: $text-color;
       font-weight: 600;
     }
   }
@@ -30,7 +28,6 @@
 .info {
   h3 {
     font-family: $primary-font;
-    color: $text-color;
     margin: 1rem 0;
   }
 
