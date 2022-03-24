@@ -27,6 +27,7 @@ import Order from "./pages/Order";
 import OrderCompleted from "./pages/OrderCompleted";
 import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
+import Wishlist from "./pages/Wishlist";
 
 import ToggleColorMode from "./theme/Toggle";
 
@@ -78,6 +79,9 @@ function App() {
           </Route>
           <Route path="/products">
             <Products />
+          </Route>
+          <Route path="/wishlist">
+            <Wishlist />
           </Route>
           <Route path="/contact">
             <h1 className="temporary">Contact form</h1>
