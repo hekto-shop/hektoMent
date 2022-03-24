@@ -29,6 +29,8 @@ import Profile from "./pages/Profile";
 import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
 
+import ToggleColorMode from "./theme/Toggle";
+
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
 const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
@@ -50,7 +52,7 @@ function App() {
   }, [initialCartState, dispatch, user]);
 
   return (
-    <>
+    <ToggleColorMode>
       <Switch>
         <Route exact path="/">
           {!user ? <SplashPage /> : <Redirect to="/homepage" />}
@@ -98,7 +100,7 @@ function App() {
           <OrderTracking />
         </Route>
       </Switch>
-    </>
+    </ToggleColorMode>
   );
 }
 

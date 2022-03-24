@@ -5,8 +5,20 @@ import PageContainer from "../../containers/PageContainer";
 import Button from "../UI/Button";
 import { formatCurrency } from "../../helpers/format-number";
 import styles from "./DailySpotlight.module.scss";
+import { useTheme } from '@mui/material/styles';
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  spotlightSection:{
+    backgroundColor: (theme)=> theme.palette.background.secondary,
+    minHeight: '540px'
+  }
+});
 
 const DailySpotlight = (props) => {
+  const theme = useTheme();
+  const stylesClasses = useStyles(theme);
+
   const products = useSelector((state) => state.productsReducer.products);
   const currency = useSelector((state) => state.productsReducer.currency);
   const history = useHistory();
@@ -36,7 +48,7 @@ const DailySpotlight = (props) => {
   if (stockProducts.length === 0) return <div>Loading...</div>;
 
   return (
-    <section className={`${styles["spotlight-section"]} ${props.className}`}>
+    <section className={`${stylesClasses.spotlightSection} ${props.className}`}>
       <PageContainer>
         <div className={styles["spotlight-container"]}>
           <div className={styles["spotlight-container__product"]}>
@@ -44,7 +56,7 @@ const DailySpotlight = (props) => {
           </div>
           <div className={styles["spotlight-container__details"]}>
             <h2 className={styles["spotlight-container__title"]}>
-              Unique Features Of leatest & Trending Poducts
+              Unique Features Of leatest & Trending Products
             </h2>
             <ul className={styles["spotlight-details__features"]}>
               <li className={styles["spotlight-features__item"]}>

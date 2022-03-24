@@ -5,18 +5,25 @@ import { auth } from "../../config/config";
 import { signupValidation } from "../../validation/signupValidation";
 import { createUserDocument } from "../../helpers/user-registration";
 import classes from "./SignupForm.module.scss";
-
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import CustomizedDialogs from "../../components/CustomizedDialogs";
+
 
 const SignupForm = () => {
   const [error, setError] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
-
+  const [numOfRows, setNumOfRows] = useState("1");
+  const changeRow = () => {
+    if(numOfRows === "1") {
+      setNumOfRows("3");
+    } else {
+      setNumOfRows("1");
+    }
+  }
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -128,6 +135,7 @@ const SignupForm = () => {
               value={formik.values.password}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
+              onBlur={formik.handleBlur}
             />
           </Grid>
 
@@ -145,6 +153,7 @@ const SignupForm = () => {
                 formik.touched.password2 && Boolean(formik.errors.password2)
               }
               helperText={formik.touched.password2 && formik.errors.password2}
+              onBlur={formik.handleBlur}
             />
           </Grid>
 
@@ -186,9 +195,11 @@ const SignupForm = () => {
               multiline
               variant="standard"
               fullWidth
-              rows="3"
+              rows={numOfRows}
               onChange={formik.handleChange}
               value={formik.values.about}
+              onFocus={changeRow}
+              onBlur={changeRow}
             />
           </Grid>
 
