@@ -7,6 +7,7 @@ import premium from "./premium.png";
 import support from "./support.png";
 import clock from "./clock.png";
 import tvStand from "./tv-stand.png";
+import profilePlaceholder from "./profile-placeholder.png";
 
 export {
   lamp,
@@ -18,4 +19,5 @@ export {
   support,
   clock,
   tvStand,
+  profilePlaceholder,
 };
