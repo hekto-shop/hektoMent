@@ -8,7 +8,13 @@ import { loginValidation } from "../../validation/loginValidation";
 import { TextField, Button } from "@mui/material";
 import styles from "./LoginForm.module.scss";
 
+import { useTheme } from '@mui/material/styles';
+
 const LoginForm = () => {
+  const theme = useTheme();
+  const formShadow = (theme.palette.mode === 'dark') ? {'boxShadow': '0 0 8px 4px rgb(248, 248, 251)'} :
+                      {'boxShadow': '0 0 25px 10px rgb(248, 248, 251'} ;
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -55,7 +61,7 @@ const LoginForm = () => {
         handleClose={() => setError(null)}
       />
 
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} style={formShadow}>
         <div>
           <h3 className={styles["login-container__title"]}>Login</h3>
           <p className={styles["login-container__para"]}>

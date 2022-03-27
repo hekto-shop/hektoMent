@@ -9,18 +9,16 @@
 
   h2 {
     font-family: $primary-font;
-    color: $text-color;
     font-size: $section-heading-size;
     margin: 1rem 0;
   }
 }
-
+ 
 .nav {
   display: flex;
   li {
     display: inline-block;
     font-family: $secondary-font;
-    color: $text-color;
     list-style: none;
     margin: 0 1rem;
     cursor: pointer;

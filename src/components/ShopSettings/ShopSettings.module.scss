@@ -3,24 +3,21 @@
 .top-bar {
   display: grid;
   grid-template-columns: 1fr 150px 250px 100px 150px 50px;
-  height: 200px;
+  margin-bottom: 76.4px;
   align-items: center;
 
   h2 {
     font-family: $primary-font;
-    color: $text-color;
     margin-bottom: 8px;
   }
-
+ 
   p {
     font-family: $secondary-font;
-    color: $sub-text-color;
     font-size: 0.75rem;
   }
 
   label {
     font-family: $secondary-font;
-    color: #3f509e;
   }
 
   input {

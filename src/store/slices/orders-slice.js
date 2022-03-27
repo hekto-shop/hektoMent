@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { trendingItems: [], myOrders: [] };
+const initialState = {
+  trendingItems: [],
+  myOrders: [],
+  myProductOrders: [],
+  myProductCategories: [],
+};
 
 const ordersSlice = createSlice({
   name: "orders",
@@ -11,6 +16,12 @@ const ordersSlice = createSlice({
     },
     getMyOrders(state, action) {
       state.myOrders = action.payload;
+    },
+    getMyProductOrders(state, action) {
+      state.myProductOrders = action.payload;
+    },
+    getMyProductCategories(state, action) {
+      state.myProductCategories = action.payload
     },
   },
 });

@@ -73,8 +73,8 @@ const ProductSlider = (props) => {
                 );
               })}
             </div>
-            <p className={styles["card-description__code"]}>Code - Y523201</p>
-            <p className={styles["card-description__price"]}>
+            <p className={styles["card-description__code"]} >Code - Y523201</p>
+            <p className={styles["card-description__price"]} >
               {formatCurrency(item.price, currency)}
             </p>
           </div>

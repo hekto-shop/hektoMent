@@ -4,7 +4,11 @@ import * as img from "../../assets/img";
 
 import styles from "./Shopex.module.scss";
 
+import { useTheme } from '@mui/material/styles';
+
 const Shopex = () => {
+  const theme = useTheme();
+  const textColor = {"color": theme.palette.text.textColor3};
   return (
     <section className={styles["shopex"]}>
       <div>
@@ -15,7 +19,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>
@@ -31,7 +35,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>
@@ -47,7 +51,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>
@@ -63,7 +67,7 @@ const Shopex = () => {
             </div>
             <div className={styles["shopex-card__about"]}>
               <h2>24/7 Support</h2>
-              <p>
+              <p style={textColor}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
                 purus gravida.
               </p>

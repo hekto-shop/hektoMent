@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import * as icons from "../../assets/icons";
 import { useSession } from "../../contexts/auth-context";
 import { useSelector } from "react-redux";
-
 import classes from "./Footer.module.scss";
-
 import PageContainer from "../../containers/PageContainer";
 import Button from "../UI/Button";
+import { useTheme } from '@mui/material/styles';
 
 const Footer = () => {
+  const theme = useTheme();
+  const backgroundColor = {"backgroundColor": theme.palette.background.footer};
+
   const { user } = useSession();
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -50,7 +52,7 @@ const Footer = () => {
   );
   return (
     <footer className={classes.footer}>
-      <section className={classes["bottom-navigation"]}>
+      <section className={classes["bottom-navigation"]} style={backgroundColor}>
         <PageContainer className={classes.grid}>
           <div className={classes.contacts}>
             <h2>Hekto</h2>

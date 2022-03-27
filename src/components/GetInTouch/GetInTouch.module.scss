@@ -7,7 +7,6 @@
   font-family: $primary-font;
   font-size: 2.344vw;
   line-height: 3.125vw;
-  color: #151875;
 }
 
 .get-in-touch-text {
@@ -25,11 +24,11 @@
 .form-submit {
   background: #fb2e86;
   border-radius: 0.195vw;
-  height: 2.865vw;
-  width: 10.221vw;
+  height: 33px;
+  width: 130px;
   cursor: pointer;
   color: white;
-  font-size: 1.6vw;
+  font-size: 17px;
   border: none;
   font-family: $secondary-font;
 }
@@ -42,9 +41,10 @@
 @media only screen and (max-width: 800px) {
   .form-submit {
     border-radius: 1.5px;
-    height: 23px;
-    width: 80px;
-    font-size: 14px;
+    height: 31px;
+    width: 115px;
+    font-size: 13.5px;
+    margin-bottom: 10px;
   }
 
   .get-in-touch-text {

@@ -2,11 +2,16 @@ import React from "react";
 import classes from "./MoreInfo.module.scss";
 import PageContainer from "../../containers/PageContainer";
 
+
+import { useTheme } from '@mui/material/styles';
+
 const MoreInfo = (props) => {
   const product = props.product;
+  const theme = useTheme();
+  const backgroundColor = {"backgroundColor": theme.palette.background.main};
 
-  return (
-    <section className={classes.section}>
+  return ( 
+    <section className={classes.section} style={backgroundColor}>
       <PageContainer>
         <nav className={classes.navigation}>
           <ul>
