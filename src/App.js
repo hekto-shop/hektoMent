@@ -28,6 +28,7 @@ import OrderCompleted from "./pages/OrderCompleted";
 import Profile from "./pages/Profile";
 import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
+import Categories from './pages/Categories'
 
 import ToggleColorMode from "./theme/Toggle";
 
@@ -98,6 +99,9 @@ function App() {
         </Route>
         <Route path="/order-tracking/:orderId">
           <OrderTracking />
+        </Route>
+        <Route path="/categories">
+          <Categories />
         </Route>
       </Switch>
     </ToggleColorMode>
