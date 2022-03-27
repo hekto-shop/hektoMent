@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -24,9 +24,10 @@ const Cart = () => {
     useSelector((state) => state.userReducer.user?.budget) || 0;
   const dispatch = useDispatch();
   const history = useHistory();
+  const cartRef = useRef();
 
   useLayoutEffect(() => {
-    scrollTo(220);
+    scrollTo(cartRef.current.offsetTop - 250);
   }, []);
 
   const goToCheckout = () => history.push("/order");
@@ -65,7 +66,7 @@ const Cart = () => {
   return (
     <PageLayout title="Cart">
       <PageContainer>
-        <section className={classes.section}>
+        <section className={classes.section} ref={cartRef}>
           <CartItems
             cartItems={cartItems}
             currency={currency}

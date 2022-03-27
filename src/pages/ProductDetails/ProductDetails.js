@@ -19,8 +19,8 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    scrollTo();
     setProduct([...productList].find((prod) => prod.productCode === id));
+    scrollTo();
   }, [productList, id]);
 
   if (!product) {

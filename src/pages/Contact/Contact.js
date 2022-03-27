@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import PageLayout from "../../containers/PageLayout";
 import InfoAboutUs from "../../components/InfoAboutUs";
 import PageContainer from "../../containers/PageContainer";
@@ -10,14 +10,16 @@ import styles from "./Contact.module.scss";
 import contact from "../../assets/img/contact.png";
 
 const Contact = () => {
+  const contactRef = useRef();
+
   useLayoutEffect(() => {
-    scrollTo(220);
+    scrollTo(contactRef.current.offsetTop - 250);
   }, []);
 
   return (
     <PageLayout title="Contact">
       <PageContainer>
-        <div className={styles["row-container"]}>
+        <div className={styles["row-container"]} ref={contactRef}>
           <InfoAboutUs />
           <ContactWay />
           <GetInTouch />
