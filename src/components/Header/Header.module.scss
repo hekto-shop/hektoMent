@@ -1,4 +1,5 @@
 @import "../../styles/css-variables.scss";
+@import "../../styles/mixins.scss";
 
 $text-color: #f1f1f1;
 
@@ -8,6 +9,20 @@ h4 {
 
 a {
   text-decoration: none;
+}
+
+.header {
+  background-color: white;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  opacity: 0.95;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  animation: 0.5s slidein ease-in;
 }
 
 .top-header {
@@ -56,6 +71,7 @@ a {
   }
 
   a {
+    position: relative;
     display: flex;
     padding: 0 1rem;
     font-size: 1rem;
@@ -67,16 +83,17 @@ a {
     color: $text-color;
   }
 }
-
-.select {
-  background: #7e33e0;
-  color: $text-color;
-  font-size: 1rem;
-  font-style: normal;
-  line-height: 19px;
-  border: none;
-  font-family: "Josefin Sans", sans-serif;
-  outline: none;
+.indicator {
+  @include centered-flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #0d0e43;
+  color: white;
+  font-size: 10px;
+  position: absolute;
+  top: 0;
+  right: 10px;
 }
 
 .grid-header {
@@ -86,6 +103,7 @@ a {
   min-height: 4.5rem;
   align-items: center;
   color: #0d0e43;
+  background: white;
 }
 
 .logo {
@@ -113,5 +131,15 @@ a {
     grid-template-areas:
       "logo searchbar"
       "nav nav";
+  }
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }

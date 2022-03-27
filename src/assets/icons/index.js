@@ -28,6 +28,12 @@ import redTick from "./red-tick.svg";
 import clock from "./clock.svg";
 import checklist from "./checklist.svg";
 
+import target from "./target-icon.svg";
+import order from "./order-icon.svg";
+import edit from "./edit-icon.svg";
+import envelope from "./envelop-icon.svg";
+import profile from "./user-icon.png";
+import downArrow from "./down-arrow.png";
 import whiteStar from "./white-star.svg";
 import whiteCircle from "./white-circle.svg";
 import checkSquare from "./check-square.svg";
@@ -35,6 +41,7 @@ import clockBlue from "./clock-blue.svg";
 import flag from "./flag.svg";
 import packageIcon from "./package.svg";
 import truck from "./truck.svg";
+import rightArrow from './right-arrow.svg'
 
 export {
   email,
@@ -61,6 +68,12 @@ export {
   redTick,
   clock,
   checklist,
+  target,
+  order,
+  edit,
+  envelope,
+  profile,
+  downArrow,
   whiteStar,
   whiteCircle,
   checkSquare,
@@ -68,4 +81,5 @@ export {
   flag,
   truck,
   packageIcon,
+  rightArrow
 };
