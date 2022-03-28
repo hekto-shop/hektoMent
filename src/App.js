@@ -97,7 +97,7 @@ function App() {
         <Route path="/order-history">
           <OrderHistory />
         </Route>
-        <Route path="/order-tracking/:orderId">
+        <Route path="/order-tracking">
           <OrderTracking />
         </Route>
         <Route path="/categories">

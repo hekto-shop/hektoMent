@@ -8,7 +8,7 @@ import classes from "./Header.module.scss";
 import * as icons from "../../assets/icons";
 import PageContainer from "../../containers/PageContainer";
 import Navigation from "./Navigation";
-import Searchbar from "./Searchbar";
+import Searchbar from "../Searchbar";
 import CurrencySelector from "../CurrencySelector";
 
 import IconButton from "@mui/material/IconButton";
@@ -90,7 +90,7 @@ const Header = () => {
           </Link>
 
           <Navigation />
-          <Searchbar />
+          <Searchbar onSearch={(data) => console.log(data)} />
         </PageContainer>
       </div>
     </header>

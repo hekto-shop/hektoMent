@@ -3,7 +3,7 @@ import classes from "./Searchbar.module.scss";
 
 import * as icons from "../../assets/icons";
 
-const Searchbar = () => {
+const Searchbar = (props) => {
   const [keyword, setKeyword] = useState("");
 
   const inputChangeHandler = (e) => {
@@ -12,6 +12,7 @@ const Searchbar = () => {
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
+    props.onSearch(keyword);
     setKeyword("");
   };
   return (
@@ -21,6 +22,7 @@ const Searchbar = () => {
         type="text"
         value={keyword}
         onChange={inputChangeHandler}
+        placeholder={props.placeholder}
       />
       <button className={classes.submit} type="submit">
         <img src={icons.magnifier} alt="search" />

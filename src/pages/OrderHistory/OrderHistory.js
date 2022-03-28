@@ -24,8 +24,8 @@ const OrderHistory = () => {
     const status = steps.find((el) => el.status === order.order_status).text;
     return (
       <>
-        <Link to={`/order-tracking/${order.order_number}`}>
-          #{order.order_number}
+        <Link to={`/order-tracking?trackingId=${order.trackingId}`}>
+          {order.trackingId}
         </Link>
         <span>{submissionDate}</span>
         <span>{status}</span>
@@ -40,7 +40,7 @@ const OrderHistory = () => {
           <Loader />
         ) : (
           <div className={classes.table}>
-            <h3>Order Number</h3>
+            <h3>Tracking ID</h3>
             <h3>Submission Date</h3>
             <h3>Status</h3>
             {markup}

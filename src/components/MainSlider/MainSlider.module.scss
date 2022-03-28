@@ -4,9 +4,13 @@ $discount-bg: url("../../assets/img/sale-badge-bg.svg");
 $product-img-bg: url("../../assets/img/slider-product-image-bg.svg");
 $container-height: 764px;
 
+.container {
+  padding-top: 140px;
+}
+
 .lamp-image {
   position: absolute;
-  top: 0;
+  top: 140px;
   left: -20px;
 }
 
@@ -103,11 +107,12 @@ $container-height: 764px;
 @media only screen and (max-width: 1100px) {
   .lamp-image {
     display: none;
+    padding-top: 0px;
   }
 }
 
 @media only screen and (max-width: 800px) {
   .container {
-    display: none;
+    display: none !important;
   }
 }
