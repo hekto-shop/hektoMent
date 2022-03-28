@@ -12,6 +12,8 @@ const ProfileColumn = () => {
     (state) => state.ordersReducer.myProductOrders
   );
 
+  console.log('user', user);
+
   const todaysDate = new Date();
   const dateFormat = `${
     days[todaysDate.getDay()]
@@ -41,7 +43,7 @@ const ProfileColumn = () => {
   return (
     <div className={styles["column-cont"]}>
       <div className={styles["cont-text"]}>
-        <h2 className={styles["cont-budget"]}>$ {user.budget}</h2>
+        <h2 className={styles["cont-budget"]}>$ {user.budget.toFixed(2)}</h2>
         <p className={styles["cont-date"]}>{dateFormat}</p>
       </div>
       <div className={styles["cont-orders"]}>
