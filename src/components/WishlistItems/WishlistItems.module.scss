@@ -9,15 +9,14 @@
     margin-bottom: 80px;
 }
 
-.card {
-    cursor: pointer;
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto; 
 }
 
-.card-action {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 200px;
-    align-items: center;
+.remove-button{
+    cursor:pointer
 }
 
 .card-description {
@@ -27,17 +26,6 @@
     text-align:center
 }
 
-.image-remove {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0 auto;
-}
-
-.image-container {
-    width: auto;
-    max-height: 150px;
-}
-
 .card-description-title {
     color: $secondary-color;
     font-family: $primary-font;
@@ -45,7 +33,7 @@
     line-height: 1.2rem;
 }
 
-.card-description-code {
+.card-description-stock {
     font-family: $primary-font;
     font-size: 16px;
     line-height: 1.2rem;
@@ -57,8 +45,23 @@
     line-height: 1.2rem;
 }
 
-.header {
-    font-family: $primary-font;
-    font-size: 20px;
+.empty {
+    text-align: center;
+    padding: 50px 0;
 }
 
+@media only screen and (max-width: 600px) {
+    .container {
+        grid-auto-rows: auto;
+    }
+    .card-description {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column: 2/3;
+        text-align:center;
+        row-gap: 20px;
+    }
+    .card-button {
+        grid-column: 1/3;
+    }
+}
