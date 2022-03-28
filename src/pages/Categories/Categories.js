@@ -17,7 +17,7 @@ const Categories = () => {
     return (
         <PageLayout title="Categories">
             <PageContainer>
-                <section ref={categoryRef}>
+                <section ref={categoryRef} className={styles['section']}>
                     {categories.map((category) => {
                         return <SingleCategory category={category}/>
                     })}
