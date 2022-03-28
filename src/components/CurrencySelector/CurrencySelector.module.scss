@@ -1,0 +1,47 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.label {
+  cursor: pointer;
+  display: flex;
+  span {
+    display: inline-block;
+    text-align: center;
+  }
+
+  img {
+    transition: ease-out 0.2s;
+    max-width: 20px;
+  }
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.options {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  top: 48px;
+  background: #7e33e0;
+  padding: 0 !important;
+  height: fit-content !important;
+  width: 100%;
+  z-index: 3;
+  left: 0;
+  span {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    padding: 1rem;
+  }
+  span:hover {
+    background: #a168ec;
+  }
+}

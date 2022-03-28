@@ -1,0 +1,43 @@
+@import "../../../../styles/css-variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Mulish:wght@300;400;500;600;700&display=swap");
+
+.avatar-cont {
+  background: #cce8fe;
+  border-radius: 27px;
+
+  .avatar-cont__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .profile-avatar {
+      width: 162px;
+      height: 162px;
+      border-radius: 50%;
+      user-select: none;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .upload-btn {
+      border: none;
+      border-radius: 23px;
+      outline: none;
+      font-weight: 700;
+      background: #fff;
+      padding: 13px 50px;
+      margin-top: 70px;
+      cursor: pointer;
+      box-shadow: 0px 2px 21px rgba(0, 0, 0, 0.1);
+      line-height: 20px;
+      font-family: "Mulish", sans-serif;
+    }
+    button {
+      justify-self: flex-end;
+    }
+  }
+}

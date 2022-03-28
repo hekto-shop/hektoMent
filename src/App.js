@@ -25,6 +25,7 @@ import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
 import Order from "./pages/Order";
 import OrderCompleted from "./pages/OrderCompleted";
+import Profile from "./pages/Profile";
 import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
 
@@ -37,6 +38,8 @@ const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
 function App() {
   const { user } = useSession();
   const dispatch = useDispatch();
+
+  console.log("AppUser", user);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -56,6 +59,9 @@ function App() {
         </Route>
         <Route path="/homepage">
           <Homepage />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
         <Route path="/signup">
           <Signup />
