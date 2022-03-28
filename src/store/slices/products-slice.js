@@ -17,7 +17,6 @@ const productsSlice = createSlice({
           state.currency,
           action.payload
         );
-
         return { ...product, price: updatedPrice };
       });
       state.currency = action.payload;

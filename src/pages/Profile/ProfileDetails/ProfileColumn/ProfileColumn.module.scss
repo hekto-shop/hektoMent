@@ -1,0 +1,140 @@
+@import "../../../../styles/css-variables.scss";
+
+.column-cont {
+  height: 100vh;
+  // background: red;
+  margin-left: auto;
+  position: relative;
+  // border-left: 1px solid #E5E5E5;
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   height: 100%;
+  //   width: 3px;
+  //   background-color: #e5e5e5;
+  //   left: -25px;
+  // }
+
+  .cont-text {
+    //  background: red;
+
+    .cont-budget {
+      font-family: $secondary-font;
+      font-size: 2.6rem;
+      line-height: 50px;
+      color: #333333;
+      margin-bottom: 5px;
+    }
+
+    .cont-date {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #828282;
+      font-family: $secondary-font;
+    }
+  }
+}
+
+.cont-orders {
+  margin-top: 50px;
+
+  h3 {
+    font-size: 0.9rem;
+    font-family: $secondary-font;
+    font-weight: 600;
+    color: #333333;
+  }
+
+  .order-column {
+    height: 230px;
+    overflow-y: scroll;
+
+    // scroll styles
+
+    &::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #551a8b;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #451572;
+    }
+
+    .order-item {
+      margin-top: 20px;
+      width: 90%;
+
+      .order-info {
+        display: flex;
+        align-items: center;
+        gap: 1.3rem;
+
+        
+        .order-image {
+            width: 50px;
+            height: 50px;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+
+        .order-details {
+          display: flex;
+          gap: 1rem;
+
+          h4 {
+            font-size: 0.9rem;
+            font-family: $secondary-font;
+            font-weight: 600;
+            color: #333333;
+            text-align: left;
+          }
+
+          .new-item {
+            color: #059405;
+            font-family: $secondary-font;
+            font-weight: bold;
+          }
+        }
+
+        button {
+          cursor: pointer;
+          border: none;
+          background: none;
+          outline: none;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 825px) {
+  .column-cont {
+    margin-top: 3rem;
+
+    .cont-budget, .cont-date {
+      text-align: center;
+    }
+
+    .cont-orders {
+      width: 60%;
+      margin: 1rem auto;
+
+      .new-item {
+        display: none;
+      }
+    }
+  }
+}

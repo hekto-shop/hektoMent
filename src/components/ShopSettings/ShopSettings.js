@@ -2,11 +2,11 @@ import React from "react";
 import classes from "./ShopSettings.module.scss";
 import * as icons from "../../assets/icons";
 
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 const ShopSettings = (props) => {
   const theme = useTheme();
-  const subTextColor = {"color": theme.palette.text.subTextColor};
+  const subTextColor = { color: theme.palette.text.subTextColor };
   const {
     handleSort,
     handleSearch,
@@ -16,11 +16,20 @@ const ShopSettings = (props) => {
     handleFilterClick,
     numberOfProducts,
   } = props;
+
+  const handleRestriction = (e) => {
+    if (+e.target.value < +e.target.min) e.target.value = e.target.min;
+
+    handlePerPage(e);
+  };
+
   return (
     <div className={classes["top-bar"]}>
       <div>
         <h2>Ecommerce Accessories & Fashion Items</h2>
-        <p style={subTextColor}>{`About ${numberOfProducts} results in ${Math.random().toFixed(
+        <p
+          style={subTextColor}
+        >{`About ${numberOfProducts} results in ${Math.random().toFixed(
           2
         )} seconds`}</p>
       </div>
@@ -30,7 +39,8 @@ const ShopSettings = (props) => {
           className={classes.perpage}
           type="number"
           placeholder="16"
-          onChange={handlePerPage}
+          onBlur={handleRestriction}
+          min="4"
         />
       </label>
       <label>

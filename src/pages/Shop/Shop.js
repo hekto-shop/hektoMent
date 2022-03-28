@@ -24,6 +24,8 @@ const Shop = () => {
 
   useEffect(() => scrollTo(), []);
 
+  console.log('location', location.search)
+
   const params = new URLSearchParams(location.search);
 
   const view = params.get("view") || "grid";

@@ -12,7 +12,6 @@ import { useTheme } from '@mui/material/styles';
 
 const LoginForm = () => {
   const theme = useTheme();
-  const backgroundColor = {"backgroundColor": theme.palette.background.paper};
   const formShadow = (theme.palette.mode === 'dark') ? {'boxShadow': '0 0 8px 4px rgb(248, 248, 251)'} :
                       {'boxShadow': '0 0 25px 10px rgb(248, 248, 251'} ;
 
@@ -53,7 +52,7 @@ const LoginForm = () => {
   };
 
   return (
-    <section className={styles["login-container"]} style={backgroundColor}>
+    <section className={styles["login-container"]}>
       <CustomizedDialogs
         title="Error"
         message={error}
