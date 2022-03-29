@@ -58,17 +58,11 @@ function App() {
   }, [initialCartState, dispatch, user]);
 
   const onIdle = () => {
-    auth
-      .signOut()
-      .then(() => {
-        history.push("/homepage");
-      })
-      .catch((err) => console.log(err));
     setShowLogoutAlert(true);
   };
 
   const idleTimer = useIdleTimer({ onIdle, timeout: timers.logout });
-
+  console.log(idleTimer);
   return (
     <ToggleColorMode>
       <Switch>
@@ -79,12 +73,13 @@ function App() {
           <Homepage />
           <CustomizedDialogs
             open={showLogoutAlert}
-            handleClose={() => setShowLogoutAlert(false)}
-            buttonText="Okay"
+            handleClose={() => {
+              setShowLogoutAlert(false);
+              idleTimer.reset();
+            }}
+            buttonText="Yes"
           >
-            <p className={classes.dialog}>
-              You've been logged out due to security reasons.
-            </p>
+            <p className={classes.dialog}>Are you still here?</p>
           </CustomizedDialogs>
         </Route>
         <Route path="/profile">
