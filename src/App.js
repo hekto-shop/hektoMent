@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
 import { useIdleTimer } from "react-idle-timer";
 import { auth } from "./config/config";
+import { timers } from "./constants/timers";
 
 import * as localStorage from "./helpers/local-storage";
 
@@ -66,7 +67,7 @@ function App() {
     setShowLogoutAlert(true);
   };
 
-  const idleTimer = useIdleTimer({ onIdle, timeout: 1000 * 5 });
+  const idleTimer = useIdleTimer({ onIdle, timeout: timers.logout });
 
   console.log(idleTimer);
 
