@@ -3,7 +3,7 @@ import Carousel from "react-elastic-carousel";
 import breakPoints from "../../constants/sliderBreakPoints";
 import ProductSlider from "../ProductSlider";
 
-import "./slider.css";
+import  "./slider.css";
 
 const FeaturedSlider = () => {
   const products = useSelector((state) => state.productsReducer.products);
@@ -27,7 +27,11 @@ const FeaturedSlider = () => {
     );
   });
 
-  return <Carousel breakPoints={breakPoints}>{featPd}</Carousel>;
+  return (
+    <div className='slider'>
+      <Carousel breakPoints={breakPoints}>{featPd}</Carousel>
+    </div>
+  );
 };
 
 export default FeaturedSlider;
