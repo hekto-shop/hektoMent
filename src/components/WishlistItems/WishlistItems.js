@@ -10,12 +10,6 @@ import { useTheme } from '@mui/material/styles';
 import * as icons from "../../assets/icons";
 
 const useStyles = makeStyles({
-  image: {
-    width: 'auto',
-    maxHeight: '150px',
-    gridColumn: '1/2',
-    margin:'auto'
-  },
   cardAction: {
     display: 'grid',
     gridTemplateRows: '200px',
@@ -49,7 +43,7 @@ const WishlistItems = () => {
           <CardMedia
             component="img"
             image={item.productImage}
-            className={classes.image}
+            className={styles["card-image"]}
           />
           <span onClick={() => handleRemoveFavorite(item)}>
             <img src={icons.deleteIcon} alt="remove" className={styles["remove-button"]} />

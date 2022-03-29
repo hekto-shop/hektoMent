@@ -12,7 +12,12 @@
 .image-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 auto; 
+}
+
+.card-image {
+    width: auto !important;
+    height: 160px;
+    grid-column: 1/2;
 }
 
 .remove-button{
