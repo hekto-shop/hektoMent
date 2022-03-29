@@ -69,8 +69,6 @@ function App() {
 
   const idleTimer = useIdleTimer({ onIdle, timeout: timers.logout });
 
-  console.log(idleTimer);
-
   return (
     <ToggleColorMode>
       <Switch>
