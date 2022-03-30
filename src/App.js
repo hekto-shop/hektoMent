@@ -65,22 +65,22 @@ function App() {
   console.log(idleTimer);
   return (
     <ToggleColorMode>
+      <CustomizedDialogs
+        open={showLogoutAlert}
+        handleClose={() => {
+          setShowLogoutAlert(false);
+          idleTimer.reset();
+        }}
+        buttonText="Yes"
+      >
+        <p className={classes.dialog}>Are you still here?</p>
+      </CustomizedDialogs>
       <Switch>
         <Route exact path="/">
           {!user ? <SplashPage /> : <Redirect to="/homepage" />}
         </Route>
         <Route path="/homepage">
           <Homepage />
-          <CustomizedDialogs
-            open={showLogoutAlert}
-            handleClose={() => {
-              setShowLogoutAlert(false);
-              idleTimer.reset();
-            }}
-            buttonText="Yes"
-          >
-            <p className={classes.dialog}>Are you still here?</p>
-          </CustomizedDialogs>
         </Route>
         <Route path="/profile">
           <Profile />
