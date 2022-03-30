@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     width: "100%",
     height: "764px",
     position: "relative",
+    paddingTop: '140px'
   },
 });
 
@@ -49,7 +50,7 @@ const MainSlider = () => {
   });
 
   return (
-    <main className={classes.container}>
+    <main className={stylesClasses.container}>
       <PageContainer>
         <img className={classes["lamp-image"]} src={images.lamp} alt="lamp" />
         <Carousel className={classes.carousel}>{markup}</Carousel>

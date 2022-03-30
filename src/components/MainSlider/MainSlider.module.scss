@@ -4,10 +4,6 @@ $discount-bg: url("../../assets/img/sale-badge-bg.svg");
 $product-img-bg: url("../../assets/img/slider-product-image-bg.svg");
 $container-height: 764px;
 
-.container {
-  padding-top: 140px;
-}
-
 .lamp-image {
   position: absolute;
   top: 140px;
@@ -43,7 +39,8 @@ $container-height: 764px;
     font-size: 1rem;
     color: $secondary-color;
     font-family: $secondary-font;
-    text-shadow: #f2f0ff 0px 0px 8px;
+    /*
+    text-shadow: #f2f0ff 0px 0px 8px;*/
   }
   h2 {
     font-size: 3.3rem;
@@ -51,7 +48,7 @@ $container-height: 764px;
     overflow-wrap: break-word;
     margin: 0.5rem 0 1rem 0;
     font-family: $primary-font;
-    text-shadow: #f2f0ff 0px 0px 8px;
+    text-shadow: #f2f0ff 0px 0px 6px;
   }
   p {
     color: $sub-text-color;
@@ -60,7 +57,8 @@ $container-height: 764px;
     padding-right: 1rem;
     font-family: $secondary-font;
     line-height: 2rem;
-    text-shadow: #f2f0ff 0px 0px 8px;
+    /*
+    text-shadow: #f2f0ff 0px 0px 8px;*/
   }
   button {
     font-family: $primary-font;
