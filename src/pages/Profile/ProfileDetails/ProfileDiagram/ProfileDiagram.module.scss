@@ -1,3 +1,13 @@
+@import "../../../../styles/css-variables.scss";
+
 .diagram-cont {
-    background: red;
+  .diagram-cont__text {
+    font-family: $primary-font;
+    color: #333333;
+    margin-bottom: 1rem;
+  }
+  .diagram {
+    position: relative;
+    min-height: 60%;
+  }
 }
