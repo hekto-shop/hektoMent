@@ -16,7 +16,9 @@ const useStyles = makeStyles({
     width: "100%",
     height: "764px",
     position: "relative",
-    paddingTop: '140px'
+    '@media (max-width: 800px)' : {
+      display: 'none'
+    }
   },
 });
 
