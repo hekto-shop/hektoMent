@@ -1,2 +1,2 @@
 import SingleCategory from "./SingleCategory";
-export default SingleCategory
+export default SingleCategory;
