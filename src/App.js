@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import {
   getCategories,
   getSales,
@@ -11,6 +11,9 @@ import {
 } from "./store/thunk";
 import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
+import { useIdleTimer } from "react-idle-timer";
+import { auth } from "./config/config";
+import { timers } from "./constants/timers";
 
 import * as localStorage from "./helpers/local-storage";
 
@@ -29,19 +32,21 @@ import Profile from "./pages/Profile";
 import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
 import Wishlist from "./pages/Wishlist";
-import Categories from './pages/Categories'
+import Categories from './pages/Categories';
+import CustomizedDialogs from "./components/CustomizedDialogs";
 
 import ToggleColorMode from "./theme/Toggle";
+import classes from "./App.module.scss";
 
 const cartItemsLS = localStorage.get("cart");
 const favoritesLS = localStorage.get("favorites");
 const initialCartState = { cartItems: cartItemsLS, favorites: favoritesLS };
 
 function App() {
+  const [showLogoutAlert, setShowLogoutAlert] = useState(false);
   const { user } = useSession();
   const dispatch = useDispatch();
-
-  console.log("AppUser", user);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getCategories());
@@ -53,8 +58,24 @@ function App() {
     dispatch(getMyOrders(user?.uid));
   }, [initialCartState, dispatch, user]);
 
+  const onIdle = () => {
+    setShowLogoutAlert(true);
+  };
+
+  const idleTimer = useIdleTimer({ onIdle, timeout: timers.logout });
+  console.log(idleTimer);
   return (
     <ToggleColorMode>
+      <CustomizedDialogs
+        open={showLogoutAlert}
+        handleClose={() => {
+          setShowLogoutAlert(false);
+          idleTimer.reset();
+        }}
+        buttonText="Yes"
+      >
+        <p className={classes.dialog}>Are you still here?</p>
+      </CustomizedDialogs>
       <Switch>
         <Route exact path="/">
           {!user ? <SplashPage /> : <Redirect to="/homepage" />}
