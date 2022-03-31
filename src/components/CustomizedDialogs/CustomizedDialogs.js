@@ -32,7 +32,7 @@ const BootstrapDialogTitle = (props) => {
           sx={{
             position: "absolute",
             right: 8,
-            top: 8,
+            top: 0,
             color: (theme) => theme.palette.grey[500],
           }}
         >
