@@ -7,25 +7,28 @@ import Footer from "../../components/Footer/Footer";
 import classes from "./PageLayout.module.scss";
 import PageContainer from "../PageContainer";
 
-
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 const PageLayout = (props) => {
   const theme = useTheme();
-  const backgroundColor = {"backgroundColor": theme.palette.background.light};
-  const textColor = {"color": theme.palette.text.primary};
-  const pageTitle = ( 
-    <div className={classes.title}  style={backgroundColor}>
+  const backgroundColor = { backgroundColor: theme.palette.background.light };
+  const textColor = { color: theme.palette.text.primary };
+  const pageTitle = (
+    <div className={classes.title} style={backgroundColor}>
       <PageContainer>
         <h2>{props.title}</h2>
         <nav>
           <ul>
             <li>
-              <Link to="/" style={textColor}>Home</Link>
+              <Link to="/" style={textColor}>
+                Home
+              </Link>
             </li>
             <span>.</span>
             <li>
-              <Link to="/" style={textColor}>Pages</Link>
+              <Link to="/" style={textColor}>
+                Pages
+              </Link>
             </li>
             <span>.</span>
             <li className={classes.current}>{props.title}</li>
@@ -35,12 +38,12 @@ const PageLayout = (props) => {
     </div>
   );
   return (
-    <>
+    <div className={classes.container}>
       <Header />
       {props.isHomepage || pageTitle}
       {props.children}
       <Footer />
-    </>
+    </div>
   );
 };
 

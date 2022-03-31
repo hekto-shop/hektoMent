@@ -1,0 +1,10 @@
+@import "./styles/css-variables.scss";
+@import "./styles/mixins.scss";
+
+.dialog {
+  @include centered-flex;
+  color: $text-color;
+  font-family: $primary-font;
+  height: 100px;
+  padding: 20px;
+}

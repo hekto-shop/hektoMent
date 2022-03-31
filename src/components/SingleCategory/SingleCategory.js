@@ -5,13 +5,19 @@ import {
   CardContent,
   CardActions,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import styles from "./SingleCategory.module.scss";
 
 const SingleCategory = ({ category }) => {
+  const history = useHistory();
+
+  const cardClickHandler = () => {
+    history.push(`/shop?cat=${category.category.replace(/ /g, '+').replace(/&/g, '%26')}`)
+  }
+
   return (
-    <Card className={styles["single-category"]}>
+    <Card className={styles["single-category"]} onClick={cardClickHandler}>
       <CardActionArea>
         <CardMedia component="img" height="250" image={category.url} alt="" />
         <CardContent>
