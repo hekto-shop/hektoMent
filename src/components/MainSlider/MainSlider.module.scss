@@ -6,7 +6,7 @@ $container-height: 764px;
 
 .lamp-image {
   position: absolute;
-  top: 0;
+  top: 140px;
   left: -20px;
 }
 
@@ -103,11 +103,12 @@ $container-height: 764px;
 @media only screen and (max-width: 1100px) {
   .lamp-image {
     display: none;
+    padding-top: 0px;
   }
 }
 
 @media only screen and (max-width: 800px) {
   .container {
-    display: none;
+    display: none !important;
   }
 }
