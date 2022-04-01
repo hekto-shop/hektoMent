@@ -132,8 +132,19 @@ const Shop = () => {
   };
 
   const handleColor = (e) => {
-    if (e.target.getAttribute("data.color") === "all") updateURL("col", "all");
-    updateURL("col", e.target.getAttribute("data-color"));
+    const currentValue = params.get("col");
+    if (!e.target.checked) {
+      const newValue = currentValue
+        .split("+")
+        .filter((item) => item !== e.target.dataset.color)
+        .join("+");
+      updateURL("col", newValue);
+    } else {
+      const newValue = currentValue
+        ? currentValue + "+" + e.target.dataset.color
+        : e.target.dataset.color;
+      updateURL("col", newValue);
+    }
   };
 
   const handleRaiting = (e) => {

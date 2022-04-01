@@ -14,20 +14,19 @@ const ColorFilter = (props) => {
 
   const colorSide = (
     <div className={styles["color-side"]}>
-      <button
-        data-color="all"
-        style={{ width: "14px", height: "14px" }}
-        className={styles["btn-mixed"]}
-        onClick={(e) => handleColor(e)}
-      ></button>
       {setColor.map((item, ind) => {
+        console.log("item", item);
         return (
-          <button
+          <input
+            type="checkbox"
             key={ind}
+            className={styles["color-checkbox"]}
             data-color={item}
-            style={{ width: "14px", height: "14px", backgroundColor: item }}
             onClick={(e) => handleColor(e)}
-          ></button>
+            style={{
+              background: item,
+            }}
+          ></input>
         );
       })}
     </div>
