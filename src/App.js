@@ -33,6 +33,7 @@ import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
 import Categories from "./pages/Categories";
 import CustomizedDialogs from "./components/CustomizedDialogs";
+import Blog from "./pages/Blog";
 
 import ToggleColorMode from "./theme/Toggle";
 import classes from "./App.module.scss";
@@ -123,6 +124,9 @@ function App() {
         </Route>
         <Route path="/categories">
           <Categories />
+        </Route>
+        <Route path="/Blog">
+          <Blog />
         </Route>
       </Switch>
     </ToggleColorMode>
