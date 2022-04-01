@@ -1,34 +1,3 @@
-export const options = {
-  maintainAspectRatio: false,
-  datasetStrokeWidth: 3,
-  pointDotStrokeWidth: 4,
-  scales: {
-    xAxes: {
-      display: false,
-      grid: {
-        display: false,
-      },
-    },
-    yAxes: {
-      display: false,
-      grid: {
-        display: false,
-      },
-    },
-  },
-  plugins: {
-    legend: {
-      display: false,
-    },
-  },
-  elements: {
-    line: {
-      tension: 0.5,
-      borderJoinStyle: "round",
-    },
-  },
-};
-
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
 export const data = {
@@ -36,9 +5,9 @@ export const data = {
   datasets: [
     {
       label: "Action Diagram",
-      data: [27, 100, 86, 87, 45, 46, 55, 67],
+      data: [0, 1, 5, 60],
       borderColor: "#4F4282",
-      backgroundColor: "#CCE8FE",
+      backgroundColor: '#CCE8FE',
     },
   ],
 };
@@ -60,3 +29,34 @@ export const data = {
 //     },
 //   ],
 // };
+
+export const options = {
+  maintainAspectRatio: false,
+  // datasetStrokeWidth: 3,
+  // pointDotStrokeWidth: 4,
+  scales: {
+    xAxes: {
+      // display: false,
+      grid: {
+        display: true,
+      },
+    },
+    yAxes: {
+      // display: false,
+      grid: {
+        display: true,
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
+  elements: {
+    line: {
+      tension: 0.5,
+      borderJoinStyle: "round",
+    },
+  },
+};

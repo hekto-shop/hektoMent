@@ -10,4 +10,49 @@
     position: relative;
     min-height: 60%;
   }
+
+  .details-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    .details-left {
+      display: flex;
+      flex-direction: column;
+
+      .order-icon {
+        background: #f3e1d5;
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .garbage-icon {
+        background: #dbdbfd;
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .details-title {
+        color: #333333;
+        font-family: $primary-font;
+        margin-top: 10px;
+      }
+
+      .details-para {
+        color: #b2b2b2;
+        font-weight: 700;
+        font-family: $secondary-font;
+        font-size: 0.8rem;
+      }
+    }
+  }
 }
