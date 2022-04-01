@@ -75,8 +75,8 @@ function App() {
 
   const idleTimer = useIdleTimer({
     onIdle,
-    timeout: timers.logout,
-    promptTimeout: timers.showPrompt,
+    timeout: timers.logout, //15 minutes
+    promptTimeout: timers.showPrompt, // 5 minutes
     onPrompt,
   });
 
