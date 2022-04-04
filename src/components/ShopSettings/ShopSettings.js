@@ -25,7 +25,7 @@ const ShopSettings = (props) => {
 
   return (
     <div className={classes["top-bar"]}>
-      <div>
+      <div className={classes.title}>
         <h2>Ecommerce Accessories & Fashion Items</h2>
         <p
           style={subTextColor}
@@ -61,7 +61,7 @@ const ShopSettings = (props) => {
         </button>
       </label>
       <input onChange={handleSearch} type="text" />
-      <button onClick={handleFilterClick}>
+      <button className={classes["filter-button"]} onClick={handleFilterClick}>
         <img src={icons.filter} />
       </button>
     </div>

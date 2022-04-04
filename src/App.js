@@ -31,7 +31,8 @@ import OrderCompleted from "./pages/OrderCompleted";
 import Profile from "./pages/Profile";
 import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
-import Categories from "./pages/Categories";
+import Wishlist from "./pages/Wishlist";
+import Categories from './pages/Categories';
 import CustomizedDialogs from "./components/CustomizedDialogs";
 
 import ToggleColorMode from "./theme/Toggle";
@@ -58,11 +59,28 @@ function App() {
   }, [initialCartState, dispatch, user]);
 
   const onIdle = () => {
+    if (!user) return;
+    auth
+      .signOut()
+      .then(() => {
+        history.push("/login");
+      })
+      .catch((err) => console.log(err));
+    setShowLogoutAlert(false);
+  };
+
+  const onPrompt = () => {
+    if (!user) return;
     setShowLogoutAlert(true);
   };
 
-  const idleTimer = useIdleTimer({ onIdle, timeout: timers.logout });
-  console.log(idleTimer);
+  const idleTimer = useIdleTimer({
+    onIdle,
+    timeout: timers.logout, //15 minutes
+    promptTimeout: timers.showPrompt, // 5 minutes
+    onPrompt,
+  });
+
   return (
     <ToggleColorMode>
       <CustomizedDialogs
@@ -106,6 +124,9 @@ function App() {
         <Route path="/products">
           <Products />
         </Route>
+        <Route path="/wishlist">
+            <Wishlist />
+          </Route>
         <Route path="/contact">
           <h1 className="temporary">Contact form</h1>
         </Route>
