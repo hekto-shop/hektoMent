@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from "react";
+import React, { useState, useLayoutEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import {
@@ -21,8 +21,9 @@ const Shop = () => {
   const [filterClick, setFilterClick] = useState(false);
   const history = useHistory();
   const location = useLocation();
+  const shopRef = useRef();
 
-  useEffect(() => scrollTo(), []);
+  useLayoutEffect(() => scrollTo(shopRef.current.offsetTop - 250), []);
 
   console.log('location', location.search)
 
@@ -161,32 +162,40 @@ const Shop = () => {
   return (
     <PageLayout title="Shop">
       <PageContainer>
-        <ShopSettings
-          handleSort={handleSort}
-          handleSearch={handleSearch}
-          handlePerPage={handlePerPage}
-          handleGridView={handleGridView}
-          handleListView={handleListView}
-          handleFilterClick={handleFilterClick}
-          numberOfProducts={products.length}
-        />
-        <div className={classes["middle-shop-section"]}>
-          {filterClick && (
-            <ProductFilter
-              filteredList={filteredList}
-              handleBrand={handleBrand}
-              handleDiscount={handleDiscount}
-              handlePrice={handlePrice}
-              handleColor={handleColor}
-              handleCategory={handleCategory}
-              handleRaiting={handleRaiting}
-            />
-          )}
-          {view === "grid" ? (
-            <GridView productList={productList} isFilterClicked={filterClick} />
-          ) : (
-            <ListView productList={productList} isFilterClicked={filterClick} />
-          )}
+        <div ref={shopRef}>
+          <ShopSettings
+            handleSort={handleSort}
+            handleSearch={handleSearch}
+            handlePerPage={handlePerPage}
+            handleGridView={handleGridView}
+            handleListView={handleListView}
+            handleFilterClick={handleFilterClick}
+            numberOfProducts={products.length}
+          />
+          <div className={classes["middle-shop-section"]}>
+            {filterClick && (
+              <ProductFilter
+                filteredList={filteredList}
+                handleBrand={handleBrand}
+                handleDiscount={handleDiscount}
+                handlePrice={handlePrice}
+                handleColor={handleColor}
+                handleCategory={handleCategory}
+                handleRaiting={handleRaiting}
+              />
+            )}
+            {view === "grid" ? (
+              <GridView
+                productList={productList}
+                isFilterClicked={filterClick}
+              />
+            ) : (
+              <ListView
+                productList={productList}
+                isFilterClicked={filterClick}
+              />
+            )}
+          </div>
         </div>
         <Pagination
           currentPage={currentPage}
