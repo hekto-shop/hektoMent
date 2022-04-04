@@ -40,17 +40,25 @@ const OrderTracking = () => {
   // Side Effects
   useEffect(() => {
     scrollTo();
-    const timeout = setTimeout(() => {
-      if (!order)
+
+    if (!trackingId) {
+      setFallback(
+        <p className={classes["no-orders"]}>
+          Please enter Tracking ID in search bar
+        </p>
+      );
+    } else if (!order) {
+      const timeout = setTimeout(() => {
         setFallback(
           <p className={classes["no-orders"]}>
             We could not find anything with the following tracking id:
             <span>"{trackingId}"</span>
           </p>
         );
-    }, 4000);
+      }, 4000);
 
-    return () => clearTimeout(timeout);
+      return () => clearTimeout(timeout);
+    }
   }, [trackingId]);
 
   // Handlers

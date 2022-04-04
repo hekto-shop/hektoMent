@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import classes from "./OrderCompleted.module.scss";
 import * as icons from "../../assets/icons";
@@ -12,14 +12,18 @@ import Button from "../../components/UI/Button";
 
 const OrderCompleted = () => {
   const history = useHistory();
+  const orderCompletedRef = useRef();
+
   const handleClick = () => {
     history.push("/shop");
   };
-  useEffect(() => scrollTo(), []);
+  useLayoutEffect(() => scrollTo(orderCompletedRef.current.offsetTop - 250), []);
+
+
   return (
     <PageLayout title="Order Completed">
       <PageContainer>
-        <div className={classes.container}>
+        <div className={classes.container} ref={orderCompletedRef}>
           <span className={classes.tick}>
             <img src={icons.redTick} alt="Success" />
           </span>
