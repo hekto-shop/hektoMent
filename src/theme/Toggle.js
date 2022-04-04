@@ -20,7 +20,8 @@ export default function  ToggleColorMode  (props) {
                 light: '#5a18aa',
                 info: '#5a18aa',
                 copyright: '#4a148c',
-                bottomHeader: '#1c0040'
+                bottomHeader: '#1c0040',
+                wishlist: '#4a148c'
               }
             : {
                 footer: '#eeeffb',
@@ -30,7 +31,8 @@ export default function  ToggleColorMode  (props) {
                 light: '#f6f5ff',
                 info: '#f9f8fe',
                 copyright: '#e7e4f8',
-                bottomHeader: ''
+                bottomHeader: '',
+                wishlist: '#f5f4f4'
               }),
         },
         text: {

@@ -1,4 +1,5 @@
 @import "../../styles/css-variables.scss";
+@import "../../styles/mixins.scss";
 
 .table {
   display: grid;
@@ -19,4 +20,10 @@
     text-align: center;
     margin: 0.5rem 0;
   }
+}
+
+.no-orders {
+  @include centered-flex;
+  font-family: $primary-font;
+  font-size: 1.5rem;
 }

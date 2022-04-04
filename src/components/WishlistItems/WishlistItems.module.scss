@@ -1,0 +1,72 @@
+@import "../../styles/css-variables.scss";
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 200px;
+    row-gap: 50px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card-image {
+    width: auto !important;
+    height: 160px;
+    grid-column: 1/2;
+}
+
+.remove-button{
+    cursor:pointer
+}
+
+.card-description {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column: 2/5;
+    text-align:center
+}
+
+.card-description-title {
+    color: $secondary-color;
+    font-family: $primary-font;
+    font-size: 16px;
+    line-height: 1.2rem;
+}
+
+.card-description-stock {
+    font-family: $primary-font;
+    font-size: 16px;
+    line-height: 1.2rem;
+}
+
+.card-description-price {
+    font-family: $primary-font;
+    font-size: 16px;
+    line-height: 1.2rem;
+}
+
+.empty {
+    text-align: center;
+    padding: 50px 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        grid-auto-rows: auto;
+    }
+    .card-description {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column: 2/3;
+        text-align:center;
+        row-gap: 20px;
+    }
+    .card-button {
+        grid-column: 1/3;
+    }
+}

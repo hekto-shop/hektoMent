@@ -200,15 +200,32 @@
       background: linear-gradient(to right, #1e9600, #fff200, #ff0000);
     }
 
-    button {
-      outline: none;
-      border: none;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all 0.5s ease;
+    // button {
+    //   outline: none;
+    //   border: none;
+    //   border-radius: 2px;
+    //   cursor: pointer;
+    //   transition: all 0.5s ease;
 
-      &:active,
-      &:focus {
+    //   &:active,
+    //   &:focus {
+    //     transform: rotate(45deg);
+    //   }
+    // }
+
+    input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease;
+      border-radius: 3px;
+
+      &:checked {
         transform: rotate(45deg);
       }
     }

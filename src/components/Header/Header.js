@@ -90,7 +90,7 @@ const Header = () => {
           </Link>
 
           <Navigation />
-          <Searchbar onSearch={(data) => console.log(data)} />
+          {/* <Searchbar onSearch={(data) => console.log(data)} /> */}
         </PageContainer>
       </div>
     </header>
