@@ -59,11 +59,28 @@ function App() {
   }, [initialCartState, dispatch, user]);
 
   const onIdle = () => {
+    if (!user) return;
+    auth
+      .signOut()
+      .then(() => {
+        history.push("/login");
+      })
+      .catch((err) => console.log(err));
+    setShowLogoutAlert(false);
+  };
+
+  const onPrompt = () => {
+    if (!user) return;
     setShowLogoutAlert(true);
   };
 
-  const idleTimer = useIdleTimer({ onIdle, timeout: timers.logout });
-  console.log(idleTimer);
+  const idleTimer = useIdleTimer({
+    onIdle,
+    timeout: timers.logout, //15 minutes
+    promptTimeout: timers.showPrompt, // 5 minutes
+    onPrompt,
+  });
+
   return (
     <ToggleColorMode>
       <CustomizedDialogs
