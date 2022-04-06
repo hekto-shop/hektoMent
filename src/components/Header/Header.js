@@ -33,7 +33,7 @@ const Header = () => {
 
   const theme = useTheme();
   const titleColor = { color: theme.palette.text.hektoTitle };
-
+  const bottomHeaderBackgroundColor = {backgroundColor: theme.palette.background.bottomHeader}
   const colorMode = React.useContext(ColorModeContext);
   return (
     <header className={headerClasses}>
@@ -83,7 +83,7 @@ const Header = () => {
         </PageContainer>
       </div>
 
-      <div className={classes["bottom-header"]}>
+      <div className={classes["bottom-header"]} style={bottomHeaderBackgroundColor}>
         <PageContainer className={classes["grid-header"]}>
           <Link className={classes.logo} to="/homepage">
             <h1 style={titleColor}>Hekto</h1>

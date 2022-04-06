@@ -19,6 +19,8 @@ export default function  ToggleColorMode  (props) {
                 secondary: '#4a148c',
                 light: '#5a18aa',
                 info: '#5a18aa',
+                copyright: '#4a148c',
+                bottomHeader: '#1c0040',
                 wishlist: '#4a148c'
               }
             : {
@@ -28,6 +30,8 @@ export default function  ToggleColorMode  (props) {
                 secondary: '#f1f0ff',
                 light: '#f6f5ff',
                 info: '#f9f8fe',
+                copyright: '#e7e4f8',
+                bottomHeader: '',
                 wishlist: '#f5f4f4'
               }),
         },
