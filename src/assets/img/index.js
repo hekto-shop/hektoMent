@@ -8,6 +8,7 @@ import support from "./support.png";
 import clock from "./clock.png";
 import tvStand from "./tv-stand.png";
 import profilePlaceholder from "./profile-placeholder.png";
+import notFound from './not-found.png'
 
 export {
   lamp,
@@ -20,4 +21,5 @@ export {
   clock,
   tvStand,
   profilePlaceholder,
+  notFound
 };
