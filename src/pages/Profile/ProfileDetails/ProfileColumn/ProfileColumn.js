@@ -6,13 +6,11 @@ import { rightArrow } from "../../../../assets/icons";
 import styles from "./ProfileColumn.module.scss";
 
 const ProfileColumn = () => {
-    const history = useHistory();
+  const history = useHistory();
   const user = useSelector((state) => state.userReducer.user);
   const myProducts = useSelector(
     (state) => state.ordersReducer.myProductOrders
   );
-
-  console.log('user', user);
 
   const todaysDate = new Date();
   const dateFormat = `${
@@ -21,24 +19,30 @@ const ProfileColumn = () => {
     months[todaysDate.getMonth()]
   } ${todaysDate.getUTCFullYear()}`;
 
-  const orderHistory = myProducts.map((product, ind, arr) => {
-    return (
-      <div className={styles['order-item']} key={ind}>
-        <div className={styles['order-info']}>
-            <div className={styles['order-image']}>
-                <img src={product.productImage} alt=''/>
+  const orderHistory = myProducts
+    .map((product, ind, arr) => {
+      return (
+        <div className={styles["order-item"]} key={ind}>
+          <div className={styles["order-info"]}>
+            <div className={styles["order-image"]}>
+              <img src={product.productImage} alt="" />
             </div>
-            <div className={styles['order-details']}>
-                <h4>{product.name}</h4>
-                {ind + 1 === arr.length && <p className={styles['new-item']}>New</p>}
+            <div className={styles["order-details"]}>
+              <h4>{product.name}</h4>
+              {ind + 1 === arr.length && (
+                <p className={styles["new-item"]}>New</p>
+              )}
             </div>
-            <button onClick={() => history.push(`/product/${product.productCode}`)}>
-                <img src={rightArrow} alt=''/>
+            <button
+              onClick={() => history.push(`/product/${product.productCode}`)}
+            >
+              <img src={rightArrow} alt="" />
             </button>
+          </div>
         </div>
-      </div>
-    );
-  }).reverse();
+      );
+    })
+    .reverse();
 
   return (
     <div className={styles["column-cont"]}>
@@ -48,9 +52,7 @@ const ProfileColumn = () => {
       </div>
       <div className={styles["cont-orders"]}>
         <h3>Order History</h3>
-        <div className={styles["order-column"]}>
-            {orderHistory}
-        </div>
+        <div className={styles["order-column"]}>{orderHistory}</div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { options, data } from "../../../../constants/chart";
+import { days } from "../../../../constants/dateArray";
 import { useSelector } from "react-redux";
 
 import styles from "./ProfileDiagram.module.scss";
@@ -27,14 +27,64 @@ ChartJS.register(
 
 const ProfileDiagram = (props) => {
   const myOrders = useSelector((state) => state.ordersReducer.myOrders);
+  const user = useSelector((state) => state.userReducer.user);
+
+  const userActiveTime = user.activeLog?.map((item) => {
+    return Math.round(item.activeTime / 1000 / 60);
+  });
+  const userActiveDates = user.activeLog?.map((item) => {
+    const userDt = new Date(item.date.seconds * 1000);
+    return days[userDt.getDay()];
+  });
+
+   const data = {
+    labels: userActiveDates,
+    datasets: [
+      {
+        label: "Action Diagram",
+        data: userActiveTime,
+        borderColor: "#4F4282",
+        backgroundColor: "#CCE8FE",
+      },
+    ],
+  };
+
+   const options = {
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: {
+        // display: false,
+        grid: {
+          display: true,
+        },
+      },
+      yAxes: {
+        // display: false,
+        grid: {
+          display: true,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    elements: {
+      line: {
+        tension: 0.5,
+        borderJoinStyle: "round",
+      },
+    },
+  };
 
   return (
     <div className={`${styles["diagram-cont"]} ${props.className}`}>
       <h2 className={styles["diagram-cont__text"]}>Action Diagram</h2>
       <div className={styles["diagram"]}>
-        <Line options={options} data={data} />
+        <Line data={data} options={options}/>
       </div>
-      <div className={styles['details-bottom']}>
+      <div className={styles["details-bottom"]}>
         <div className={styles["details-left"]}>
           <div className={styles["order-icon"]}>
             <img className={styles["profile-icon"]} src={profileOrder} alt="" />
