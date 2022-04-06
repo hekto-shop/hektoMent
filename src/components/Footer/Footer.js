@@ -10,7 +10,8 @@ import { useTheme } from "@mui/material/styles";
 
 const Footer = () => {
   const theme = useTheme();
-  const backgroundColor = { backgroundColor: theme.palette.background.footer };
+  const backgroundColor = {"backgroundColor": theme.palette.background.footer};
+  const copyrightBackgroundColor = {"backgroundColor": theme.palette.background.copyright}
 
   const { user } = useSession();
   const handleSubscribe = (e) => {
@@ -79,7 +80,7 @@ const Footer = () => {
           </div>
         </PageContainer>
       </section>
-      <section className={classes.copyright}>
+      <section  className={classes.copyright} style={copyrightBackgroundColor} >
         <PageContainer>
           <div className={classes.author}>©Webecy - All Rights Reserved</div>
           <div className={classes.social}>
