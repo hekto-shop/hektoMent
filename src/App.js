@@ -14,13 +14,6 @@ import { useSession } from "./contexts/auth-context";
 import { useIdleTimer } from "react-idle-timer";
 import { auth } from "./config/config";
 import { timers } from "./constants/timers";
-import {
-  IdleTimerProvider,
-  IdleTimerConsumer,
-  IIdleTimerContext,
-  IdleTimerContext,
-  useIdleTimerContext,
-} from "react-idle-timer";
 import { uploadActiveTime } from "./helpers/active-log";
 
 import * as localStorage from "./helpers/local-storage";
@@ -41,6 +34,7 @@ import OrderTracking from "./pages/OrderTracking";
 import OrderHistory from "./pages/OrderHistory";
 import Wishlist from "./pages/Wishlist";
 import Categories from "./pages/Categories";
+import PageNotFound from "./pages/PageNotFound";
 import CustomizedDialogs from "./components/CustomizedDialogs";
 
 import ToggleColorMode from "./theme/Toggle";
@@ -101,7 +95,6 @@ function App() {
   }, [userDoc])
 
   return (
-    <IdleTimerProvider>
       <ToggleColorMode>
         <CustomizedDialogs
           open={showLogoutAlert}
@@ -165,9 +158,11 @@ function App() {
           <Route path="/categories">
             <Categories />
           </Route>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
         </Switch>
       </ToggleColorMode>
-    </IdleTimerProvider>
   );
 }
 
