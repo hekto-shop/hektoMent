@@ -33,7 +33,9 @@ const CurrencySelector = () => {
         <>
           <div onClick={handleCurrency} className={classes.options}>
             {notSelected.map((el) => (
-              <span data-value={el}>{el}</span>
+              <span key={el} data-value={el}>
+                {el}
+              </span>
             ))}
           </div>
           <Backdrop onClick={toggleOptions} />
