@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import classes from "./OrderTracking.module.scss";
@@ -59,7 +59,7 @@ const OrderTracking = () => {
 
       return () => clearTimeout(timeout);
     }
-  }, [trackingId]);
+  }, [trackingId, order]);
 
   // Handlers
   const handleSearch = (keyword) => {
