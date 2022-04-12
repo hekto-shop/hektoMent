@@ -29,7 +29,7 @@ const ProfileOrderTracking = (props) => {
       <div className={styles["cont-text"]}>
         <h2 className={styles["cont-header"]}>Order Tracking</h2>
       </div>
-      {!myOrders ? <Carousel itemsToShow={1}>{myOrderedProducts}</Carousel> : <h3 className={styles['no-orders']}>No Orders have found</h3>}
+      {myOrders.length ? <Carousel itemsToShow={1}>{myOrderedProducts}</Carousel> : <h3 className={styles['no-orders']}>No Orders have found</h3>}
     </div>
   );
 };
