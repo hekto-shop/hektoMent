@@ -21,7 +21,6 @@ import { useTheme } from "@mui/material/styles";
 
 const ProductCard = (props) => {
   const theme = useTheme();
-  const backgroundColor = { backgroundColor: theme.palette.background.paper };
   const itemShadow =
     theme.palette.mode === "dark"
       ? { boxShadow: "0 0 8px 4px #f6f4fd" }
