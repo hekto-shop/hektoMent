@@ -51,8 +51,8 @@ const ProfileColumn = () => {
         <p className={styles["cont-date"]}>{dateFormat}</p>
       </div>
       <div className={styles["cont-orders"]}>
-        <h3>Order History</h3>
-        <div className={styles["order-column"]}>{orderHistory}</div>
+        <h3 className={styles['cont-title']}>Order History</h3>
+        <div className={styles["order-column"]}>{myProducts.length ? orderHistory : <h3 className={styles['no-orders']}>No Orders have found</h3>}</div>
       </div>
     </div>
   );

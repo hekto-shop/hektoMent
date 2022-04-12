@@ -39,7 +39,7 @@
 .cont-orders {
   margin-top: 50px;
 
-  h3 {
+  .cont-title {
     font-size: 0.9rem;
     font-family: $secondary-font;
     font-weight: 600;
@@ -78,15 +78,14 @@
         align-items: center;
         gap: 1.3rem;
 
-        
         .order-image {
-            width: 50px;
-            height: 50px;
-            img {
-              width: 100%;
-              height: auto;
-            }
+          width: 50px;
+          height: 50px;
+          img {
+            width: 100%;
+            height: auto;
           }
+        }
 
         .order-details {
           display: flex;
@@ -119,12 +118,18 @@
   }
 }
 
+.no-orders {
+  text-align: center;
+  font-family: $primary-font;
+  margin-top: 3.5rem;
+}
 
 @media only screen and (max-width: 825px) {
   .column-cont {
     margin-top: 3rem;
 
-    .cont-budget, .cont-date {
+    .cont-budget,
+    .cont-date {
       text-align: center;
     }
 
