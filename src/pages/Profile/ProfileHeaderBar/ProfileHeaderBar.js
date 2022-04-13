@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { auth } from "../../../config/config";
 import { useSession } from "../../../contexts/auth-context";
+import Backdrop from "../../../components/UI/Backdrop/Backdrop";
 
 import { downArrow } from "../../../assets/icons";
 import { profilePlaceholder } from "../../../assets/img";
@@ -28,10 +28,15 @@ const ProfileHeaderBar = () => {
   };
 
   const selectBar = (
-    <div className={styles["select-bar"]}>
-      <p onClick={signoutHandler}>Logout</p>
-    </div>
+    <>
+      <div className={styles["select-bar"]}>
+        <p onClick={signoutHandler}>Logout</p>
+      </div>
+      <Backdrop onClick={selectChangeHandler} />
+    </>
   );
+
+  const arrowClasses = select ? `${styles.arrow} ${styles.rotated}` : styles.arrow
 
   return (
     <header className={styles.header}>
@@ -48,7 +53,7 @@ const ProfileHeaderBar = () => {
           <h4>{user?.displayName}</h4>
           <p>user</p>
         </div>
-        <img src={downArrow} onClick={selectChangeHandler} alt="" />
+        <img src={downArrow} onClick={selectChangeHandler} alt="" className={arrowClasses}/>
         {select ? selectBar : null}
       </span>
     </header>
