@@ -5,13 +5,13 @@ import { auth } from "../../../config/config";
 import { useSession } from "../../../contexts/auth-context";
 
 import { downArrow } from "../../../assets/icons";
+import { profilePlaceholder } from "../../../assets/img";
 
 import styles from "./ProfileHeaderBar.module.scss";
 
 const ProfileHeaderBar = () => {
   const [select, setSelect] = useState(false);
   const { user } = useSession();
-  // const username = useSelector((state) => state.userReducer.user.username);
   const history = useHistory();
 
   const signoutHandler = () => {
@@ -40,11 +40,11 @@ const ProfileHeaderBar = () => {
       </h2>
       <span className={styles["profile-wrapper"]}>
         <img
-          src={user?.photoURL}
+          src={user?.photoURL || profilePlaceholder}
           alt="avatar"
           className={styles["profile-avatar"]}
         />
-        <div className={styles['user-text']}>
+        <div className={styles["user-text"]}>
           <h4>{user?.displayName}</h4>
           <p>user</p>
         </div>
