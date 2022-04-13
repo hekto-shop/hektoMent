@@ -18,8 +18,9 @@ const TrendingProducts = () => {
     productsList.find((elem) => elem.productCode === id)
   );
 
-  const markup = trendingItems.slice(0, 4).map((product) => (
+  const markup = trendingItems.slice(0, 4).map((product, i) => (
     <Grid
+      key={i}
       item
       xs={12}
       md={6}
@@ -31,9 +32,14 @@ const TrendingProducts = () => {
     </Grid>
   ));
 
-  const smallList = [...productsList].slice(4, 7).map((product) => {
+  const smallList = [...productsList].slice(4, 7).map((product, i) => {
     return (
-      <SingleProduct product={product} currency={currency} type="horizontal" />
+      <SingleProduct
+        key={i}
+        product={product}
+        currency={currency}
+        type="horizontal"
+      />
     );
   });
 

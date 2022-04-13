@@ -17,13 +17,14 @@ import classes from "./ProductCard.module.scss";
 import PageContainer from "../../containers/PageContainer";
 import Ratings from "../../components/Ratings";
 
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 const ProductCard = (props) => {
   const theme = useTheme();
-  const backgroundColor = {"backgroundColor": theme.palette.background.paper};
-  const itemShadow = (theme.palette.mode === 'dark') ? {'boxShadow': '0 0 8px 4px #f6f4fd'} :
-                      {'boxShadow':'0px 0px 25px 10px #f6f4fd'};
+  const itemShadow =
+    theme.palette.mode === "dark"
+      ? { boxShadow: "0 0 8px 4px #f6f4fd" }
+      : { boxShadow: "0px 0px 25px 10px #f6f4fd" };
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.cartReducer.cartItems);
   const favorites = useSelector((store) => store.cartReducer.favorites);
@@ -48,7 +49,7 @@ const ProductCard = (props) => {
   if (Array.isArray(product.productImage)) {
     thumbnails = product.productImage.map((image, i) => {
       return (
-        <div className={classes.thumbnail}>
+        <div key={i} className={classes.thumbnail}>
           <img src={image} alt="thumbnail" key={i} />
         </div>
       );
@@ -83,8 +84,6 @@ const ProductCard = (props) => {
   };
   const favClasses = isInFavorites ? classes.active : "";
   const cartClasses = isInCart ? classes.active : "";
-
-  
 
   return (
     <PageContainer>
