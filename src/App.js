@@ -34,7 +34,7 @@ import OrderHistory from "./pages/OrderHistory";
 import Categories from "./pages/Categories";
 import CustomizedDialogs from "./components/CustomizedDialogs";
 import Blog from "./pages/Blog";
-
+import SingleBlog from "./pages/SingleBlog";
 import ToggleColorMode from "./theme/Toggle";
 import classes from "./App.module.scss";
 
@@ -125,8 +125,11 @@ function App() {
         <Route path="/categories">
           <Categories />
         </Route>
-        <Route path="/Blog">
+        <Route path="/blog" exact>
           <Blog />
+        </Route>
+        <Route path="/blog/:title" >
+          <SingleBlog />
         </Route>
       </Switch>
     </ToggleColorMode>

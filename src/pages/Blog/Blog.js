@@ -6,9 +6,9 @@ import BlogContainer from "../../components/BlogContainer";
 
 const Blog = () => {
   return (
-    <PageLayout title="Blog">
+    <PageLayout title="Blog Page">
       <PageContainer>
-        <BlogContainer/>
+        <BlogContainer all={true}/>
       </PageContainer>
     </PageLayout>
   );
