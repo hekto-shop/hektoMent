@@ -4,6 +4,7 @@ import { productsActions } from "./slices/products-slice";
 import { cartActions } from "./slices/cart-slice";
 import { userActions } from "./slices/user-slice";
 import { ordersActions } from "./slices/orders-slice";
+import { blogsActions } from './slices/blogs-slice';
 import { db } from "../config/config";
 import { noImage } from "../assets/img";
 import { selectTrendingItems } from "../helpers/select-trending-items";
@@ -84,6 +85,19 @@ const getProducts = () => async (dispatch) => {
   );
   dispatch(productsActions.getProducts(payload));
 };
+
+const getBlogs = () => async (dispatch) => {
+  const response = db.collection("blogs");
+  const data = await response.get();
+  const payload = await Promise.all(
+    data.docs.map(async (blog) => {
+      const blogObj = blog.data();
+      blogObj.blogId = blog.id;
+      return {...blogObj}
+    })
+  )
+  dispatch(blogsActions.getBlogs(payload));
+}
 
 const getUserData = (uid) => async (dispatch) => {
   try {
@@ -216,4 +230,5 @@ export {
   clearCart,
   getTrendingItems,
   getMyOrders,
+  getBlogs
 };

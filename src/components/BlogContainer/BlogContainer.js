@@ -28,11 +28,11 @@ const RecentPosts = (recentPosts) => {
                 <div className={styles['container-recent-posts']}>
                     {recentPosts.map(post => {
                         return (
-                            <div key={post.author+post.title} className={styles['container-recent']}> 
-                                <img src={post.img} alt="Post" className={styles['container-img']} />
+                            <div key={post.blogId} className={styles['container-recent']}> 
+                                <img src={post.mainImage} alt="Post" className={styles['container-img']} />
                                 <div> 
                                     <div className={styles['recent-title']}>{post.title}</div>
-                                    <div className={styles['recent-date']}>{post.date} </div>
+                                    <div className={styles['recent-date']}>{post.date.toDate().toString().substring(4,15)}</div>
                                 </div>
                             </div>
                     )})}    
@@ -54,14 +54,17 @@ const Follow = (
 
 
 const BlogContainer = (props) => { 
-    const {all} = props;
+    const {all, blogs} = props;
 
-    let blogArr = [
+    /*let blogArr = [
         { tag:'General',category:'Hobbies', img:blogImg, author:'sam', date: 'Aug 9 2020', title:'Mauriat orci non vulputate diam tincidunt nec.', text:'Lorem ipniiiiiiiiiiiiiiiit.'},
         { tag: 'Atsanil',category:'Women', img: blogImg, author: 'sm', date: 'Aug 8 2020', title:'Mauris at oci non vulputadiam tincidunt nec.', text: 'Condimentum eu m dictum at.'}, 
         { tag:'General', category:'Men',img: blogImg, author: 'sm1', date: 'Aug 7 2020', title:'Mauris at oi non vulputate diam tincidunt nec.', text: 'Lorem ipsum dolor sit aque, porta dignissim. Adipiscing purus,  id dictum at.'},
-        { tag: 'abc', category:'Women',img: blogImg, author: 'sm2', date: 'Aug 6 2020', title:'Maat oi non vulputaiam tincidunt nec.', text: 'Lorem porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.'}];
+        { tag: 'abc', category:'Women',img: blogImg, author: 'sm2', date: 'Aug 6 2020', title:'Maat oi non vulputaiam tincidunt nec.', text: 'Lorem porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.'}]; */
     
+    let blogArr = blogs;
+    
+        
     const [blogList, setBlogList] = useState(blogArr);
     
     
@@ -205,9 +208,8 @@ const BlogContainer = (props) => {
                     currentPage={currentPage}
                     totalPages={totalPages}
                     handlePagination={handlePagination}
-                    handleCategory={handleCategory} 
                 /> :
-                <BlogDetails />
+                <BlogDetails blogList = {blogList}/>
             }
             
             <div className={styles["container-side"]}>

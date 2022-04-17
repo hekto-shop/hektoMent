@@ -8,6 +8,7 @@ import {
   getInitialCartState,
   getTrendingItems,
   getMyOrders,
+  getBlogs
 } from "./store/thunk";
 import { useDispatch } from "react-redux";
 import { useSession } from "./contexts/auth-context";
@@ -56,6 +57,7 @@ function App() {
     dispatch(getInitialCartState(initialCartState));
     dispatch(getTrendingItems());
     dispatch(getMyOrders(user?.uid));
+    dispatch(getBlogs());
   }, [initialCartState, dispatch, user]);
 
   const onIdle = () => {

@@ -12,13 +12,25 @@ import { Link } from "react-router-dom"
 
 const AllBlogs = (props) => {
     
-    const {currentPage, totalPages, handlePagination, blogList, handleCategory} = props;
+    const {currentPage, totalPages, handlePagination, blogList} = props;
+
+    const getPartOfText = (text) => {
+        let newText = '';
+        let lastSpaceIndex = 0;
+        for(let i=0; i < 30; i++) {
+            lastSpaceIndex = text.indexOf(' ',lastSpaceIndex+1);
+        }
+        let lastIndex  = text.indexOf('.', lastSpaceIndex);
+        newText = text.substring(0, lastIndex+1);
+        return newText;
+    }
+
     return (
             <div className={styles["container-blogs"]}>
                 {blogList.map(blog => {
                     return (
-                        <div key={blog.author + blog.date}> 
-                            <img src={blog.img} alt="Blog" className={styles["container-img"]}/>
+                        <div key={blog.blogId}> 
+                            <img src={blog.mainImage} alt="Blog" className={styles["container-img"]}/>
                             <div> 
                                 <span>
                                     <img src={Author} alt="Author"/>
@@ -30,14 +42,14 @@ const AllBlogs = (props) => {
                                     <img src={Date} alt="Date" className={styles["date-icon"]}/>
                                 </span>
                                 <span>
-                                    <button className={styles["date"]}>{blog.date}</button>
+                                    <button className={styles["date"]}>{blog.date.toDate().toString().substring(4,15)}</button>
                                 </span>
                             </div>
                             <h1 className={styles["title"]}>{blog.title}</h1>
-                            <p className={styles["text"]}>{blog.text}</p>
+                            <p className={styles["text"]}>{getPartOfText(blog.text)}</p>
                             <div>
                                 <Link to={`/blog/${blog.title}`}>
-                                    <h4 className={styles["read-more"]}>Read more</h4>
+                                    <span className={styles["read-more"]}>Read more</span>
                                     <img src={RedCircle} alt="Circle" className={styles["red-circle"]}/>
                                 </Link>
                             </div>
@@ -48,7 +60,6 @@ const AllBlogs = (props) => {
                     currentPage={currentPage}
                     totalPages={totalPages}
                     handlePagination={handlePagination}
-                    handleCategory={handleCategory}
                 />
             </div>)
 }
