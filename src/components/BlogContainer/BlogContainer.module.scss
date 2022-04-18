@@ -4,12 +4,6 @@
     column-gap: 60px;
 }
 
-.container-blogs {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 50px;
-}
-
 .container-side {
     display: grid;
     grid-template-columns: 1fr;
@@ -19,30 +13,6 @@
 .container-img {
     width: 100%;
     height: auto;
-}
-
-.author-button {
-    width: 7vw;
-    background: #FFE7F9;
-    border-radius: 5%;
-    border:none;
-    cursor: pointer;
-    margin: 0  35px 0 5px;
-    padding: 3px;
-}
-
-.date-icon{
-}
-
-.date {
-    width: 7vw;
-    min-width: 90px;
-    background: #FFECE2;
-    border-radius: 5%;
-    border:none;
-    cursor: pointer;
-    margin: 0  35px 0 5px;
-    padding: 3px;
 }
 
 .container-categories {
@@ -57,7 +27,6 @@
     background:none;
     border:none;
     cursor: pointer;
-    color:#151875;
     text-align: left;
     font-family: 'Lato';
     font-size: 16px;
@@ -96,10 +65,6 @@
 
 }
 
-.follow {
-    margin: auto;
-}
-
 .container-tags {
     width: 60%;
     display: grid;
@@ -117,7 +82,6 @@
     cursor: pointer;
     text-align: left;
     text-decoration: underline;
-    color: #151875;
 
 }
 
@@ -139,27 +103,6 @@
     text-align: left;
     font-family: 'Lato';
 }
-
-
-.title {
-    margin-top: 15px;
-    font-family: 'Josefin Sans';
-    color: #151875;
-    font-size: 32px;
-}
-
-.text {
-    margin-top: 17px;
-    color : #8A8FB9;
-    font-family: 'Lato';
-    font-size: 16px;
-}
-
-.red-circle {
-    margin-left: 3px;
-    margin-bottom: 1px;
-}
-
 
 .side-titles {
     font-size: 22px;
@@ -192,4 +135,38 @@
 
 .checkbox {
     display: none;
+}
+
+.filter-button {
+    display: none;
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .container-side {
+        grid-row: -1;
+        height: 400px;
+    }
+    .recent-posts {
+        display: none;
+    }
+    .follow {
+        display: none;
+    }
+    .filter-button{
+        display: block;
+        height: 30px;
+        width: 30px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .filter-icon{
+        width: 100%;
+    }
 }

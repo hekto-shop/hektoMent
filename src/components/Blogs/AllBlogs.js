@@ -1,17 +1,15 @@
-
 import styles from "./AllBlogs.module.scss";
-
 import Date from '../../assets/icons/blog-date.svg'
 import React from "react";
-import blogImg from '../../assets/img/blog.png'
 import Author from '../../assets/icons/blog-author.svg'
 import RedCircle from '../../assets/icons/blog-red-circle.svg'
 import BlogPagination from "../BlogPagination";
-
+import { useTheme } from '@mui/material/styles';
 import { Link } from "react-router-dom"
 
 const AllBlogs = (props) => {
-    
+    const theme = useTheme();
+    const readMoreColor = {"color": theme.palette.text.primary};
     const {currentPage, totalPages, handlePagination, blogList} = props;
 
     const getPartOfText = (text) => {
@@ -49,7 +47,7 @@ const AllBlogs = (props) => {
                             <p className={styles["text"]}>{getPartOfText(blog.text)}</p>
                             <div>
                                 <Link to={`/blog/${blog.title}`}>
-                                    <span className={styles["read-more"]}>Read more</span>
+                                    <span className={styles["read-more"]} style={readMoreColor}>Read more</span>
                                     <img src={RedCircle} alt="Circle" className={styles["red-circle"]}/>
                                 </Link>
                             </div>

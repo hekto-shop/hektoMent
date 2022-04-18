@@ -1,47 +1,42 @@
 import React from "react";
 import styles from "./BlogContainer.module.scss";
-import blogImg from '../../assets/img/blog.png'
-import Author from '../../assets/icons/blog-author.svg'
-import Date from '../../assets/icons/blog-date.svg'
-import TextField from "@mui/material/TextField";
 import Facebok from'../../assets/icons/blog-facebook.svg'
 import Instagram from '../../assets/icons/blog-instagram.svg'
 import Twitter from '../../assets/icons/blog-twitter.svg'
-import Submit from '../../assets/icons/magnifier.svg'
-import RedCircle from '../../assets/icons/blog-red-circle.svg'
 import { useHistory, useLocation } from "react-router-dom";
-import Pagination from "../Pagination/Pagination";
-import BlogPagination from "../BlogPagination";
 import {
-    makeSlice,
-    productListReducer, 
+    makeSlice
 } from "../../helpers/product-list-reducer";
 import { useEffect, useState } from "react";
 import BlogDetails from "../BlogDetails";
 import { Link } from "react-router-dom";
 import AllBlogs from "../Blogs";
+import { useTheme } from '@mui/material/styles';
 
 const RecentPosts = (recentPosts) => {
+    
+    const theme = useTheme();
+    const recentPostsColor = {"color": theme.palette.text.recentPosts};
     return (
-            <div>
+            <div className={styles["recent-posts"]}>
                 <div className={styles["side-titles"]}>Recent posts</div>
                 <div className={styles['container-recent-posts']}>
                     {recentPosts.map(post => {
                         return (
-                            <div key={post.blogId} className={styles['container-recent']}> 
+                            <Link to={`/blog/${post.title}`} key={post.blogId} className={styles['container-recent']}> 
                                 <img src={post.mainImage} alt="Post" className={styles['container-img']} />
                                 <div> 
-                                    <div className={styles['recent-title']}>{post.title}</div>
+                                    <div className={styles['recent-title']} style={recentPostsColor}>{post.title}</div>
                                     <div className={styles['recent-date']}>{post.date.toDate().toString().substring(4,15)}</div>
                                 </div>
-                            </div>
+                            </Link>
                     )})}    
                 </div> 
             </div>)
 }
 
 const Follow = (
-    <div>
+    <div className={styles["follow"]}>
         <div className={styles["side-titles"]}>Follow</div>
         <div className={styles['container-follow']}>
             <img src={Facebok} alt="Facebook" className={styles['follow']}/>
@@ -55,12 +50,6 @@ const Follow = (
 
 const BlogContainer = (props) => { 
     const {all, blogs} = props;
-
-    /*let blogArr = [
-        { tag:'General',category:'Hobbies', img:blogImg, author:'sam', date: 'Aug 9 2020', title:'Mauriat orci non vulputate diam tincidunt nec.', text:'Lorem ipniiiiiiiiiiiiiiiit.'},
-        { tag: 'Atsanil',category:'Women', img: blogImg, author: 'sm', date: 'Aug 8 2020', title:'Mauris at oci non vulputadiam tincidunt nec.', text: 'Condimentum eu m dictum at.'}, 
-        { tag:'General', category:'Men',img: blogImg, author: 'sm1', date: 'Aug 7 2020', title:'Mauris at oi non vulputate diam tincidunt nec.', text: 'Lorem ipsum dolor sit aque, porta dignissim. Adipiscing purus,  id dictum at.'},
-        { tag: 'abc', category:'Women',img: blogImg, author: 'sm2', date: 'Aug 6 2020', title:'Maat oi non vulputaiam tincidunt nec.', text: 'Lorem porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.'}]; */
     
     let blogArr = blogs;
     
@@ -184,6 +173,7 @@ const BlogContainer = (props) => {
         return newBlogArr;
     }
 
+    
     const filterBlogs = (blogArr) => {
         let url = location.search;
         let newBlogArr = filterCategories(blogArr, url);
@@ -196,9 +186,38 @@ const BlogContainer = (props) => {
         const FilteredBlogs = filterBlogs(blogArr);
         const blogsPage = makeSlice(FilteredBlogs, currentPage, perPage);
         setBlogList(blogsPage);
-    }, [checkCategories, checkTags, search, currentPage])
+    }, [checkCategories, checkTags, search, currentPage]) 
+ 
 
+
+
+    /*
+    useEffect( () => {
+        let url = location.search;
+        const filteredBlogs = filterCategories(blogArr, url);
+        const blogsPage = makeSlice(filteredBlogs, currentPage, perPage);
+        setBlogList(blogsPage);
+    }, [checkCategories])
+
+    useEffect( () => {
+        let url = location.search;
+        const filteredBlogs = filterTags(blogArr, url);
+        const blogsPage = makeSlice(filteredBlogs, currentPage, perPage);
+        setBlogList(blogsPage);
+    }, [checkTags])
+
+    useEffect( () => {
+        const filteredBlogs = filterSearch(blogArr);
+        const blogsPage = makeSlice(filteredBlogs, currentPage, perPage);
+        setBlogList(blogsPage);
+    }, [search])
+
+    useEffect( () => {
+        const blogsPage = makeSlice(blogList, currentPage, perPage);
+        setBlogList(blogsPage);
+    }, [currentPage])
     
+    */
 
     return (
         <div className={styles["container"]}>
@@ -240,7 +259,6 @@ const BlogContainer = (props) => {
                     </div>
                 </div>
                 {RecentPosts(recentPosts)}
-                {Follow}
                 <div>
                     <div className={styles["side-titles"]} >Tags</div>
                     <div className={styles['container-tags']} >
@@ -256,6 +274,7 @@ const BlogContainer = (props) => {
                         })}
                     </div>
                 </div>
+                {Follow}
             </div>
         </div>
     )

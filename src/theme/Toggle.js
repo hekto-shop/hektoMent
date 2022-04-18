@@ -38,7 +38,8 @@ export default function  ToggleColorMode  (props) {
                 hektoTitle: '#551a8b',
                 textColor2: '#111c85',
                 textColor3: 'rgba(26, 11, 91, 0.302)',
-                cartTextColor: '#1d3178'
+                cartTextColor: '#1d3178',
+                recentPosts: '#3F509E',
               }
             : {
                 primary: '#FFFFFF',
@@ -47,7 +48,8 @@ export default function  ToggleColorMode  (props) {
                 hektoTitle: '#FFFFFF',
                 textColor2: '#FFFFFF',
                 textColor3:  'rgba(192,192,192,0.3)',
-                cartTextColor: '#FFFFFF'
+                cartTextColor: '#FFFFFF',
+                recentPosts : '#FFFFFF',
               }),
         },
       },
