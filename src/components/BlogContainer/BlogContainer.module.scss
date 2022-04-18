@@ -32,7 +32,7 @@
     font-size: 16px;
     font-weight: 400;
 }
-.category:hover {
+.category:hover:enabled {
     background: #ff5cce;
     border-radius: 3px;
 
@@ -85,7 +85,7 @@
 
 }
 
-.tag-button:hover {
+.tag-button:hover:enabled {
     color: #FB2E86;
 }
 
@@ -146,11 +146,12 @@
 
 @media only screen and (max-width: 700px) {
     .container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  
     }
     .container-side {
         grid-row: -1;
         height: 400px;
+        //grid-template-columns: 1fr 1fr;
     }
     .recent-posts {
         display: none;
@@ -169,4 +170,8 @@
     .filter-icon{
         width: 100%;
     }
+    /*
+    .container-search {
+        grid-column: span 2;
+    }*/
 }

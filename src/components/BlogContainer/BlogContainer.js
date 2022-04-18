@@ -12,6 +12,30 @@ import BlogDetails from "../BlogDetails";
 import { Link } from "react-router-dom";
 import AllBlogs from "../Blogs";
 import { useTheme } from '@mui/material/styles';
+import { useParams } from "react-router-dom";
+
+
+
+const getCategory = (blogArr,params) => { 
+    let category = '';
+    blogArr.map(blog => {
+        if(blog.title === params.title) {
+            category = blog.category;
+        }
+    })
+    return category;
+}
+
+
+const getTag = (blogArr, params) => { 
+    let tag = '';
+    blogArr.map(blog => {
+        if(blog.title === params.title) {
+            tag = blog.tag;
+        }
+    })
+    return tag;
+}
 
 const RecentPosts = (recentPosts) => {
     
@@ -35,6 +59,37 @@ const RecentPosts = (recentPosts) => {
             </div>)
 }
 
+const SimilarPosts = (blogArr, params) => {
+    let category = getCategory(blogArr, params);
+    let similarPostsArr = [];
+    blogArr.map(blog => {
+        if(blog.category === category) {
+            similarPostsArr.push(blog);
+        }
+    })
+    const theme = useTheme();
+    const recentPostsColor = {"color": theme.palette.text.recentPosts};
+    return (
+            <div className={styles["recent-posts"]}>
+                <div className={styles["side-titles"]}>Similar posts</div>
+                <div className={styles['container-recent-posts']}>
+                    {similarPostsArr.map((post, ind) => {
+                        if(ind < 3) {
+                            return (
+                                <Link to={`/blog/${post.title}`} key={post.blogId} className={styles['container-recent']}> 
+                                    <img src={post.mainImage} alt="Post" className={styles['container-img']} />
+                                    <div> 
+                                        <div className={styles['recent-title']} style={recentPostsColor}>{post.title}</div>
+                                        <div className={styles['recent-date']}>{post.date.toDate().toString().substring(4,15)}</div>
+                                    </div>
+                                </Link>
+                            )
+                        }
+                    })}    
+                </div> 
+            </div>)
+}
+
 const Follow = (
     <div className={styles["follow"]}>
         <div className={styles["side-titles"]}>Follow</div>
@@ -50,17 +105,13 @@ const Follow = (
 
 const BlogContainer = (props) => { 
     const {all, blogs} = props;
-    
     let blogArr = blogs;
-    
-        
     const [blogList, setBlogList] = useState(blogArr);
-    
-    
-    
     let categories = ['Hobbies', 'Women', 'Men', 'Shopping', 'Nature', 'Health']
     let tags = ['General', 'Atsanil', 'Insas', 'Bibsaas', 'Nulla']
 
+    
+    const parameters = useParams();
     const [search, setSearch] = useState("");
     const [checkCategories, setCheckCategories] = useState(false);
     const [checkTags, setCheckTags] = useState(false)
@@ -69,7 +120,6 @@ const BlogContainer = (props) => {
     const location = useLocation();
     const history = useHistory();   
     const params = new URLSearchParams(location.search);
-
     const perPage = 3;
     const currentPage = parseInt(params.get("page")) || 1;
     const totalPages = Math.trunc(blogArr.length / perPage) + 1;
@@ -169,7 +219,6 @@ const BlogContainer = (props) => {
                 newBlogArr.push(blog);
             }
         })
-        console.log(newBlogArr);
         return newBlogArr;
     }
 
@@ -232,17 +281,19 @@ const BlogContainer = (props) => {
             }
             
             <div className={styles["container-side"]}>
-                <div>                 
-                    <div className={styles["side-titles"]}>Search</div>
-                    <form >
-                        <input
-                            type="text"
-                            placeholder="Search for posts"
-                            className={styles["search-form"]}
-                            onChange={handleSearchBar}
-                        />
-                    </form>
-                </div>
+                {all?
+                    <div className={styles["container-search"]}>                 
+                        <div className={styles["side-titles"]}>Search</div>
+                        <form >
+                            <input
+                                type="text"
+                                placeholder="Search for posts"
+                                className={styles["search-form"]}
+                                onChange={handleSearchBar}
+                            />
+                        </form>
+                    </div> : <></>
+                }
                 <div>
                     <div className={styles["side-titles"]}>Categories</div>
                     <div className={styles["container-categories"]} >
@@ -252,13 +303,18 @@ const BlogContainer = (props) => {
                                                 className={styles["checkbox"]} 
                                                 name={category}
                                                 id={category} 
-                                                onChange={(e) => handleCategory(e)}/>
-                                        <label className={(document.getElementById(category) !== null && document.getElementById(category).checked)? [styles["category"], styles["category-checked"]].join(' '): styles["category"]} htmlFor={category} >{category}</label>
+                                                onChange={(e) => handleCategory(e)}
+                                                disabled={!all}/>
+                                        <label className={((document.getElementById(category) !== null && 
+                                                            document.getElementById(category).checked) ||
+                                                            getCategory(blogArr,parameters)===category) ? 
+                                                            [styles["category"], styles["category-checked"]].join(' '): styles["category"]} 
+                                                            htmlFor={category}> {category} </label>
                                     </div>
                         })}
                     </div>
                 </div>
-                {RecentPosts(recentPosts)}
+                {all ? RecentPosts(recentPosts) : SimilarPosts(blogArr, parameters)}
                 <div>
                     <div className={styles["side-titles"]} >Tags</div>
                     <div className={styles['container-tags']} >
@@ -268,8 +324,13 @@ const BlogContainer = (props) => {
                                                 className={styles["checkbox"]} 
                                                 name={tag}
                                                 id={tag} 
-                                                onChange={(e) => handleTags(e)}/>
-                                        <label className={(document.getElementById(tag) !== null && document.getElementById(tag).checked) ? [styles["tag-button"], styles["tag-checked"]].join(' ') : styles["tag-button"]} htmlFor={tag} >{tag}</label>
+                                                onChange={(e) => handleTags(e)}
+                                                disabled={!all}/>
+                                        <label className={((document.getElementById(tag) !== null && 
+                                                            document.getElementById(tag).checked) || 
+                                                            getTag(blogArr,parameters)===tag) ? 
+                                                            [styles["tag-button"], styles["tag-checked"]].join(' ') : 
+                                                            styles["tag-button"]} htmlFor={tag} >{tag}</label>
                                     </div>
                         })}
                     </div>
