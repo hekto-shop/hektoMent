@@ -36,6 +36,7 @@ import Categories from "./pages/Categories";
 import CustomizedDialogs from "./components/CustomizedDialogs";
 import Blog from "./pages/Blog";
 import SingleBlog from "./pages/SingleBlog";
+import CreateBlog from "./pages/CreateBlog";
 import ToggleColorMode from "./theme/Toggle";
 import classes from "./App.module.scss";
 
@@ -132,6 +133,9 @@ function App() {
         </Route>
         <Route path="/blog/:title" >
           <SingleBlog />
+        </Route>
+        <Route path='/create-blog'>
+          <CreateBlog/>
         </Route>
       </Switch>
     </ToggleColorMode>

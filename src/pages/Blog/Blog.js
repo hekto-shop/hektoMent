@@ -7,10 +7,11 @@ import { useSelector } from "react-redux";
 
 const Blog = () => {
   const blogs  = useSelector((state) => state.blogsReducer.blogs);
+  const user  = useSelector((state) => state.userReducer.user);
   return (
     <PageLayout title="Blog Page">
       <PageContainer>
-        <BlogContainer all={true} blogs={blogs}/>
+        <BlogContainer all={true} blogs={blogs} user={user}/>
       </PageContainer>
     </PageLayout>
   );

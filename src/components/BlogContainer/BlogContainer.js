@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import AllBlogs from "../Blogs";
 import { useTheme } from '@mui/material/styles';
 import { useParams } from "react-router-dom";
-
+import { Button } from "@mui/material";
 
 
 const getCategory = (blogArr,params) => { 
@@ -104,7 +104,7 @@ const Follow = (
 
 
 const BlogContainer = (props) => { 
-    const {all, blogs} = props;
+    const {all, blogs, user} = props;
     let blogArr = blogs;
     const [blogList, setBlogList] = useState(blogArr);
     let categories = ['Hobbies', 'Women', 'Men', 'Shopping', 'Nature', 'Health']
@@ -281,6 +281,11 @@ const BlogContainer = (props) => {
             }
             
             <div className={styles["container-side"]}>
+                <div className={styles["container-create-blog"]}>   
+                    <Link  to={typeof myVar !== "undefined" ? `/create-blog` :`/login` } className={styles["create-blog-button"]}>
+                        Create Blog
+                    </Link>
+                </div>
                 {all?
                     <div className={styles["container-search"]}>                 
                         <div className={styles["side-titles"]}>Search</div>

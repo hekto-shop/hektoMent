@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 
 const SingleBlog = () => {
     const blogs  = useSelector((state) => state.blogsReducer.blogs);
-    console.log(blogs);
+    const user  = useSelector((state) => state.userReducer.user);
     return (
         <PageLayout title="Single Blog">
             <PageContainer>
-                <BlogContainer All={false} blogs={blogs} />
+                <BlogContainer All={false} blogs={blogs} user={user}/>
             </PageContainer>
         </PageLayout>)
  }
