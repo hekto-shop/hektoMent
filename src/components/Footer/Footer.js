@@ -46,7 +46,7 @@ const Footer = () => {
       <section className={classes["bottom-navigation"]} style={backgroundColor}>
         <PageContainer className={classes.grid}>
           <div className={classes.contacts}>
-            <h2>Hekto</h2>
+            <h2>PoppyShop</h2>
             <form onSubmit={handleSubscribe}>
               <input type="email" placeholder="Enter Email Address" />
               <Button fullHeight fullWidth type="submit">

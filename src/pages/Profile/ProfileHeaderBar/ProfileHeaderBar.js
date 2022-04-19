@@ -41,7 +41,7 @@ const ProfileHeaderBar = () => {
   return (
     <header className={styles.header}>
       <h2>
-        <Link to="/homepage">Hekto</Link>
+        <Link to="/homepage">PoppyShop</Link>
       </h2>
       <span className={styles["profile-wrapper"]}>
         <img
