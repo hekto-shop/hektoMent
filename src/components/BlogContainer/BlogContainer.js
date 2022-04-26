@@ -282,7 +282,7 @@ const BlogContainer = (props) => {
             
             <div className={styles["container-side"]}>
                 <div className={styles["container-create-blog"]}>   
-                    <Link  to={typeof myVar !== "undefined" ? `/create-blog` :`/login` } className={styles["create-blog-button"]}>
+                    <Link  to={typeof user !== "undefined" ? `/create-blog` :`/login` } className={styles["create-blog-button"]}>
                         Create Blog
                     </Link>
                 </div>
