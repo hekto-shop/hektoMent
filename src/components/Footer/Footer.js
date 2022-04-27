@@ -6,26 +6,17 @@ import { useSelector } from "react-redux";
 import classes from "./Footer.module.scss";
 import PageContainer from "../../containers/PageContainer";
 import Button from "../UI/Button";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 const Footer = () => {
   const theme = useTheme();
   const backgroundColor = {"backgroundColor": theme.palette.background.footer};
+  const copyrightBackgroundColor = {"backgroundColor": theme.palette.background.copyright}
 
   const { user } = useSession();
   const handleSubscribe = (e) => {
     e.preventDefault();
   };
-
-  const categories = useSelector((state) => state.ctgReducer.categories);
-
-  const categMarkup = categories.map((category, idx) => {
-    return (
-      <li key={Math.random().toFixed(7) + idx}>
-        <Link to={`/${category}`}>{category}</Link>
-      </li>
-    );
-  });
 
   const customerCare = user ? (
     <>
@@ -69,10 +60,6 @@ const Footer = () => {
               </address>
             </div>
           </div>
-          <div className={classes.categories}>
-            <h3>Categories</h3>
-            <ul>{categMarkup}</ul>
-          </div>
           <div className={classes["customer-care"]}>
             <h3>Customer Care</h3>
             <ul>{customerCare}</ul>
@@ -93,7 +80,7 @@ const Footer = () => {
           </div>
         </PageContainer>
       </section>
-      <section className={classes.copyright}>
+      <section  className={classes.copyright} style={copyrightBackgroundColor} >
         <PageContainer>
           <div className={classes.author}>©Webecy - All Rights Reserved</div>
           <div className={classes.social}>

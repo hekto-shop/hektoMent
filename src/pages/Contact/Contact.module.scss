@@ -6,11 +6,13 @@
 
 .img-container {
     margin-top:1.953vw;
+    width: 80%;
+    margin:auto 0;
 }
 
 #contact-img {
-    width: 44.466vw;
-    height: 44.466vw;
+    width: 100%;
+    height: 100%;
 }
 
 @media only screen and (max-width: 800px) {

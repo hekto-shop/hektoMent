@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import classes from "./OrderTracking.module.scss";
@@ -40,18 +40,26 @@ const OrderTracking = () => {
   // Side Effects
   useEffect(() => {
     scrollTo();
-    const timeout = setTimeout(() => {
-      if (!order)
+
+    if (!trackingId) {
+      setFallback(
+        <p className={classes["no-orders"]}>
+          Please enter Tracking ID in search bar
+        </p>
+      );
+    } else if (!order) {
+      const timeout = setTimeout(() => {
         setFallback(
           <p className={classes["no-orders"]}>
             We could not find anything with the following tracking id:
             <span>"{trackingId}"</span>
           </p>
         );
-    }, 4000);
+      }, 4000);
 
-    return () => clearTimeout(timeout);
-  }, [trackingId]);
+      return () => clearTimeout(timeout);
+    }
+  }, [trackingId, order]);
 
   // Handlers
   const handleSearch = (keyword) => {

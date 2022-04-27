@@ -24,9 +24,14 @@
     }
   }
 
-  a {
+  button {
       font-family: $secondary-font;
       font-weight: 600;
+      font-size: 1rem;
       color: #000;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
   }
 }

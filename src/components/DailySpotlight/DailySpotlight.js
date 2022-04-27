@@ -79,7 +79,7 @@ const DailySpotlight = (props) => {
                   )
                 }
               >
-                Add To Cart
+                View Details
               </Button>
               <div className={styles["spotlight-price__details"]}>
                 <p className={styles["spotlight-details__name"]}>

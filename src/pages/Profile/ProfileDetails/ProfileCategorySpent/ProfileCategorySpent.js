@@ -27,9 +27,9 @@ const ProfileCategorySpent = (props) => {
         </p>
       </div>
       <div className={styles["category-showcase"]}>
-        {categoryInfo.map((item) => {
+        {categoryInfo.length ? categoryInfo.map((item) => {
           return <CategoryBar category={item} />;
-        })}
+        }) : <h3 className={styles['no-categories']}>No Product Categories have found</h3>}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import "./index.css";
 import App from "./App";
 import { AuthProvider } from "./contexts/auth-context";
 
+
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
