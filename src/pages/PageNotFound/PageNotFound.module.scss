@@ -1,0 +1,46 @@
+@import "../../styles/css-variables.scss";
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .section-title {
+      font-family: $primary-font;
+      font-size: clamp(1rem, 3vw, 1.8rem);
+      margin: 1rem 0 2rem;
+    }
+    .img-cont {
+      .not-found {
+        width: 100%;
+        height: auto;
+      }
+
+      .partners {
+        margin-top: 8rem;
+      }
+    }
+  }
+
+  .btn {
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: #fb2e86;
+    color: #fff;
+    font-family: $primary-font;
+    padding: 15px 30px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+    .partners {
+        display: none;
+    }
+}

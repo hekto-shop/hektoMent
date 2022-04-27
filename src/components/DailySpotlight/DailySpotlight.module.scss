@@ -5,7 +5,7 @@ $spotlight-bg: url("../../assets/img/spotlight-product-bg.svg");
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 3.5rem;
+  padding: 3.5rem 0;
   gap: 1rem;
 }
 
@@ -92,6 +92,31 @@ $spotlight-bg: url("../../assets/img/spotlight-product-bg.svg");
       font-family: $secondary-font;
       font-weight: 400;
       margin-top: 0.7rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .spotlight-container {
+    flex-direction: column;
+
+    .spotlight-container__product {
+      max-width: 80%;
+      height: auto;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .spotlight-container__details {
+    align-items: center;
+
+    .spotlight-container__title {
+      font-size: 20px;
+      text-align: center;
     }
   }
 }

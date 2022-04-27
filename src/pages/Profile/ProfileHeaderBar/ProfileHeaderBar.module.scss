@@ -31,17 +31,21 @@
         font-weight: bold;
         color: #000;
       }
-  
+
       p {
-        color: #B2B2B2;
+        color: #b2b2b2;
         font-family: $secondary-font;
         font-size: 0.8rem;
         font-weight: bold;
-      }  
+      }
     }
-   
+
     img {
       cursor: pointer;
+    }
+
+    .arrow {
+      transition: ease-out 0.2s;
     }
   }
 }
@@ -56,4 +60,10 @@
   font-size: 1.1rem;
   font-family: $primary-font;
   box-shadow: 3px 3px 15px 2px rgb(160, 151, 228);
+  z-index: 33;
+  cursor: pointer;
+}
+
+.rotated {
+  transform: rotate(180deg);
 }

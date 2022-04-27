@@ -42,6 +42,8 @@ import flag from "./flag.svg";
 import packageIcon from "./package.svg";
 import truck from "./truck.svg";
 import rightArrow from './right-arrow.svg'
+import profileOrder from './profile-order.svg'
+import garbage from './garbage.svg'
 
 export {
   email,
@@ -81,5 +83,7 @@ export {
   flag,
   truck,
   packageIcon,
-  rightArrow
+  rightArrow,
+  profileOrder,
+  garbage
 };

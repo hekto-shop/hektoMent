@@ -16,30 +16,12 @@ const ProfileNavigation = (props) => {
             />
           </li>
         </Link>
-        <Link to="/products">
-          <li>
-            <img
-              src={envelope}
-              alt="envelope"
-              className={styles["navigation-icon"]}
-            />
-          </li>
-        </Link>
         <Link to="/profile/edit">
           <li>
             <img src={edit} alt="edit" className={styles["navigation-icon"]} />
           </li>
         </Link>
-        <Link to="/products">
-          <li>
-            <img
-              src={order}
-              alt="order"
-              className={styles["navigation-icon"]}
-            />
-          </li>
-        </Link>
-        <Link to="/products">
+        <Link to="/contact">
           <li>
             <img
               src={target}

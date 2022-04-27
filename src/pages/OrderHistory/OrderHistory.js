@@ -11,7 +11,7 @@ import { scrollTo } from "../../helpers/smooth-scroll";
 
 const OrderHistory = () => {
   const myOrders = useSelector((store) => store.ordersReducer.myOrders);
-
+  console.log(myOrders);
   useEffect(() => scrollTo(), []);
 
   const markup = myOrders.map((order) => {
@@ -37,7 +37,7 @@ const OrderHistory = () => {
     <PageLayout title="Order History">
       <PageContainer>
         {myOrders.length === 0 ? (
-          <Loader />
+          <p className={classes["no-orders"]}>You have no orders yet</p>
         ) : (
           <div className={classes.table}>
             <h3>Tracking ID</h3>
