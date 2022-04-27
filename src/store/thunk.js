@@ -200,6 +200,17 @@ const getMyOrders = (userId) => async (dispatch) => {
   }
 };
 
+const addReview = (product, review) => (dispatch) => {
+  const allReviews = [review, ...product.reviews];
+  const docRef = db.collection("products").doc(product.itemId);
+  docRef
+    .update({ reviews: allReviews })
+    .then(() =>
+      dispatch(productsActions.addReview({ product, reviews: allReviews }))
+    )
+    .catch((err) => console.log(err));
+};
+
 export {
   getCategories,
   getSales,
@@ -216,4 +227,5 @@ export {
   clearCart,
   getTrendingItems,
   getMyOrders,
+  addReview,
 };
