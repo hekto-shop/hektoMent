@@ -162,9 +162,6 @@ function App() {
           <Route path="/categories">
             <Categories />
           </Route>
-          <Route path="*">
-            <PageNotFound />
-          </Route>
           <Route path="/blog" exact>
             <Blog />
           </Route>
@@ -173,6 +170,9 @@ function App() {
           </Route>
           <Route path='/create-blog'>
             <CreateBlog/>
+          </Route>  
+          <Route path="*">
+            <PageNotFound />
           </Route>
         </Switch>
       </ToggleColorMode>
