@@ -86,7 +86,7 @@ const Header = () => {
       <div className={classes["bottom-header"]} style={bottomHeaderBackgroundColor}>
         <PageContainer className={classes["grid-header"]}>
           <Link className={classes.logo} to="/homepage">
-            <h1 style={titleColor}>Hekto</h1>
+            <h1 style={titleColor}>PoppyShop</h1>
           </Link>
 
           <Navigation />
