@@ -3,37 +3,52 @@
 .section {
   width: 100%;
   height: fit-content;
-  padding: 5rem 0;
+  padding: 2rem 0;
+  font-family: $primary-font;
 }
 
-.navigation {
+.reviewtitle {
+  font-family: $primary-font;
+}
+
+.reviews {
+  padding: 1rem;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.review {
+  margin: 5px 0;
+  background: rgb(232, 230, 255);
+  border-radius: 5px;
+  padding: 1rem;
+
+  .author {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .date {
+    margin: 0;
+  }
+
+  .text {
+    font-family: $secondary-font;
+    padding: 1rem 0;
+  }
+}
+
+.add-review-title {
+  margin: 1.5rem 0 0.5rem 0;
+}
+
+.form {
+  display: flex;
+}
+.textarea {
   width: 100%;
-  margin-bottom: 3rem;
-  ul {
-    display: flex;
-    li {
-      list-style: none;
-      margin-right: 2rem;
-      font-family: $primary-font;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-  }
-}
-
-.active {
-  text-decoration-line: underline;
-}
-
-.info {
-  h3 {
-    font-family: $primary-font;
-    margin: 1rem 0;
-  }
-
-  p {
-    font-family: $primary-font;
-    color: #a9acc6;
-    line-height: 29px;
-  }
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  outline: none;
 }

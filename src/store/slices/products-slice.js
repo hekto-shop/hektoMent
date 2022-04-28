@@ -21,6 +21,14 @@ const productsSlice = createSlice({
       });
       state.currency = action.payload;
     },
+
+    addReview(state, action) {
+      const product = state.products.find(
+        (prod) => prod.productCode === action.payload.product.productCode
+      );
+      product.reviews = action.payload.reviews;
+      console.log(product.reviews);
+    },
   },
 });
 
