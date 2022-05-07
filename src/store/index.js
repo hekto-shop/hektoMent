@@ -5,6 +5,7 @@ import salesSlice from "./slices/sales-slice";
 import cartSlice from "./slices/cart-slice";
 import userSlice from "./slices/user-slice";
 import ordersSlice from "./slices/orders-slice";
+import blogsSlice from "./slices/blogs-slice"
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     cartReducer: cartSlice.reducer,
     userReducer: userSlice.reducer,
     ordersReducer: ordersSlice.reducer,
+    blogsReducer: blogsSlice.reducer,
   },
   middleware: [
     ...getDefaultMiddleware({

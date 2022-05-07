@@ -8,6 +8,7 @@ import {
   getInitialCartState,
   getTrendingItems,
   getMyOrders,
+  getBlogs
 } from "./store/thunk";
 import { useDispatch, useSelector } from "react-redux";
 import { useSession } from "./contexts/auth-context";
@@ -36,7 +37,9 @@ import Wishlist from "./pages/Wishlist";
 import Categories from "./pages/Categories";
 import PageNotFound from "./pages/PageNotFound";
 import CustomizedDialogs from "./components/CustomizedDialogs";
-
+import Blog from "./pages/Blog";
+import SingleBlog from "./pages/SingleBlog";
+import CreateBlog from "./pages/CreateBlog";
 import ToggleColorMode from "./theme/Toggle";
 import classes from "./App.module.scss";
 
@@ -59,6 +62,7 @@ function App() {
     dispatch(getInitialCartState(initialCartState));
     dispatch(getTrendingItems());
     dispatch(getMyOrders(user?.uid));
+    dispatch(getBlogs());
   }, [initialCartState, dispatch, user]);
 
   const onIdle = () => {
@@ -158,6 +162,15 @@ function App() {
           <Route path="/categories">
             <Categories />
           </Route>
+          <Route path="/blog" exact>
+            <Blog />
+          </Route>
+          <Route path="/blog/:title" >
+            <SingleBlog />
+          </Route>
+          <Route path='/create-blog'>
+            <CreateBlog/>
+          </Route>  
           <Route path="*">
             <PageNotFound />
           </Route>

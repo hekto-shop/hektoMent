@@ -1,0 +1,38 @@
+.container-img {
+    width: 100%;
+    height: auto;
+}
+
+.author-button {
+    width: 7vw;
+    background: #FFE7F9;
+    border-radius: 5%;
+    border:none;
+    cursor: pointer;
+    margin: 0  35px 0 5px;
+    padding: 3px;
+}
+
+.date {
+    width: 7vw;
+    min-width: 90px;
+    background: #FFECE2;
+    border-radius: 5%;
+    border:none;
+    cursor: pointer;
+    margin: 0  35px 0 5px;
+    padding: 3px;
+}
+
+.title {
+    margin-top: 15px;
+    font-family: 'Josefin Sans';
+    font-size: 32px;
+}
+
+.text {
+    margin-top: 17px;
+    color : #8A8FB9;
+    font-family: 'Lato';
+    font-size: 16px;
+}
