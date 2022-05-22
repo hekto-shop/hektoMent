@@ -165,7 +165,7 @@ function App() {
           <Route path="/blog" exact>
             <Blog />
           </Route>
-          <Route path="/blog/:title" >
+          <Route path="/blog/:blogId" >
             <SingleBlog />
           </Route>
           <Route path='/create-blog'>
