@@ -52,7 +52,10 @@ const TextEditor = () => {
         submitTags.push(elem.label)
       })
     }
-    let submitCategory = category.label;
+    let submitCategory = '';
+    if(typeof category.label !== 'undefined') {
+      submitCategory = category.label;
+    }
     await addDoc(blogsCollectionRef, {title, text, author:userName, date:today, category:submitCategory, tag:submitTags});
   }
 
