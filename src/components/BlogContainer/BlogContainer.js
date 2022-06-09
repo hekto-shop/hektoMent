@@ -17,28 +17,6 @@ import { Button } from "@mui/material";
 import { db } from "../../config/config";
 import NoImage from "../../assets/img/no-image.png";
 
-
-const getCategory = (blogArr,params) => { 
-    let category = '';
-    blogArr.map(blog => {
-        if(blog.blogId === params.blogId) {
-            category = blog.category;
-        }
-    })
-    return category;
-}
-
-
-const getTag = (blogArr, params) => { 
-    let tag = '';
-    blogArr.map(blog => {
-        if(blog.blogId === params.blogId) {
-            tag = blog.tag;
-        }
-    })
-    return tag;
-}
-
 const getImageLink = (blog) => {
     var blogComp = document.createElement('div');
     blogComp.innerHTML = blog.text;
@@ -49,11 +27,18 @@ const getImageLink = (blog) => {
                 link = elem.getAttribute('src');
             }
         }
+        if(link === '') {
+            elem.childNodes.forEach(elemOfChild => {
+                if(elemOfChild instanceof HTMLImageElement) {
+                    if(link === '') {
+                        link = elemOfChild.getAttribute('src');
+                    }
+                }
+            })
+        }
     })    
     return link;
 }
-
-
 
 const RecentPosts = (recentPosts) => {
     
@@ -69,7 +54,7 @@ const RecentPosts = (recentPosts) => {
                             image = getImageLink(post);
                         }
                         return (
-                            <Link to={`/blog/${post.title}`} key={post.blogId} className={styles['container-recent']}> 
+                            <Link to={`/blog/${post.blogId}`} key={post.blogId} className={styles['container-recent']}> 
                                 {image !== '' ? <img src={image} alt="Post" className={styles['container-img']} /> : 
                                     <img src={NoImage} alt="Post" className={styles['container-img']} />}
                                 <div> 
@@ -81,9 +66,6 @@ const RecentPosts = (recentPosts) => {
                 </div> 
             </div>)
 }
-
-
-
 
 const SimilarPosts = (blogArr, params, currentBlog) => {
 
@@ -108,7 +90,7 @@ const SimilarPosts = (blogArr, params, currentBlog) => {
                             }
                             if(ind < 3) {
                                 return (
-                                    <Link to={`/blog/${post.title}`} key={post.blogId} className={styles['container-recent']}> 
+                                    <Link to={`/blog/${post.blogId}`} key={post.blogId} className={styles['container-recent']}> 
                                         {image !== '' ? <img src={image} alt="Post" className={styles['container-img']} /> : 
                                             <img src={NoImage} alt="Post" className={styles['container-img']} />}
                                         <div> 
@@ -135,8 +117,6 @@ const Follow = (
     </div>
 )
     
-
-
 const BlogContainer = (props) => { 
     const {all, blogs, user} = props;
     let blogArr =[...blogs];
@@ -150,10 +130,14 @@ const BlogContainer = (props) => {
         return 0;
     })
     const [blogList, setBlogList] = useState(blogArr);
+
+    useEffect(() => {
+        setBlogList(blogArr);
+    },[blogs])
+
     let categories = ['Hobbies', 'Women', 'Men', 'Shopping', 'Nature', 'Health']
     let tags = ['general', 'new', 'business', 'blog']
 
-    
     const parameters = useParams();
     const [search, setSearch] = useState("");
     const [checkCategories, setCheckCategories] = useState(false);
@@ -164,10 +148,8 @@ const BlogContainer = (props) => {
     const history = useHistory();   
     const params = new URLSearchParams(location.search);
     const perPage = 3;
-    const currentPage = parseInt(params.get("page")) || 1;
-    const totalPages = Math.trunc(blogArr.length / perPage) + 1;
-
-    
+    const [currentPage, setCurrentPage] = useState(parseInt(params.get("page")) || 1);
+    const [totalPages, setTotalPages] = useState(Math.trunc(blogArr.length / perPage) + 1);
     const recentPosts = makeSlice(blogArr, 1, perPage);
 
     const [currentBlog, setCurrentBlog] = useState({});
@@ -176,8 +158,9 @@ const BlogContainer = (props) => {
             db.collection('blogs').doc(parameters.blogId).get()
                 .then(snapshot => setCurrentBlog(snapshot.data()))
         }
-    }, [])
-
+        console.log('f')
+    }, [location])
+    console.log(currentBlog)
     const updateURL = (name, value) => {
         const params = new URLSearchParams(location.search);
         params.set(name, value);
@@ -191,8 +174,10 @@ const BlogContainer = (props) => {
     }
 
     const handlePagination = (e) => {
-        window.scrollTo({ top: 400, behavior: "smooth" });
+        window.scrollTo({ top: 300, behavior: "smooth" });
         updateURL("page", currentPage + +e.target.value);
+        let x = currentPage + +e.target.value;
+        setCurrentPage(currentPage + +e.target.value);
     };
 
     const handleCategory = (e) => {
@@ -238,6 +223,7 @@ const BlogContainer = (props) => {
         })
         return newBlogArr;
     }
+
     const filterTags = (blogArr, url) => {
         let checkedTags = [];
         tags.map(tag => {
@@ -277,7 +263,6 @@ const BlogContainer = (props) => {
         return newBlogArr;
     }
 
-    
     const filterBlogs = (blogArr) => {
         let url = location.search;
         let newBlogArr = filterCategories(blogArr, url);
@@ -286,13 +271,23 @@ const BlogContainer = (props) => {
         return newBlogArr;
     }
 
-    useEffect( () => {
+    const newBlogs = () => {
         const FilteredBlogs = filterBlogs(blogArr);
         const blogsPage = makeSlice(FilteredBlogs, currentPage, perPage);
+        setTotalPages(Math.trunc(FilteredBlogs.length / perPage) + 1)
         setBlogList(blogsPage);
-    }, [checkCategories, checkTags, search, currentPage]) 
- 
+    }
 
+    useEffect( () => {
+        newBlogs();
+    }, [currentPage, blogs]) 
+
+
+    useEffect( () => {
+        newBlogs();
+        setCurrentPage(1);
+    }, [checkCategories, checkTags, search]) 
+ 
     return (
         <div className={styles["container"]}>
             {all ? 
@@ -302,9 +297,8 @@ const BlogContainer = (props) => {
                     totalPages={totalPages}
                     handlePagination={handlePagination}
                 /> :
-                <BlogDetails/>
-            }
-            
+                <BlogDetails currentBlog={currentBlog}/>
+            }        
             <div className={styles["container-side"]}>
                 <div className={styles["container-create-blog"]}>   
                     <Link  to={typeof user !== "undefined" ? `/create-blog` :`/login` } className={styles["create-blog-button"]}>

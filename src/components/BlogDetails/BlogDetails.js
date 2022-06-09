@@ -5,20 +5,11 @@ import { useEffect, useState } from "react";
 import Date from '../../assets/icons/blog-date.svg'
 import React from "react";
 import Author from '../../assets/icons/blog-author.svg'
-import { Link } from "react-router-dom"
-import { ConstructionOutlined } from "@mui/icons-material";
 import { db } from "../../config/config";
 
-
 const BlogDetails = (props) => {  
-    const params = useParams();
-    
-    const [currentBlog, setCurrentBlog] = useState({});
+    const {currentBlog } = props;
 
-    useEffect(() => {
-        db.collection('blogs').doc(params.blogId).get()
-        .then(snapshot => setCurrentBlog(snapshot.data()))
-    }, [])
     return (
         (Object.keys(currentBlog).length !== 0 ) ?
         <div key={currentBlog.blogId}> 

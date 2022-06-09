@@ -169,8 +169,8 @@ function App() {
             <SingleBlog />
           </Route>
           <Route path='/create-blog'>
-            <CreateBlog/>
-          </Route>  
+            {user ? <CreateBlog/> : <Redirect to="/login"/>}
+          </Route> 
           <Route path="*">
             <PageNotFound />
           </Route>

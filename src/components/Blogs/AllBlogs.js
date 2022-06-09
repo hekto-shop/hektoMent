@@ -22,6 +22,15 @@ const getImageLink = (blogComp) => {
                 link = elem.getAttribute('src');
             }
         }
+        if(link === '') {
+            elem.childNodes.forEach(elemOfChild => {
+                if(elemOfChild instanceof HTMLImageElement) {
+                    if(link === '') {
+                        link = elemOfChild.getAttribute('src');
+                    }
+                }
+            })
+        }
     })
     return link;
 }
@@ -104,6 +113,7 @@ const AllBlogs = (props) => {
                     currentPage={currentPage}
                     totalPages={totalPages}
                     handlePagination={handlePagination}
+                    blogList={blogList}
                 />
             </div>)
 }

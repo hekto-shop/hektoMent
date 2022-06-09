@@ -4,32 +4,29 @@ import { useState, useEffect } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
-
-
 const BlogPagination = (props) => {  
-    const {currentPage, totalPages, handlePagination } = props;
-    const [startPage, setStartPage] = useState(1);
-    const [pageArr, setPageArr] = useState( [1,2,3,4]);
-    useEffect( () => {   
-        let endPage = startPage + 3;
-        if(startPage + 3 > totalPages) {
-            endPage = totalPages;
-        }
-        if(currentPage > endPage) {
-            setStartPage(currentPage);
-        }    
-    }, [currentPage])
+    const {currentPage, totalPages, handlePagination, blogList } = props;
+    const [pageArr, setPageArr] = useState( []);
 
-    useEffect( () => {
-        let newPageArr = [];
-        pageArr.forEach((elem, index)=> {
-            if(startPage + index <= totalPages) {
-                newPageArr.push(startPage + index)  
+    useEffect( () => {  
+        if(blogList.length !== 0) {
+            let start = Math.floor((currentPage - 1) / 4)*4 + 1;
+            let end;
+            if(start + 3 <= totalPages) {
+                end = start + 3; 
+            } else {
+                end = totalPages;
             }
-        })
-        setPageArr(newPageArr);
-    }, [startPage])
-    
+            let newPageArr = [];
+            for(let i = start; i <= end; i++) {
+                newPageArr.push(i);
+            }
+            setPageArr(newPageArr);
+        } else {
+            setPageArr([])
+        }
+    }, [currentPage, totalPages, blogList])
+
     return (
         <div className={classes.pagination}>
             <button
