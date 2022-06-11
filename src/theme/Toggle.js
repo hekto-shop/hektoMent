@@ -46,6 +46,7 @@ export default function  ToggleColorMode  (props) {
                 textColor3: 'rgba(26, 11, 91, 0.302)',
                 cartTextColor: '#1d3178',
                 recentPosts: '#3F509E',
+                main: '#000000'
               }
             : {
                 primary: '#FFFFFF',
@@ -56,6 +57,7 @@ export default function  ToggleColorMode  (props) {
                 textColor3:  'rgba(192,192,192,0.3)',
                 cartTextColor: '#FFFFFF',
                 recentPosts : '#FFFFFF',
+                main: '#FFFFFF'
               }),
         },
       },

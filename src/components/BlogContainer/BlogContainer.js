@@ -14,27 +14,30 @@ import AllBlogs from "../Blogs";
 import { useTheme } from '@mui/material/styles';
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
+import { db } from "../../config/config";
+import NoImage from "../../assets/img/no-image.png";
 
-
-const getCategory = (blogArr,params) => { 
-    let category = '';
-    blogArr.map(blog => {
-        if(blog.title === params.title) {
-            category = blog.category;
+const getImageLink = (blog) => {
+    var blogComp = document.createElement('div');
+    blogComp.innerHTML = blog.text;
+    let link = ''
+    blogComp.childNodes.forEach(elem => {
+        if(elem instanceof HTMLImageElement) {
+            if(link === '') {
+                link = elem.getAttribute('src');
+            }
         }
-    })
-    return category;
-}
-
-
-const getTag = (blogArr, params) => { 
-    let tag = '';
-    blogArr.map(blog => {
-        if(blog.title === params.title) {
-            tag = blog.tag;
+        if(link === '') {
+            elem.childNodes.forEach(elemOfChild => {
+                if(elemOfChild instanceof HTMLImageElement) {
+                    if(link === '') {
+                        link = elemOfChild.getAttribute('src');
+                    }
+                }
+            })
         }
-    })
-    return tag;
+    })    
+    return link;
 }
 
 const RecentPosts = (recentPosts) => {
@@ -46,9 +49,14 @@ const RecentPosts = (recentPosts) => {
                 <div className={styles["side-titles"]}>Recent posts</div>
                 <div className={styles['container-recent-posts']}>
                     {recentPosts.map(post => {
+                        let image = post.mainImage;
+                        if (typeof image == 'undefined') {
+                            image = getImageLink(post);
+                        }
                         return (
-                            <Link to={`/blog/${post.title}`} key={post.blogId} className={styles['container-recent']}> 
-                                <img src={post.mainImage} alt="Post" className={styles['container-img']} />
+                            <Link to={`/blog/${post.blogId}`} key={post.blogId} className={styles['container-recent']}> 
+                                {image !== '' ? <img src={image} alt="Post" className={styles['container-img']} /> : 
+                                    <img src={NoImage} alt="Post" className={styles['container-img']} />}
                                 <div> 
                                     <div className={styles['recent-title']} style={recentPostsColor}>{post.title}</div>
                                     <div className={styles['recent-date']}>{post.date.toDate().toString().substring(4,15)}</div>
@@ -59,35 +67,43 @@ const RecentPosts = (recentPosts) => {
             </div>)
 }
 
-const SimilarPosts = (blogArr, params) => {
-    let category = getCategory(blogArr, params);
+const SimilarPosts = (blogArr, params, currentBlog) => {
+
+    let category = currentBlog.category;
     let similarPostsArr = [];
     blogArr.map(blog => {
-        if(blog.category === category) {
+        if(blog.category === category && blog.blogId !== params.blogId) {
             similarPostsArr.push(blog);
         }
     })
     const theme = useTheme();
     const recentPostsColor = {"color": theme.palette.text.recentPosts};
-    return (
-            <div className={styles["recent-posts"]}>
-                <div className={styles["side-titles"]}>Similar posts</div>
-                <div className={styles['container-recent-posts']}>
-                    {similarPostsArr.map((post, ind) => {
-                        if(ind < 3) {
-                            return (
-                                <Link to={`/blog/${post.title}`} key={post.blogId} className={styles['container-recent']}> 
-                                    <img src={post.mainImage} alt="Post" className={styles['container-img']} />
-                                    <div> 
-                                        <div className={styles['recent-title']} style={recentPostsColor}>{post.title}</div>
-                                        <div className={styles['recent-date']}>{post.date.toDate().toString().substring(4,15)}</div>
-                                    </div>
-                                </Link>
-                            )
-                        }
-                    })}    
-                </div> 
-            </div>)
+    
+    return (similarPostsArr.length !== 0 ?
+                <div className={styles["recent-posts"]}>
+                    <div className={styles["side-titles"]}>Similar posts</div>
+                    <div className={styles['container-recent-posts']}>
+                        {similarPostsArr.map((post, ind) => {
+                            let image = post.mainImage;
+                            if (typeof image == 'undefined') {
+                                image = getImageLink(post);
+                            }
+                            if(ind < 3) {
+                                return (
+                                    <Link to={`/blog/${post.blogId}`} key={post.blogId} className={styles['container-recent']}> 
+                                        {image !== '' ? <img src={image} alt="Post" className={styles['container-img']} /> : 
+                                            <img src={NoImage} alt="Post" className={styles['container-img']} />}
+                                        <div> 
+                                            <div className={styles['recent-title']} style={recentPostsColor}>{post.title}</div>
+                                            <div className={styles['recent-date']}>{post.date.toDate().toString().substring(4,15)}</div>
+                                        </div>
+                                    </Link>
+                                )
+                            }
+                        })}    
+                    </div> 
+                </div> : null
+            )
 }
 
 const Follow = (
@@ -101,16 +117,27 @@ const Follow = (
     </div>
 )
     
-
-
 const BlogContainer = (props) => { 
     const {all, blogs, user} = props;
-    let blogArr = blogs;
+    let blogArr =[...blogs];
+    blogArr.sort((a,b) => {
+        if(a.date > b.date) {
+            return -1;
+        }
+        if(a.date < b.date) {
+            return 1;
+        }
+        return 0;
+    })
     const [blogList, setBlogList] = useState(blogArr);
-    let categories = ['Hobbies', 'Women', 'Men', 'Shopping', 'Nature', 'Health']
-    let tags = ['General', 'Atsanil', 'Insas', 'Bibsaas', 'Nulla']
 
-    
+    useEffect(() => {
+        setBlogList(blogArr);
+    },[blogs])
+
+    let categories = ['Hobbies', 'Women', 'Men', 'Shopping', 'Nature', 'Health']
+    let tags = ['general', 'new', 'business', 'blog']
+
     const parameters = useParams();
     const [search, setSearch] = useState("");
     const [checkCategories, setCheckCategories] = useState(false);
@@ -121,12 +148,18 @@ const BlogContainer = (props) => {
     const history = useHistory();   
     const params = new URLSearchParams(location.search);
     const perPage = 3;
-    const currentPage = parseInt(params.get("page")) || 1;
-    const totalPages = Math.trunc(blogArr.length / perPage) + 1;
-
-    
+    const [currentPage, setCurrentPage] = useState(parseInt(params.get("page")) || 1);
+    const [totalPages, setTotalPages] = useState(Math.trunc(blogArr.length / perPage) + 1);
     const recentPosts = makeSlice(blogArr, 1, perPage);
 
+    const [currentBlog, setCurrentBlog] = useState({});
+    useEffect(() => {
+        if(!all) {
+            db.collection('blogs').doc(parameters.blogId).get()
+                .then(snapshot => setCurrentBlog(snapshot.data()))
+        }
+    }, [location])
+    
     const updateURL = (name, value) => {
         const params = new URLSearchParams(location.search);
         params.set(name, value);
@@ -140,8 +173,10 @@ const BlogContainer = (props) => {
     }
 
     const handlePagination = (e) => {
-        window.scrollTo({ top: 400, behavior: "smooth" });
+        window.scrollTo({ top: 300, behavior: "smooth" });
         updateURL("page", currentPage + +e.target.value);
+        let x = currentPage + +e.target.value;
+        setCurrentPage(currentPage + +e.target.value);
     };
 
     const handleCategory = (e) => {
@@ -187,6 +222,7 @@ const BlogContainer = (props) => {
         })
         return newBlogArr;
     }
+
     const filterTags = (blogArr, url) => {
         let checkedTags = [];
         tags.map(tag => {
@@ -199,9 +235,13 @@ const BlogContainer = (props) => {
         }
         let newBlogArr = [];
         blogArr.map(blog => {
-            if(checkedTags.includes(blog.tag)) {
-                newBlogArr.push(blog);
-            }
+            checkedTags.map(checked => {
+                if(blog.tag.includes(checked)){
+                    if(!newBlogArr.includes(blog)){
+                        newBlogArr.push(blog);
+                    }
+                }
+            })
         })
         return newBlogArr;
     }
@@ -222,7 +262,6 @@ const BlogContainer = (props) => {
         return newBlogArr;
     }
 
-    
     const filterBlogs = (blogArr) => {
         let url = location.search;
         let newBlogArr = filterCategories(blogArr, url);
@@ -231,43 +270,23 @@ const BlogContainer = (props) => {
         return newBlogArr;
     }
 
-    useEffect( () => {
+    const newBlogs = () => {
         const FilteredBlogs = filterBlogs(blogArr);
         const blogsPage = makeSlice(FilteredBlogs, currentPage, perPage);
+        setTotalPages(Math.trunc(FilteredBlogs.length / perPage) + 1)
         setBlogList(blogsPage);
-    }, [checkCategories, checkTags, search, currentPage]) 
+    }
+
+    useEffect( () => {
+        newBlogs();
+    }, [currentPage, blogs]) 
+
+
+    useEffect( () => {
+        newBlogs();
+        setCurrentPage(1);
+    }, [checkCategories, checkTags, search]) 
  
-
-
-
-    /*
-    useEffect( () => {
-        let url = location.search;
-        const filteredBlogs = filterCategories(blogArr, url);
-        const blogsPage = makeSlice(filteredBlogs, currentPage, perPage);
-        setBlogList(blogsPage);
-    }, [checkCategories])
-
-    useEffect( () => {
-        let url = location.search;
-        const filteredBlogs = filterTags(blogArr, url);
-        const blogsPage = makeSlice(filteredBlogs, currentPage, perPage);
-        setBlogList(blogsPage);
-    }, [checkTags])
-
-    useEffect( () => {
-        const filteredBlogs = filterSearch(blogArr);
-        const blogsPage = makeSlice(filteredBlogs, currentPage, perPage);
-        setBlogList(blogsPage);
-    }, [search])
-
-    useEffect( () => {
-        const blogsPage = makeSlice(blogList, currentPage, perPage);
-        setBlogList(blogsPage);
-    }, [currentPage])
-    
-    */
-
     return (
         <div className={styles["container"]}>
             {all ? 
@@ -277,9 +296,8 @@ const BlogContainer = (props) => {
                     totalPages={totalPages}
                     handlePagination={handlePagination}
                 /> :
-                <BlogDetails blogList = {blogList}/>
-            }
-            
+                <BlogDetails currentBlog={currentBlog}/>
+            }        
             <div className={styles["container-side"]}>
                 <div className={styles["container-create-blog"]}>   
                     <Link  to={typeof user !== "undefined" ? `/create-blog` :`/login` } className={styles["create-blog-button"]}>
@@ -312,14 +330,14 @@ const BlogContainer = (props) => {
                                                 disabled={!all}/>
                                         <label className={((document.getElementById(category) !== null && 
                                                             document.getElementById(category).checked) ||
-                                                            getCategory(blogArr,parameters)===category) ? 
+                                                            currentBlog.category===category) ? 
                                                             [styles["category"], styles["category-checked"]].join(' '): styles["category"]} 
                                                             htmlFor={category}> {category} </label>
                                     </div>
                         })}
                     </div>
                 </div>
-                {all ? RecentPosts(recentPosts) : SimilarPosts(blogArr, parameters)}
+                {all ? RecentPosts(recentPosts) : SimilarPosts(blogArr, parameters, currentBlog)}
                 <div>
                     <div className={styles["side-titles"]} >Tags</div>
                     <div className={styles['container-tags']} >
@@ -333,7 +351,7 @@ const BlogContainer = (props) => {
                                                 disabled={!all}/>
                                         <label className={((document.getElementById(tag) !== null && 
                                                             document.getElementById(tag).checked) || 
-                                                            getTag(blogArr,parameters)===tag) ? 
+                                                            (typeof currentBlog.tag !== 'undefined' && currentBlog.tag.includes(tag))) ? 
                                                             [styles["tag-button"], styles["tag-checked"]].join(' ') : 
                                                             styles["tag-button"]} htmlFor={tag} >{tag}</label>
                                     </div>

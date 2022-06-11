@@ -26,7 +26,9 @@
 .container-side {
     display: grid;
     grid-template-columns: 1fr;
-    height: 900px;
+    grid-template-rows: minmax(20px,auto);
+    row-gap: 60px;
+    max-height: 850px;
 }
 
 .container-img {
@@ -169,7 +171,10 @@
     }
     .container-side {
         grid-row: -1;
-        height: 400px;
+        grid-template-rows: minmax(20px,auto);
+        row-gap: 60px;
+        height: auto;
+        margin-bottom: 20px;
         //grid-template-columns: 1fr 1fr;
     }
     .recent-posts {
