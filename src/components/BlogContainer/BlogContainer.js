@@ -158,9 +158,8 @@ const BlogContainer = (props) => {
             db.collection('blogs').doc(parameters.blogId).get()
                 .then(snapshot => setCurrentBlog(snapshot.data()))
         }
-        console.log('f')
     }, [location])
-    console.log(currentBlog)
+    
     const updateURL = (name, value) => {
         const params = new URLSearchParams(location.search);
         params.set(name, value);
